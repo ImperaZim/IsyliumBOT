@@ -78,10 +78,9 @@ export class ExtendedClient extends Client {
     this.login(discord.token);
     this.initializeAll();
     this.on("ready", () => {
-      register();
       new Logger("null", {
-        title: colors.redBright("[KARENINE CALL]"),
-        content: "Sistemas [.G] carregados com sucesso!",
+        title: colors.redBright("[ISYLIUM]"),
+        content: "Sistemas gerais carregados com sucesso!",
       });
     });
   }
@@ -94,7 +93,7 @@ export class ExtendedClient extends Client {
     this.registerModules();
     this.on("ready", () => {
       if (this.user) {
-        this.user.setActivity("Punishing: Gray Raven", {
+        this.user.setActivity("????", {
           type: ActivityType.Playing,
         });
       }
@@ -110,12 +109,12 @@ export class ExtendedClient extends Client {
     try {
       await this.application?.commands.set(commands);
       new Logger("null", {
-        title: colors.cyanBright("[KARENINE CALL]"),
-        content: "Sistemas [.M] carregados com sucesso!",
+        title: colors.cyanBright("[ISYLIUM CALL]"),
+        content: "Comandos carregados com sucesso!",
       });
     } catch (error) {
       new Logger("null", {
-        title: colors.red("[KARENINE MODULES]"),
+        title: colors.red("[ISYLIUM MODULES]"),
         content: `❌ An error occurred while setting Slash Commands (/): \n${error}`,
       });
     }
@@ -149,8 +148,11 @@ export class ExtendedClient extends Client {
         }
       });
 
-
       this.on("ready", () => this.registerCommands(slashCommands));
+      new Logger("null", {
+        title: colors.cyanBright("[ISYLIUM CALL]"),
+        content: "Eventos carregados com sucesso!",
+      });
     }
   }
 
