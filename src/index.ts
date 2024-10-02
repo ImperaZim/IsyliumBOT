@@ -3,6 +3,7 @@ export * from './handlers';
 export * from './extensions';
 
 import { MysqlConnection } from "MySQL";
+import { ExtendedClient } from "@extensions";
 
 export const mysql = new MysqlConnection({
   host: "isylium.cloud",
