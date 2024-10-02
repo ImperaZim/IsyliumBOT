@@ -1,0 +1,38 @@
+{
+  "name": "IsyliumBOT",
+  "displayName": "Isylium BOT",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "installModules": "tsx modules.ts",
+    "start": "tsx src/index.ts"
+  },
+  "keywords": [
+    "bot",
+    "discord",
+    "discord.js",
+    "system",
+    "economy",
+    "management",
+    "administration"
+  ],
+  "author": "ImperaZim and yBriisMC",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.6.1",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@types/luxon": "^2.0.0",
+    "axios": "^1.7.7",
+    "discord-html-transcripts": "^3.2.0",
+    "discord.js": "^14.12.1",
+    "fs": "^0.0.1-security",
+    "mysql2": "^3.6.0",
+    "path": "^0.12.7",
+    "tsc": "^2.0.4"
+  }
+}
