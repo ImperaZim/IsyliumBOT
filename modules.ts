@@ -4,7 +4,15 @@ const filePath = './tsconfig.json';
 
 // Definindo os módulos a serem adicionados
 const modules = {
-  "@main": "./src"
+  "@main": "./src",
+  "@config": "./src/config",
+  
+  "@types": "./src/types",
+  "@types/*": "./src/types/*",
+  "@handlers": "./src/handlers",
+  "@handlers/*": "./src/handlers/*",
+  "@extensions": "./src/extensions",
+  "@extensions/*": "./src/extensions/*",
 };
 
 // Definindo os includes a serem adicionados
