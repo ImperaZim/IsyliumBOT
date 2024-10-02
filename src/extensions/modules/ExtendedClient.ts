@@ -132,20 +132,23 @@ export class ExtendedClient extends Client {
     if (fs.existsSync(commandsPath)) {
       fs.readdirSync(commandsPath).forEach((local) => {
         const localPath = join(commandsPath, local);
-        fs.readdirSync(localPath)
-          .filter(filter)
-          .forEach(async (fileName) => {
-            const command: CommandType = (
-              await import(join(localPath, fileName))
-            )?.default;
+        if (fs.existsSync(localPath)) {
+          fs.readdirSync(localPath)
+            .filter(filter)
+            .forEach(async (fileName) => {
+              const command: CommandType = (
+                await import(join(localPath, fileName))
+              )?.default;
 
-            if (command?.name) {
-              this.commands.set(command.name, command);
-              slashCommands.push(command);
-              this.registerCommandComponents(command);
-            }
-          });
+              if (command?.name) {
+                this.commands.set(command.name, command);
+                slashCommands.push(command);
+                this.registerCommandComponents(command);
+              }
+            });
+        }
       });
+
 
       this.on("ready", () => this.registerCommands(slashCommands));
     }
@@ -186,12 +189,14 @@ export class ExtendedClient extends Client {
       await Promise.all(
         localDirectories.map(async (local) => {
           const localPath = join(eventsPath, local);
-          const files = fs.readdirSync(localPath).filter(filter);
-          await Promise.all(
-            files.map(async (fileName) => {
-              await this.processEventFile(local, fileName);
-            })
-          );
+          if (fs.existsSync(localPath)) {
+            const files = fs.readdirSync(localPath).filter(filter);
+            await Promise.all(
+              files.map(async (fileName) => {
+                await this.processEventFile(local, fileName);
+              })
+            );
+          }
         })
       );
     }
