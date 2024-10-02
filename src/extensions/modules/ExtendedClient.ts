@@ -77,12 +77,6 @@ export class ExtendedClient extends Client {
   public initialize(): void {
     this.login(discord.token);
     this.initializeAll();
-    this.on("ready", () => {
-      new Logger("null", {
-        title: colors.redBright("[ISYLIUM]"),
-        content: "Sistemas gerais carregados com sucesso!",
-      });
-    });
   }
 
   /**
@@ -148,11 +142,11 @@ export class ExtendedClient extends Client {
         }
       });
 
-      this.on("ready", () => this.registerCommands(slashCommands));
       new Logger("null", {
         title: colors.cyanBright("[ISYLIUM CALL]"),
         content: "Eventos carregados com sucesso!",
       });
+      this.on("ready", () => this.registerCommands(slashCommands));
     }
   }
 
