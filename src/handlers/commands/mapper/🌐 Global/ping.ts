@@ -1,6 +1,6 @@
 import { client } from "@maim";
 import { CommandProps } from "@types";
-import { ExtendedCommand } from "@@extensions";
+import { ExtendedCommand } from "@extensions";
 import { ApplicationCommandType } from "discord.js";
 
 export default new ExtendedCommand({

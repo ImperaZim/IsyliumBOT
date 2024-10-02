@@ -1,4 +1,4 @@
-import { ExtendedEvent } from "@@extensions";
+import { ExtendedEvent } from "@extensions";
 import { CommandInteractionOptionResolver } from "discord.js";
 
 export default new ExtendedEvent({

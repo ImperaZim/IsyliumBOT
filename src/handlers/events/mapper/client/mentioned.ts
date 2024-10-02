@@ -1,4 +1,4 @@
-import { ExtendedEvent } from "@@extensions";
+import { ExtendedEvent } from "@extensions";
 
 export default new ExtendedEvent({
   name: "messageCreate",
