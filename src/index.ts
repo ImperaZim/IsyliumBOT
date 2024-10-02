@@ -1,3 +1,7 @@
+export * from './types';
+export * from './handlers';
+export * from './extensions';
+
 import { MysqlConnection } from "MySQL";
 
 export const mysql = new MysqlConnection({
@@ -7,6 +11,6 @@ export const mysql = new MysqlConnection({
   database: "Isylium",
 });
 
-export * from './types';
-export * from './handlers';
-export * from './extensions';
+export const client = new ExtendedClient();
+
+client.initialize();
