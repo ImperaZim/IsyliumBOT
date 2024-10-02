@@ -1,4 +1,4 @@
-import { client } from "@maim";
+import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { ApplicationCommandType } from "discord.js";
