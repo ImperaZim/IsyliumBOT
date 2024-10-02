@@ -127,7 +127,7 @@ export class ExtendedClient extends Client {
   private registerModules(): void {
     const slashCommands: ApplicationCommandDataResolvable[] = [];
     const __dirname = dirname(fileURLToPath(import.meta.url));
-    const commandsPath = join(__dirname, "..", "..", "handlers", "commands", "map");
+    const commandsPath = join(__dirname, "..", "..", "handlers", "commands", "mapper");
 
     fs.readdirSync(commandsPath).forEach((local) => {
       const localPath = join(commandsPath, local);
@@ -177,7 +177,7 @@ export class ExtendedClient extends Client {
    */
   private async registerEvents(): Promise<void> {
     const __dirname = dirname(fileURLToPath(import.meta.url));
-    const eventsPath = join(__dirname, "..", "..", "handlers", "events", "map");
+    const eventsPath = join(__dirname, "..", "..", "handlers", "events", "mapper");
 
     const localDirectories = fs.readdirSync(eventsPath);
     await Promise.all(
@@ -198,7 +198,7 @@ export class ExtendedClient extends Client {
    */
   private async processEventFile(local: string, fileName: string): Promise<void> {
     const event: EventType<keyof ClientEvents> = (
-      await import(`../../handlers/events/map/${local}/${fileName}`)
+      await import(`../../handlers/events/mapper/${local}/${fileName}`)
     )?.default;
 
     if (event?.name) {
