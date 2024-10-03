@@ -94,21 +94,21 @@ export default new ExtendedCommand({
 
 
 
-const client = new Builder()
-    .setURL('https://dash.isylium.cloud/')
-    .setAPIKey('ptlc_XKtjwcPeZ6VvzL35D4WTUVyJwnRGzOAXWoGe3quVGPR')
-    .asUser();
+    const client = new Builder()
+      .setURL('https://dash.isylium.cloud/')
+      .setAPIKey('ptlc_XKtjwcPeZ6VvzL35D4WTUVyJwnRGzOAXWoGe3quVGPR')
+      .asUser();
 
-client.getClientServers()
-.then(async servers => {
-    let server = servers[0];
+    client.getClientServers()
+      .then(async servers => {
+        let server = servers[0];
 
-    console.log(server.toJSON());
+        console.log(server.toJSON());
 
-  //  await server.start();
+        //  await server.start();
 
-    await server.sendCommand('player 01');
-}).catch(error => console.log(error));
+        await server.sendCommand('player 01');
+      }).catch(error => console.log(error));
 
   }
 });
