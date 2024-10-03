@@ -13,7 +13,7 @@ export default new ExtendedCommand({
   
  const channel = interaction.channel
  
- if (!channel || channel.type !== 'GUILD_TEXT') {
+ if (!channel || channel.type === 'GUILD_TEXT') {
         return interaction.reply({
           content: 'Este comando não pode ser usado em canais privados.',
           ephemeral: true,
