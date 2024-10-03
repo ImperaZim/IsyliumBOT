@@ -33,24 +33,31 @@ export default new ExtendedCommand({
     }
   ],
   type: ApplicationCommandType.ChatInput,
-  async run({ interaction, options}: CommandProps) {
+  async run({ interaction, options }: CommandProps) {
     try {
       if (client.user === null) return;
       if (!interaction.inCachedGuild()) return;
-      const data = new CreateData(interaction.guild);
+      const data = new GuildData(interaction.guild);
       const checkGuild = await data.checkGuildData();
       const username = client.user ? client.user.username : "";
       const displayAvatar = client.user
         ? client.user.displayAvatarURL() : "";
-      
-          if (checkGuild) {
-               switch (options.getSubcommand(true)) {
-               case "server":
-                 {
-                   interaction.reply({ content: "a" })
-                 }
-               }
-          }
+
+      if (checkGuild) {
+        switch (options.getSubcommand(true)) {
+          case "server":
+            {
+              interaction.reply({ content: "a" })
+            }
+        }
+      } else {
+             await data.GuildCreateData();
+             interaction.reply({
+                content:
+                   "Infelizmente eu não achei sua guilda em meus bancos de dados, e eu tomei a liberdade de adicionar sua guilda por favor de comando novamente !!",
+                 ephemeral: true
+               });
+             }
       //               const embed = new EmbedBuilder()
       //                 .setAuthor({
       //                   name: username,
