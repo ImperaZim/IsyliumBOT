@@ -103,11 +103,11 @@ export default new ExtendedCommand({
       .then(async servers => {
         let server = servers[0];
 
-        console.log(server.toJSON());
+        console.log(servers.toJSON());
 
         //  await server.start();
 
-        await server.sendCommand('player 01');
+      //  await server.sendCommand('player 01');
       }).catch(error => console.log(error));
 
   }
