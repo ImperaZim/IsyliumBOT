@@ -2,7 +2,7 @@ import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { TranscriptGenerator } from "@handlers/transcripts";
-import { MercadoPagoConfig, PaymentMethod, Preference } from 'mercadopago';
+import { MercadoPagoConfig, PaymentMethod, Payment } from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
 
 export default new ExtendedCommand({
@@ -55,9 +55,9 @@ export default new ExtendedCommand({
 //       .catch((error) => console.log(error));
 
 
-const preference = new Preference(client);
+const preference = new Payment(client);
 
-preference.create({
+Payment.create({
   body: {
     payment_methods: {
       excluded_payment_methods: [],
