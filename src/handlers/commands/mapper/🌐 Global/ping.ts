@@ -2,7 +2,7 @@ import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { TranscriptGenerator } from "@handlers/transcripts";
-import { MercadoPagoConfig, PaymentMethods } from 'mercadopago';
+import { MercadoPagoConfig, PaymentMethod } from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
 
 export default new ExtendedCommand({
@@ -49,7 +49,7 @@ export default new ExtendedCommand({
     
 
 const client = new MercadoPagoConfig({ accessToken: 'TEST-8329234677809062-100302-32e1b10c142778e6a02265577d802e4f-779023770' });
-const paymentMethods = new PaymentMethods(client);
+const paymentMethods = new PaymentMethod(client);
 
 paymentMethods.get().then((result) => console.log(result))
   .catch((error) => console.log(error));
