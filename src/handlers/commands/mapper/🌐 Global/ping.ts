@@ -99,7 +99,7 @@ const url = "https://dash.isylium.cloud/api/client/servers/1a7ce997/command";
 
 // Dados que serão enviados na requisição
 const data = {
-  command: "say CodeCo says Hi!"
+  command: "help"
 };
 
 // Fazendo a requisição POST
