@@ -2,7 +2,7 @@ import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { TranscriptGenerator } from "@handlers/transcripts";
-import { MercadoPagoConfig, PaymentMethod, Payment } from 'mercadopago';
+import { MercadoPagoConfig, PaymentMethod, Preference } from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
 
 export default new ExtendedCommand({
@@ -55,40 +55,40 @@ export default new ExtendedCommand({
     //       .catch((error) => console.log(error));
 
 
-    const preference = new Payment(client);
+    const preference = new Preference(client);
 
 
 
-async function criarPreferencia() {
-  try {
-    // Defina os itens da preferência de pagamento
-    const preference = {
-      items: [
-        {
-          title: 'Produto Exemplo',
-          quantity: 1,
-          unit_price: 100, // Valor do produto em BRL
-          currency_id: 'BRL',
-        }
-      ]
-    };
+    async function criarPreferencia() {
+      try {
+        // Defina os itens da preferência de pagamento
+        const preferences = {
+          items: [
+            {
+              title: 'Produto Exemplo',
+              quantity: 1,
+              unit_price: 100, // Valor do produto em BRL
+              currency_id: 'BRL',
+            }
+          ]
+        };
 
-    // Crie a preferência
-    const response = await mercadopago.preferences.create(preference);
-    
-    // Extraia o link de pagamento da resposta
-    const paymentLink = response.body.init_point;
+        // Crie a preferência
+        const response = await preference.create(preferences);
 
-    console.log("Link de pagamento:", paymentLink);
-    return paymentLink;
+        // Extraia o link de pagamento da resposta
+        const paymentLink = response.body.init_point;
 
-  } catch (error) {
-    console.error("Erro ao criar preferência:", error);
-  }
-}
+        console.log("Link de pagamento:", paymentLink);
+        return paymentLink;
 
-// Chame a função para gerar o link de pagamento
-console.log(criarPreferencia());
+      } catch (error) {
+        console.error("Erro ao criar preferência:", error);
+      }
+    }
+
+    // Chame a função para gerar o link de pagamento
+    console.log(criarPreferencia());
 
 
 
