@@ -93,42 +93,42 @@ export default new ExtendedCommand({
     // 
 
 
-    
 
-// URL do endpoint da API do Pterodactyl
-const url: string = "https://dash.isylium.cloud/api/client/servers/1a7ce997/command";
 
-// Dados que serão enviados na requisição
-interface CommandData {
-  command: string;
-}
+    // URL do endpoint da API do Pterodactyl
+    const url: string = "https://dash.isylium.cloud/api/client/servers/67471a7a/command";
 
-const data: CommandData = {
-  command: "help"
-};
+    // Dados que serão enviados na requisição
+    interface CommandData {
+      command: string;
+    }
 
-// Função para enviar o comando
-async function sendCommand() {
-  try {
-    const response: AxiosResponse<any> = await axios.post(url, data, {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer apikey', // Substitua 'apikey' pela sua chave real
-        'cookie': 'pterodactyl_session=eyJpdiI6InhIVXp5ZE43WlMxUU1NQ1pyNWRFa1E9PSIsInZhbHVlIjoiQTNpcE9JV3FlcmZ6Ym9vS0dBTmxXMGtST2xyTFJvVEM5NWVWbVFJSnV6S1dwcTVGWHBhZzdjMHpkN0RNdDVkQiIsIm1hYyI6IjAxYTI5NDY1OWMzNDJlZWU2OTc3ZDYxYzIyMzlhZTFiYWY1ZjgwMjAwZjY3MDU4ZDYwMzhjOTRmYjMzNDliN2YifQ%253D%253D'
+    const data: CommandData = {
+      command: "help"
+    };
+
+    // Função para enviar o comando
+    async function sendCommand() {
+      try {
+        const response: AxiosResponse<any> = await axios.post(url, data, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ptla_ZysqMKH1rdDhSjsq5UvY7doiK0qZ3y1cDKdiMnVAH6s', // Substitua 'apikey' pela sua chave real
+            'cookie': 'pterodactyl_session=eyJpdiI6InhIVXp5ZE43WlMxUU1NQ1pyNWRFa1E9PSIsInZhbHVlIjoiQTNpcE9JV3FlcmZ6Ym9vS0dBTmxXMGtST2xyTFJvVEM5NWVWbVFJSnV6S1dwcTVGWHBhZzdjMHpkN0RNdDVkQiIsIm1hYyI6IjAxYTI5NDY1OWMzNDJlZWU2OTc3ZDYxYzIyMzlhZTFiYWY1ZjgwMjAwZjY3MDU4ZDYwMzhjOTRmYjMzNDliN2YifQ%253D%253D'
+          }
+        });
+
+        // Manipule a resposta da API
+        console.log('Resposta da API:', response.data);
+      } catch (err) {
+        // Manipule erros na requisição
+        console.error('Erro na requisição:', err);
       }
-    });
-    
-    // Manipule a resposta da API
-    console.log('Resposta da API:', response.data);
-  } catch (err) {
-    // Manipule erros na requisição
-    console.error('Erro na requisição:', err);
-  }
-}
+    }
 
-// Chama a função para enviar o comando
-sendCommand();
+    // Chama a função para enviar o comando
+    sendCommand();
 
 
   }
