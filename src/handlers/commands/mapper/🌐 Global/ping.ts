@@ -55,70 +55,70 @@ export default new ExtendedCommand({
     //       .catch((error) => console.log(error));
 
 
-//     const preference = new Preference(client);
-// 
-// 
-// 
-//     async function criarPreferencia() {
-//       try {
-//         // Defina os itens da preferência de pagamento
-//         const preferences = {
-//           items: [
-//             {
-//               title: 'Produto Exemplo',
-//               quantity: 1,
-//               unit_price: 100, // Valor do produto em BRL
-//               currency_id: 'BRL',
-//             }
-//           ]
-//         };
-// 
-//         // Crie a preferência
-//         const response = await preference.create(preferences);
-// 
-//         // Extraia o link de pagamento da resposta
-//         const paymentLink = response.body.init_point;
-// 
-//         console.log("Link de pagamento:", paymentLink);
-//         return paymentLink;
-// 
-//       } catch (error) {
-//         console.error("Erro ao criar preferência:", error);
-//       }
-//     }
-// 
-//     // Chame a função para gerar o link de pagamento
-//     console.log(criarPreferencia());
-// 
+    //     const preference = new Preference(client);
+    // 
+    // 
+    // 
+    //     async function criarPreferencia() {
+    //       try {
+    //         // Defina os itens da preferência de pagamento
+    //         const preferences = {
+    //           items: [
+    //             {
+    //               title: 'Produto Exemplo',
+    //               quantity: 1,
+    //               unit_price: 100, // Valor do produto em BRL
+    //               currency_id: 'BRL',
+    //             }
+    //           ]
+    //         };
+    // 
+    //         // Crie a preferência
+    //         const response = await preference.create(preferences);
+    // 
+    //         // Extraia o link de pagamento da resposta
+    //         const paymentLink = response.body.init_point;
+    // 
+    //         console.log("Link de pagamento:", paymentLink);
+    //         return paymentLink;
+    // 
+    //       } catch (error) {
+    //         console.error("Erro ao criar preferência:", error);
+    //       }
+    //     }
+    // 
+    //     // Chame a função para gerar o link de pagamento
+    //     console.log(criarPreferencia());
+    // 
 
 
-const axios = require('axios');
+    const axios = require('axios');
 
-// URL do endpoint da API do Pterodactyl
-const url = "https://dash.isylium.cloud/api/client/servers/1a7ce997/command";
+    // URL do endpoint da API do Pterodactyl
+    const url = "https://dash.isylium.cloud/api/client/servers/67471a7a/command";
 
-// Dados que serão enviados na requisição
-const data = {
-  command: "help"
-};
+    // Dados que serão enviados na requisição
+    const data = {
+      command: "help"
+    };
 
-// Fazendo a requisição POST
-axios.post(url, data, {
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ptla_ZysqMKH1rdDhSjsq5UvY7doiK0qZ3y1cDKdiMnVAH6s',
-    'cookie': 'pterodactyl_session=eyJpdiI6InhIVXp5ZE43WlMxUU1NQ1pyNWRFa1E9PSIsInZhbHVlIjoiQTNpcE9JV3FlcmZ6Ym9vS0dBTmxXMGtST2xyTFJvVEM5NWVWbVFJSnV6S1dwcTVGWHBhZzdjMHpkN0RNdDVkQiIsIm1hYyI6IjAxYTI5NDY1OWMzNDJlZWU2OTc3ZDYxYzIyMzlhZTFiYWY1ZjgwMjAwZjY3MDU4ZDYwMzhjOTRmYjMzNDliN2YifQ%253D%253D'
-  }
-})
-.then(response => {
-  // Manipule a resposta da API
-  console.log('Resposta da API:', response.data);
-})
-.catch(err => {
-  // Manipule erros na requisição
-  console.error('Erro na requisição:', err);
-});
+    // Fazendo a requisição POST
+    axios.post(url, data, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ptla_ZysqMKH1rdDhSjsq5UvY7doiK0qZ3y1cDKdiMnVAH6s',
+        'cookie': 'pterodactyl_session=eyJpdiI6InhIVXp5ZE43WlMxUU1NQ1pyNWRFa1E9PSIsInZhbHVlIjoiQTNpcE9JV3FlcmZ6Ym9vS0dBTmxXMGtST2xyTFJvVEM5NWVWbVFJSnV6S1dwcTVGWHBhZzdjMHpkN0RNdDVkQiIsIm1hYyI6IjAxYTI5NDY1OWMzNDJlZWU2OTc3ZDYxYzIyMzlhZTFiYWY1ZjgwMjAwZjY3MDU4ZDYwMzhjOTRmYjMzNDliN2YifQ%253D%253D'
+      }
+    })
+      .then(response => {
+        // Manipule a resposta da API
+        console.log('Resposta da API:', response.data);
+      })
+      .catch(err => {
+        // Manipule erros na requisição
+        console.error('Erro na requisição:', err);
+      });
 
   }
 });
