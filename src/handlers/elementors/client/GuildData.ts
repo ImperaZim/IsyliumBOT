@@ -1,5 +1,6 @@
 import { Guild } from "discord.js";
 import { mysql } from "@main"
+import { DeserializedData } from "@types";
 import { OkPacket, RowDataPacket } from "mysql2/promise";
 
 export class GuildData {
