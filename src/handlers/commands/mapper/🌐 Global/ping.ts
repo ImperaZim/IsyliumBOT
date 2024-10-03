@@ -101,9 +101,9 @@ export default new ExtendedCommand({
 
     client.getClientServers()
       .then(async servers => {
-      //  let server = servers[0];
-
-       await  servers[1].sendCommand('player 01')
+        let server = servers[1];
+const harvest = server.toJSON();
+       await  harvest.sendCommand('player 01')
 
         //  await server.start();
 
