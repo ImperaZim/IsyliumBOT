@@ -74,13 +74,17 @@ preference.create({
   }
 })
 .then((response) => {
-  // O link de pagamento está na propriedade init_point da resposta
-  const paymentLink = response.body.init_point;
-  console.log('Link de pagamento:', paymentLink);
+  if (response.body && response.body.init_point) {
+    const paymentLink = response.body.init_point;
+    console.log('Link de pagamento:', paymentLink);
+  } else {
+    console.error('Erro: init_point não encontrado na resposta', response);
+  }
 })
 .catch((error) => {
   console.error('Erro ao criar preferência:', error);
 });
+
 
         
 
