@@ -55,28 +55,34 @@ export default new ExtendedCommand({
 //       .catch((error) => console.log(error));
 
 
+const preference = new Preference(client);
 
-        const preference = new Preference(client);
+preference.create({
+  body: {
+    payment_methods: {
+      excluded_payment_methods: [],
+      excluded_payment_types: [],
+      installments: 12
+    },
+    items: [
+      {
+        title: 'My product',
+        quantity: 1,
+        unit_price: 2000
+      }
+    ],
+  }
+})
+.then((response) => {
+  // O link de pagamento está na propriedade init_point da resposta
+  const paymentLink = response.body.init_point;
+  console.log('Link de pagamento:', paymentLink);
+})
+.catch((error) => {
+  console.error('Erro ao criar preferência:', error);
+});
 
         
-        preference.create({
-          body: {
-            payment_methods: {
-          excluded_payment_methods: [],
-          excluded_payment_types: [],
-          installments: 12
-},
-            items: [
-              {
-                title: 'My product',
-                quantity: 1,
-                unit_price: 2000
-              }
-            ],
-          }
-        })
-        .then(console.log)
-        .catch(console.log);
 
 
   }
