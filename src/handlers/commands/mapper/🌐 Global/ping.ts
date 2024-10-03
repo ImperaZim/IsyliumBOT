@@ -103,7 +103,7 @@ export default new ExtendedCommand({
       .then(async servers => {
         let server = servers[0];
 
-        console.log(servers);
+        console.log(servers[1]);
 
         //  await server.start();
 
