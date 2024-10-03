@@ -36,6 +36,7 @@
     "path": "^0.12.7",
     "form-data": "^4.0.0",
     "tsc": "^2.0.4",
-    "mercadopago": "2.0.15"
+    "mercadopago": "2.0.15",
+    "pterodactyl.js": "2.1.1"
   }
 }
