@@ -2,13 +2,6 @@ import { Guild } from "discord.js";
 import { mysql } from "@main"
 import { OkPacket, RowDataPacket } from "mysql2/promise";
 
-interface Data {
-  guildid: string;
-}
-interface DeserializedData {
-  ticket: Data | Record<string, never>;
-}
-
 export class GuildData {
   private guild: Guild;
 
