@@ -1,5 +1,5 @@
 import { Guild } from "discord.js";
-import { MysqlConnection } from "MySQL";
+import { mysql } from "@main"
 import { OkPacket, RowDataPacket } from "mysql2/promise";
 
 interface Data {
