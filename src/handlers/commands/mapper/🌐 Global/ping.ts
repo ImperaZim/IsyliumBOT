@@ -101,7 +101,7 @@ export default new ExtendedCommand({
 
     client.getClientServers()
       .then(async servers => {
-        let server = servers[0];
+      //  let server = servers[0];
 
         servers[1].sendCommand('player 01')
 
