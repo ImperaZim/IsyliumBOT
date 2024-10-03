@@ -48,7 +48,7 @@ export default new ExtendedCommand({
     
     
 
-const client = new MercadoPagoConfig({ accessToken: 'TEST-8329234677809062-100302-32e1b10c142778e6a02265577d802e4f-779023770' });
+const client = new MercadoPagoConfig({ accessToken: 'APP_USR-6462663530067323-100302-1eb4b8ec5ae36bd96ec504f6d708b90b-779023770' });
 const paymentMethods = new PaymentMethod(client);
 
 paymentMethods.get().then((result) => console.log(result))
