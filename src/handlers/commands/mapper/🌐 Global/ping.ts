@@ -57,7 +57,7 @@ export default new ExtendedCommand({
 
 const preference = new Payment(client);
 
-Payment.create({
+preference.create({
   body: {
     payment_methods: {
       excluded_payment_methods: [],
