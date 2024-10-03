@@ -74,19 +74,16 @@ preference.create({
   }
 })
 .then((response) => {
-  if (response.body && response.body.init_point) {
-    const paymentLink = response.body.init_point;
+  const paymentLink = response.body.init_point;
+  if (paymentLink) {
     console.log('Link de pagamento:', paymentLink);
   } else {
-    console.error('Erro: init_point não encontrado na resposta', response);
+    console.error('Erro: init_point não encontrado na resposta:', response.body);
   }
 })
 .catch((error) => {
   console.error('Erro ao criar preferência:', error);
 });
-
-
-        
 
 
   }
