@@ -49,41 +49,47 @@ export default new ExtendedCommand({
 
 
     const client = new MercadoPagoConfig({ accessToken: 'APP_USR-6462663530067323-100302-1eb4b8ec5ae36bd96ec504f6d708b90b-779023770' });
-//     const paymentMethods = new PaymentMethod(client);
-// 
-//     paymentMethods.get().then((result) => console.log(result))
-//       .catch((error) => console.log(error));
+    //     const paymentMethods = new PaymentMethod(client);
+    // 
+    //     paymentMethods.get().then((result) => console.log(result))
+    //       .catch((error) => console.log(error));
 
 
-const preference = new Payment(client);
+    const preference = new Payment(client);
 
-preference.create({
-  body: {
-    payment_methods: {
-      excluded_payment_methods: [],
-      excluded_payment_types: [],
-      installments: 12
-    },
-    items: [
-      {
-        title: 'My product',
-        quantity: 1,
-        unit_price: 2000
-      }
-    ],
+
+
+async function criarPreferencia() {
+  try {
+    // Defina os itens da preferência de pagamento
+    const preference = {
+      items: [
+        {
+          title: 'Produto Exemplo',
+          quantity: 1,
+          unit_price: 100, // Valor do produto em BRL
+          currency_id: 'BRL',
+        }
+      ]
+    };
+
+    // Crie a preferência
+    const response = await mercadopago.preferences.create(preference);
+    
+    // Extraia o link de pagamento da resposta
+    const paymentLink = response.body.init_point;
+
+    console.log("Link de pagamento:", paymentLink);
+    return paymentLink;
+
+  } catch (error) {
+    console.error("Erro ao criar preferência:", error);
   }
-})
-.then((response) => {
-  const paymentLink = response.body.init_point;
-  if (paymentLink) {
-    console.log('Link de pagamento:', paymentLink);
-  } else {
-    console.error('Erro: init_point não encontrado na resposta:', response.body);
-  }
-})
-.catch((error) => {
-  console.error('Erro ao criar preferência:', error);
-});
+}
+
+// Chame a função para gerar o link de pagamento
+console.log(criarPreferencia());
+
 
 
   }
