@@ -37,6 +37,6 @@
     "form-data": "^4.0.0",
     "tsc": "^2.0.4",
     "mercadopago": "2.0.15",
-    "pterodactyl.js": "2.1.1"
+    "jspteroapi": "1.11.3"
   }
 }
