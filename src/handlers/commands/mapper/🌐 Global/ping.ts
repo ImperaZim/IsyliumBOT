@@ -11,8 +11,8 @@ export default new ExtendedCommand({
   description: "Verificar o ping do isylium",
   type: ApplicationCommandType.ChatInput,
   async run({ interaction }: CommandProps) {
-    const dash = "dash.isylium.cloud"
+    const dash = "https://dash.isylium.cloud"
 //const application = new Application('HOST', 'TOKEN'); // for application API
-const client = new Client(dash, 'TOKEN');
+const client = new Client(dash, 'ptlc_XKtjwcPeZ6VvzL35D4WTUVyJwnRGzOAXWoGe3quVGPR');
   }
 });
