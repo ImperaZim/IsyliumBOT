@@ -4,19 +4,15 @@ import { ExtendedCommand } from "@extensions";
 import { TranscriptGenerator } from "@handlers/transcripts";
 import { MercadoPagoConfig, PaymentMethod, Preference } from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
-import { Builder } from 'pterodactyl.js';
+import { Client, Application } from'jspteroapi';
 
 export default new ExtendedCommand({
   name: "ping",
   description: "Verificar o ping do isylium",
   type: ApplicationCommandType.ChatInput,
   async run({ interaction }: CommandProps) {
-
-
-
-
-
-
-
+    const dash = "dash.isylium.cloud"
+//const application = new Application('HOST', 'TOKEN'); // for application API
+const client = new Client(dash, 'TOKEN');
   }
 });
