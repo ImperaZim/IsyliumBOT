@@ -91,6 +91,7 @@ export class TranscriptGenerator {
 
       const metadata = data.metadata;
       const decodedMetadata = JSON.parse(atob(metadata));
+      console.log(decodedMetadata)
 
       // Verifica se o `discord_token` e `discord_username` batem com os valores esperados
       if (decodedMetadata.discord_token && decodedMetadata.discord_username) {
