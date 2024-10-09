@@ -16,6 +16,6 @@ export default new ExtendedCommand({
 // const client = new Client(dash, 'ptlc_XKtjwcPeZ6VvzL35D4WTUVyJwnRGzOAXWoGe3quVGPR');
 // client.sendCommand('67471a7a', 'player 1').then((res) => console.log(res)) // res = Successfuly sent the command!
 
-await TranscriptGenerator.fetchAndCheckPlayerData("imperazim", "VdOND9")
+await new TranscriptGenerator().fetchAndCheckPlayerData("imperazim", "VdOND9")
   }
 });
