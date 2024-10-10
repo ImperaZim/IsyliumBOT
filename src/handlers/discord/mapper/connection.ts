@@ -12,9 +12,16 @@ interface DocodedMetadata {
 
 export class Connection {
 
-  public async fetchAndCheckPlayerData(interaction: Interaction, 
-  expectedToken: string, expectedUsername: string, nickname: string): Promise<void> {
+  public async fetchAndCheckPlayerData(
+    interaction: Interaction,
+    expectedToken: string,
+    expectedUsername: string,
+    nickname: string,
+    server: string): Promise<void> {
     try {
+      
+      if (!interaction.isRepliable()) return;
+      
       const dash = "http://dash.isylium.cloud:3000"
       const url = `${dash}/harvest/getplayerdata/${nickname}`;
       const response = await axios.get<PlayerDataResponse>(url);
@@ -26,6 +33,10 @@ export class Connection {
       }
 
       const decodedMetadata: DocodedMetadata = JSON.parse(atob(data.metadata));
+      
+      if (!decodedMetadata.discord_link_status) {
+        return;
+      }
 
       const tokenMatches = decodedMetadata.discord_token === expectedToken;
       const usernameMatches = decodedMetadata.discord_username === expectedUsername;
@@ -33,7 +44,7 @@ export class Connection {
       if (tokenMatches && usernameMatches) {
         const url = `${dash}/harvest/linkplayer/${nickname}`;
         const response = await axios.get(url);
-        console.log('Sucesso: discord_token e discord_username correspondem aos esperados!');
+        interaction.reply({ content: '<:corrector:1293816417984184352> Sua conta foi vinculada ao servidor ${server} com sucesso!.', ephemeral: true });
       } else {
         console.log('Falha: discord_token ou discord_username não correspondem aos esperados.');
       }
