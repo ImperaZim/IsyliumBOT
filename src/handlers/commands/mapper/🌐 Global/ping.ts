@@ -19,7 +19,7 @@ export default new ExtendedCommand({
 
 
     const connection = new Connection();
-    await connection.fetchAndCheckPlayerData(interaction, 'VdOND9', 'imperazim', 'yBriisMC', 'Harvest');
+    await connection.fetchAndCheckPlayerData(interaction, 't21fKn', 'ybriismc', 'yBriisMC', 'Harvest');
 
   }
 });
