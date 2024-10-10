@@ -13,7 +13,7 @@ export class Connection {
 
   public async fetchAndCheckPlayerData(expectedToken: string, expectedUsername: string, nickname: string): Promise<void> {
     try {
-      const dash = "https://dash.isylium.cloud:3000"
+      const dash = "http://dash.isylium.cloud:3000"
       const url = `${dash}/harvest/getplayerdata/${nickname}`;
       const response = await axios.get<PlayerDataResponse>(url);
 
