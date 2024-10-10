@@ -12,7 +12,7 @@ interface DocodedMetadata {
 
 export class Connection {
 
-  public async fetchAndCheckPlayerData(
+  public async isyliumserver(
     interaction: Interaction,
     expectedToken: string,
     expectedUsername: string,
