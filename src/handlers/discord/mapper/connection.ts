@@ -19,9 +19,9 @@ export class Connection {
     nickname: string,
     server: string): Promise<void> {
     try {
-      
+
       if (!interaction.isRepliable()) return;
-      
+
       const dash = "http://dash.isylium.cloud:3000"
       const url = `${dash}/harvest/getplayerdata/${nickname}`;
       const response = await axios.get<PlayerDataResponse>(url);
@@ -33,7 +33,7 @@ export class Connection {
       }
 
       const decodedMetadata: DocodedMetadata = JSON.parse(atob(data.metadata));
-      
+
       if (!decodedMetadata.discord_link_status) {
         return;
       }
@@ -46,7 +46,7 @@ export class Connection {
         const response = await axios.get(url);
         interaction.reply({ content: '<:corrector:1293816417984184352> Sua conta foi vinculada ao servidor ${server} com sucesso!.', ephemeral: true });
       } else {
-        console.log('Falha: discord_token ou discord_username não correspondem aos esperados.');
+        interaction.reply({ content: '<:corrector:1293816417984184352> Sua conta foi não foi vinculada ao servidor ${server} ja existe cadastro!.', ephemeral: true });
       }
     } catch (error) {
       console.error('Erro ao buscar ou verificar os dados:', (error as Error).message);
