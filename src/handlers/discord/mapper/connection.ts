@@ -10,13 +10,13 @@ interface DocodedMetadata {
 }
 
 export class Connection {
-  
+
   public async fetchAndCheckPlayerData(expectedToken: string, expectedUsername: string, nickname: string): Promise<void> {
     try {
       const dash = "https://dash.isylium.cloud"
       const url = `${dash}/harvest/getplayerdata/${nickname}`;
       const response = await axios.get<PlayerDataResponse>(url);
-      
+
       const data = response.data;
       if (!data.metadata) {
         console.log('Falha: não existe metadata na resposta JSON!');
@@ -29,8 +29,8 @@ export class Connection {
       const usernameMatches = decodedMetadata.discord_username === expectedUsername;
 
       if (tokenMatches && usernameMatches) {
-      const url = `${dash}/harvest/linkplayer/${nickname}`;
-      const response = await axios.get<PlayerDataResponse>(url);
+        const url = `${dash}/harvest/linkplayer/${nickname}`;
+        const response = await axios.get(url);
         console.log('Sucesso: discord_token e discord_username correspondem aos esperados!');
       } else {
         console.log('Falha: discord_token ou discord_username não correspondem aos esperados.');
