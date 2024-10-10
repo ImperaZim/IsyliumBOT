@@ -16,10 +16,5 @@ export default new ExtendedCommand({
     //const application = new Application('HOST', 'TOKEN'); // for application API
     // const client = new Client(dash, 'ptlc_XKtjwcPeZ6VvzL35D4WTUVyJwnRGzOAXWoGe3quVGPR');
     // client.sendCommand('67471a7a', 'player 1').then((res) => console.log(res)) // res = Successfuly sent the command!
-
-
-    const connection = new Connection();
-    await connection.fetchAndCheckPlayerData(interaction, 't21fKn', 'ybriismc', 'yBriisMC', 'Harvest');
-
   }
 });
