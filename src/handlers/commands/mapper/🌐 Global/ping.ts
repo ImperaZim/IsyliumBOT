@@ -2,6 +2,7 @@ import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { TranscriptGenerator } from "@handlers/transcripts";
+import { Connection } from "@handlers/discord"
 import { MercadoPagoConfig, PaymentMethod, Preference } from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
 import { Client, Application } from'jspteroapi';
@@ -16,6 +17,9 @@ export default new ExtendedCommand({
 // const client = new Client(dash, 'ptlc_XKtjwcPeZ6VvzL35D4WTUVyJwnRGzOAXWoGe3quVGPR');
 // client.sendCommand('67471a7a', 'player 1').then((res) => console.log(res)) // res = Successfuly sent the command!
 
-await new TranscriptGenerator().fetchAndCheckPlayerData("VdOND9", "imperazim")
+
+const connection = new Connection();
+await connection.fetchAndCheckPlayerData('VdOND9', 'imperazim', 'ImperaZim');
+
   }
 });
