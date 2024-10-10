@@ -19,7 +19,7 @@ export default new ExtendedCommand({
 
 
 const connection = new Connection();
-await connection.fetchAndCheckPlayerData('VdOND9', 'imperazim', 'ImperaZim');
+await connection.fetchAndCheckPlayerData(interaction, 'VdOND9', 'imperazim', 'ImperaZim', 'Harvest');
 
   }
 });
