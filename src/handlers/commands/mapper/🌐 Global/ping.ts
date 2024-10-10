@@ -5,7 +5,7 @@ import { TranscriptGenerator } from "@handlers/transcripts";
 import { Connection } from "@handlers/discord"
 import { MercadoPagoConfig, PaymentMethod, Preference } from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
-import { Client, Application } from'jspteroapi';
+import { Client, Application } from 'jspteroapi';
 
 export default new ExtendedCommand({
   name: "ping",
@@ -13,13 +13,13 @@ export default new ExtendedCommand({
   type: ApplicationCommandType.ChatInput,
   async run({ interaction }: CommandProps) {
     const dash = "https://dash.isylium.cloud"
-//const application = new Application('HOST', 'TOKEN'); // for application API
-// const client = new Client(dash, 'ptlc_XKtjwcPeZ6VvzL35D4WTUVyJwnRGzOAXWoGe3quVGPR');
-// client.sendCommand('67471a7a', 'player 1').then((res) => console.log(res)) // res = Successfuly sent the command!
+    //const application = new Application('HOST', 'TOKEN'); // for application API
+    // const client = new Client(dash, 'ptlc_XKtjwcPeZ6VvzL35D4WTUVyJwnRGzOAXWoGe3quVGPR');
+    // client.sendCommand('67471a7a', 'player 1').then((res) => console.log(res)) // res = Successfuly sent the command!
 
 
-const connection = new Connection();
-await connection.fetchAndCheckPlayerData(interaction, 'VdOND9', 'imperazim', 'ImperaZim', 'Harvest');
+    const connection = new Connection();
+    await connection.fetchAndCheckPlayerData(interaction, 'VdOND9', 'imperazim', 'yBriisMC', 'Harvest');
 
   }
 });
