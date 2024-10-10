@@ -35,7 +35,7 @@ export class Connection {
       const decodedMetadata: DocodedMetadata = JSON.parse(atob(data.metadata));
 
       if (decodedMetadata.discord_link_status) {
-        return interaction.reply({ content: `<:error:1293818735114846220> Sua conta ja evinculada ao servidor ${server} ja existe cadastro!`, ephemeral: true });
+        return interaction.reply({ content: `<:error:1293818735114846220> Sua conta já está vinculada ao servidor ${server}. Já existe um cadastro associado!`, ephemeral: true });
 
       }
 
@@ -47,7 +47,7 @@ export class Connection {
         const response = await axios.get(url);
         interaction.reply({ content: `<:corrector:1293816417984184352> Sua conta foi vinculada ao servidor ${server} com sucesso!`, ephemeral: true });
       } else {
-        interaction.reply({ content: `<:error:1293818735114846220> Verifique token ou username e tente novamente!`, ephemeral: true });
+        interaction.reply({ content: `<:error:1293818735114846220> Verifique o token ou username e tente novamente!`, ephemeral: true });
       }
     } catch (error) {
       console.error('Erro ao buscar ou verificar os dados:', (error as Error).message);
