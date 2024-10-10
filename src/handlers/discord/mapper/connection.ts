@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Interaction } from 'discord.js';
 
 interface PlayerDataResponse {
   metadata?: string;
@@ -11,7 +12,8 @@ interface DocodedMetadata {
 
 export class Connection {
 
-  public async fetchAndCheckPlayerData(expectedToken: string, expectedUsername: string, nickname: string): Promise<void> {
+  public async fetchAndCheckPlayerData(interaction: Interaction, 
+  expectedToken: string, expectedUsername: string, nickname: string): Promise<void> {
     try {
       const dash = "http://dash.isylium.cloud:3000"
       const url = `${dash}/harvest/getplayerdata/${nickname}`;
