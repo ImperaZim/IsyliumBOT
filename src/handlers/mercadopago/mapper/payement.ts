@@ -1,21 +1,17 @@
 import { MercadoPagoConfig, Payment } from 'mercadopago';
 
-// Configuração do cliente do Mercado Pago
 const client = new MercadoPagoConfig({ 
     accessToken: 'APP_USR-6462663530067323-100302-1eb4b8ec5ae36bd96ec504f6d708b90b-779023770' 
 });
 
-// Interface para o pagamento
 interface PaymentResponse {
-    qrCodeBase64?: string; // Para pagamentos via PIX
-    paymentLink?: string;   // Para pagamentos via cartão ou saldo
-    paymentId: string;      // ID do pagamento
+    qrCodeBase64?: string;
+    paymentLink?: string;
+    paymentId: string;
 }
 
-// Tipo para os métodos de pagamento suportados
 type PaymentMethod = 'pix' | 'visa' | 'master' | 'account_money';
 
-// Classe para processamento de pagamentos
 export class Payments {
     private userEmail: string;
     private userName: string;
@@ -25,14 +21,8 @@ export class Payments {
         this.userName = name;
     }
 
-    /**
-     * Gera um pagamento e retorna as informações do QR Code ou link de pagamento.
-     * @param amount - Valor da transação
-     * @param description - Descrição do pagamento
-     * @param paymentMethod - Método de pagamento ('pix', 'visa', 'master', 'account_money')
-     */
     async generatePayment(amount: number, description: string, paymentMethod: PaymentMethod): Promise<PaymentResponse> {
-        // Dados do pagamento
+      
         const paymentData = {
             transaction_amount: amount,
             description: description,
@@ -44,11 +34,9 @@ export class Payments {
         };
 
         try {
-            // Criando pagamento usando o método create da classe Payment
             const payment = new Payment(client);
             const response = await payment.create({ body: paymentData });
 
-            // Verifica o método de pagamento e retorna as informações apropriadas
             if (paymentMethod === 'pix') {
                 const qrCodeBase64 = response.point_of_interaction.transaction_data.qr_code_base64;
                 return {
@@ -56,7 +44,7 @@ export class Payments {
                     paymentId: response.id,
                 };
             } else {
-                const paymentLink = response.init_point; // Link para pagamento com cartão ou saldo
+                const paymentLink = response.init_point;
                 return {
                     paymentLink,
                     paymentId: response.id,
