@@ -2,7 +2,7 @@ import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { TranscriptGenerator } from "@handlers/transcripts";
-import { Connection } from "@handlers/discord"
+import { Payments } from "@handlers/mercadopago"
 import { MercadoPagoConfig, PaymentMethod } from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
 import { Client, Application } from 'jspteroapi';
@@ -17,10 +17,31 @@ export default new ExtendedCommand({
     // const client = new Client(dash, 'ptlc_XKtjwcPeZ6VvzL35D4WTUVyJwnRGzOAXWoGe3quVGPR');
     // client.sendCommand('67471a7a', 'player 1').then((res) => console.log(res)) // res = Successfuly sent the command!
     
-    const client = new MercadoPagoConfig({ accessToken: 'APP_USR-6462663530067323-100302-1eb4b8ec5ae36bd96ec504f6d708b90b-779023770' });
-      const paymentMethods = new PaymentMethod(client);
-    
-         paymentMethods.get().then((result) => console.log(result))
-        .catch((error) => console.log(error));
+    const email = 'user@example.com'; // Substitua pelo email do usuário
+const name = 'Nome do Usuário'; // Substitua pelo nome do usuário
+const paymentProcessor = new Payments(email, name);
+
+async function processPayment() {
+    try {
+        const amount = 100; // Valor em reais
+        const description = 'Descrição do produto ou serviço';
+        const paymentMethod: PaymentMethod = 'pix'; // Altere para 'visa', 'master' ou 'account_money' conforme necessário
+
+        const paymentInfo = await paymentProcessor.generatePayment(amount, description, paymentMethod);
+
+        // Exibe QR Code ou link de pagamento
+        if (paymentMethod === 'pix') {
+            console.log('QR Code gerado:', paymentInfo.qrCodeBase64);
+            console.log('ID do pagamento:', paymentInfo.paymentId);
+        } else {
+            console.log('Link para pagamento:', paymentInfo.paymentLink);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+processPayment();
+
   }
 });
