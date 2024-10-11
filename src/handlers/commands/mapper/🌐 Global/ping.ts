@@ -25,7 +25,7 @@ async function processPayment() {
     try {
         const amount = 100; // Valor em reais
         const description = 'Descrição do produto ou serviço';
-        const paymentMethod: PaymentMethod = 'pix'; // Altere para 'visa', 'master' ou 'account_money' conforme necessário
+        const paymentMethod: PaymentMethod = 'visa'; // Altere para 'visa', 'master' ou 'account_money' conforme necessário
 
         const paymentInfo = await paymentProcessor.generatePayment(amount, description, paymentMethod);
 
