@@ -7,6 +7,8 @@ const modules = {
   "@main": "./src",
   "@config": "./src/config",
   
+  "@api": "./src/api",
+  "@api/*": "./src/api/*",
   "@types": "./src/types",
   "@types/*": "./src/types/*",
   "@handlers": "./src/handlers",

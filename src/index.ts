@@ -17,13 +17,6 @@ export const client = new ExtendedClient();
 
 client.initialize();
 
-//const express = require('express')
-//export * from 'express'
-import express from 'express'
-const app = express()
+import { startExpress } from "@api/global";
 
-app.get('/', function (req, res) {
-  res.send('Hello World')
-})
-
-app.listen(19134)
+startExpress();
