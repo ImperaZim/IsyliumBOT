@@ -37,6 +37,7 @@
     "form-data": "^4.0.0",
     "tsc": "^2.0.4",
     "mercadopago": "2.0.15",
-    "jspteroapi": "1.11.3"
+    "jspteroapi": "1.11.3",
+    "express": "4.21.1"
   }
 }
