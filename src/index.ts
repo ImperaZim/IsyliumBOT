@@ -16,3 +16,12 @@ export const mysql = new MysqlConnection({
 export const client = new ExtendedClient();
 
 client.initialize();
+
+import { express } from 'express'
+const app = express()
+
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+
+app.listen(3000)
