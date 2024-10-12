@@ -18,7 +18,8 @@ export const client = new ExtendedClient();
 client.initialize();
 
 //const express = require('express')
-export * from 'express'
+//export * from 'express'
+import express from 'express'
 const app = express()
 
 app.get('/', function (req, res) {
