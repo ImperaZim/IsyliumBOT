@@ -45,7 +45,7 @@ export class Payment {
         {
           id: "id",
           title: "My Product",
-          unit_price: 0.1,
+          unit_price: 0.01,
           category_id: "categoriaid"
         }
       ],
