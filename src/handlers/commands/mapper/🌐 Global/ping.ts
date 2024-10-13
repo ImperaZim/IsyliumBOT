@@ -16,7 +16,6 @@ export default new ExtendedCommand({
   async run({ interaction }: CommandProps) {
 
 
-    var axios = require('axios');
     var data = JSON.stringify({
       "statement_descriptor": "TestStore",
       "external_reference": "IWD1238971",
@@ -49,7 +48,7 @@ export default new ExtendedCommand({
       url: 'https://api.mercadopago.com/checkout/preferences',
       headers: {
         'Content-Type': 'application/json',
-       Authorization: `Bearer ${payment.acesstoken}`
+        Authorization: `Bearer ${payment.acesstoken}`
       },
       data: data
     };
