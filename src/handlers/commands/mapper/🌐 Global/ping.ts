@@ -3,7 +3,7 @@ import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { TranscriptGenerator } from "@handlers/transcripts";
 import { Payments } from "@handlers/mercadopago"
-import mercadopago from 'mercadopago';
+import mercadopago, { MercadoPagoConfig } from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
 import { Client, Application } from 'jspteroapi';
 
@@ -21,7 +21,10 @@ export default new ExtendedCommand({
 
 
     // Configurar Mercado Pago com o token de acesso
-    mercadopago.configurations.setAccessToken('APP_USR-6462663530067323-100302-1eb4b8ec5ae36bd96ec504f6d708b90b-779023770');
+    const client = new MercadoPagoConfig({ accessToken: 'APP_USR-6462663530067323-100302-1eb4b8ec5ae36bd96ec504f6d708b90b-779023770' });
+
+    
+    
 
     // Criar uma preferência
     const preference = {
@@ -35,7 +38,7 @@ export default new ExtendedCommand({
     };
 
     // Enviar a preferência
-    mercadopago.preferences.create(preference)
+    client.preferences.create(preference)
       .then(response => {
         console.log(response.body.init_point); // Link gerado para pagamento
       })
