@@ -12,28 +12,28 @@ export class Payment {
     const userId = user.id;
     const username = user.username;
 
-const data = JSON.stringify({
-  "statement_descriptor": "IsyliumStore",
-  "external_reference": `${userId}`,
-  "items": [
-    {
-      "id": "010983098",
-      "title": "My Product",
-      "quantity": 1,
-      "unit_price": 0.1,
-      "category_id": "retail"
-    }
-  ],
-  "payer": {
-    "name": `${nickname}, ${username} `,
-    "surname": `${type}, ${value}`,
-  },
-  "payment_methods": {
-    "excluded_payment_types": [],
-    "excluded_payment_methods": [],
-    "installments": 12,
-  }
-});
+    const data = JSON.stringify({
+      "statement_descriptor": "IsyliumStore",
+      "external_reference": `${userId}`,
+      "items": [
+        {
+          "id": "010983098",
+          "title": "My Product",
+          "quantity": 1,
+          "unit_price": 0.1,
+          "category_id": "retail"
+        }
+      ],
+      "payer": {
+        "name": `${nickname}, ${username} `,
+        "surname": `${type}, ${value}`,
+      },
+      "payment_methods": {
+        "excluded_payment_types": [],
+        "excluded_payment_methods": [],
+        "installments": 12,
+      }
+    });
 
     const config: AxiosRequestConfig = {
       method: 'post',
@@ -48,7 +48,8 @@ const data = JSON.stringify({
 
     try {
       const response = await axios(config);
-         return response.data.init_point;
+      return response.data.init_point;
+      console.log(response.data)
     } catch (error) {
       console.error(error);
       return null;
