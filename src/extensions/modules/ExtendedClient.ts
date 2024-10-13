@@ -32,6 +32,7 @@ import {
   ComponentsChannelSelect,
   ComponentsMentionSelect,
 } from "@types";
+import { mysql } from "@main";
 import { discord } from "@config";
 import { Logger, colors } from "Console";
 
@@ -83,6 +84,7 @@ export class ExtendedClient extends Client {
    * Initialize all components.
    */
   public initializeAll(): void {
+    this.registerTables();
     this.registerEvents();
     this.registerModules();
     this.on("ready", () => {
@@ -92,6 +94,22 @@ export class ExtendedClient extends Client {
         });
       }
     });
+  }
+
+  /**
+   * Register database tables.
+   */
+  private async registerTables(): Promise<void> {
+    mysql.createTable("harvest_players", [
+      {
+        name: "id",
+        type: "INT PRIMARY KEY"
+      },
+      {
+        name: "player",
+        type: "TEXT"
+      }
+    ]);
   }
 
   /**
