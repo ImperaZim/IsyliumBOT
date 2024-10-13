@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import express from 'express';
 import axios from 'axios';
-import { mercadopago} from "@config";
+import { mercadopago } from "@config";
 
 export function startExpress() {
   const app = express();
@@ -39,9 +39,9 @@ export function startExpress() {
       .then(function (response) {
         console.log(response.data.status)
         console.log(response.data.payer)
-//const [username, nickname] = nomeVindoDaJson.split(", ");
-//const [type, value] = sobrenomeVindoDaJson.split(", ");
-      //  console.log(JSON.stringify(response.data));
+        //const [username, nickname] = nomeVindoDaJson.split(", ");
+        //const [type, value] = sobrenomeVindoDaJson.split(", ");
+          console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);
