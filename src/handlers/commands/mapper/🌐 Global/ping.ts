@@ -3,7 +3,7 @@ import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { TranscriptGenerator } from "@handlers/transcripts";
 import { Payments } from "@handlers/mercadopago"
-import { MercadoPagoConfig, PaymentMethod } from 'mercadopago';
+import { MercadoPagoConfig, Preference } from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
 import { Client, Application } from 'jspteroapi';
 
@@ -17,31 +17,48 @@ export default new ExtendedCommand({
     // const client = new Client(dash, 'ptlc_XKtjwcPeZ6VvzL35D4WTUVyJwnRGzOAXWoGe3quVGPR');
     // client.sendCommand('67471a7a', 'player 1').then((res) => console.log(res)) // res = Successfuly sent the command!
     
-    const email = 'user@example.com'; // Substitua pelo email do usuário
-const name = 'Nome do Usuário'; // Substitua pelo nome do usuário
-const paymentProcessor = new Payments(email, name);
 
-async function processPayment() {
-    try {
-        const amount = 100; // Valor em reais
-        const description = 'Descrição do produto ou serviço';
-        const paymentMethod: PaymentMethod = 'visa'; // Altere para 'visa', 'master' ou 'account_money' conforme necessário
+        
 
-        const paymentInfo = await paymentProcessor.generatePayment(amount, description, paymentMethod);
+        const client = new MercadoPagoConfig({ accessToken: 'YOUR_ACCESS_TOKEN' });
 
-        // Exibe QR Code ou link de pagamento
-        if (paymentMethod === 'pix') {
-            console.log('QR Code gerado:', paymentInfo.qrCodeBase64);
-            console.log('ID do pagamento:', paymentInfo.paymentId);
-        } else {
-            console.log('Link para pagamento:', paymentInfo.paymentLink);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
+        const preference = new Preference(client);
 
-processPayment();
+        preference.create({
+          body: {
+            payment_methods: {
+          excluded_payment_methods: [
+                    {
+                              id: "amex"
+                    },
+                    {
+                              id: "elo"
+                    },
+                    {
+                              id: "hipercard"
+                    },
+                    {
+                              id: "bolbradesco"
+                    },
+                    {
+                              id: "pec"
+                    }
+          ],
+          excluded_payment_types: [],
+          installments: 12
+},
+            items: [
+              {
+                title: 'My product',
+                quantity: 1,
+                unit_price: 2000
+              }
+            ],
+          }
+        })
+        .then(console.log)
+        .catch(console.log);
+       
 
   }
 });
