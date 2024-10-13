@@ -1,1 +1,1 @@
-export * from './mapper/payement';
+//export * from './mapper/payement';
