@@ -15,8 +15,18 @@ export default new ExtendedCommand({
   async run({ interaction }: CommandProps) {
     
 const pay = await new Payment(mercadopago.acesstoken);
+ try {
  await pay.createPayment(interaction.user, "yBriisMC", "gold", "10000")
+if (pay) {
 
+        await interaction.reply(`Seu link de pagamento: ${pay}`);
+      } else {
+        await interaction.reply('Houve um erro ao gerar o pagamento.');
+      }
+    } catch (error) {
+      console.error(error);
+      await interaction.reply('Ocorreu um erro ao processar o pagamento.');
+    }
 
   }
 });
