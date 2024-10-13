@@ -64,12 +64,12 @@ export class HarvestConnection {
   }
 
   public async sendPlayerGift(
-    nickname: string,
+    userId: string,
     giftType: string,
     giftValue: string
   ): Promise<boolean> {
     try {
-      const player = await getPlayerNickname(nickname);
+      const player = await getPlayerNickname(userId);
       if (!player) {
         return false;
       }

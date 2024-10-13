@@ -7,9 +7,9 @@ export async function insertPlayerRecord(userId: string, player: string): Promis
   });
 }
 
-export async function getPlayerNickname(nickname: string): Promise<string | null> {
+export async function getPlayerNickname(userId: string): Promise<string | null> {
   const result = await mysql.select('harvest_players', 'player', {
-    player: nickname,
+    id: userId,
   });
   if (result && result.length > 0) {
     return result[0].player;
