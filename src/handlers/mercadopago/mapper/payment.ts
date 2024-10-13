@@ -45,7 +45,7 @@ export class Payment {
         {
           id: "id",
           title: "My Product",
-          unit_price: 0.01,
+          unit_price: 0.1,
           category_id: "categoriaid"
         }
       ],
@@ -60,7 +60,7 @@ export class Payment {
       }
     };
 
-    const config = {
+    const config: AxiosRequestConfig  = {
       method: 'post',
       maxBodyLength: Infinity,
       url: 'https://api.mercadopago.com/checkout/preferences',
