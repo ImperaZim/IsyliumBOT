@@ -24,27 +24,26 @@ export function startExpress() {
     }
 
     res.status(200).json({ message: 'Notificação recebida com sucesso', data: json });
-    
-    
 
-var config = {
-  method: 'get',
-maxBodyLength: Infinity,
-  url: 'https://api.mercadopago.com/v1/payments/:paymentId',
-  headers: {
-        Authorization: `Bearer ${payment.acesstoken}`
-      },
-};
 
-axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
-})
-.catch(function (error) {
-  console.log(error);
-});
+    // var config = {
+//       method: 'get',
+//       maxBodyLength: Infinity,
+//       url: 'https://api.mercadopago.com/v1/payments/:paymentId',
+//       headers: {
+//         Authorization: `Bearer ${payment.acesstoken}`
+//       },
+//     };
+// 
+//     axios(config)
+//       .then(function (response) {
+//         console.log(JSON.stringify(response.data));
+//       })
+//       .catch(function (error) {
+//         console.log(error);
+//       });
 
-    console.log(json);  // Aqui não é necessário parsear novamente, já é um objeto
+    console.log(json.data.body.id);  // Aqui não é necessário parsear novamente, já é um objeto
   });
 
   app.listen(19134, () => {
