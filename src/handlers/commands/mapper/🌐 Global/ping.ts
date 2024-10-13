@@ -15,23 +15,20 @@ export default new ExtendedCommand({
   type: ApplicationCommandType.ChatInput,
   async run({ interaction }: CommandProps) {
 
-
     var data = JSON.stringify({
-      "statement_descriptor": "Isylium",
-      "external_reference": "IWD1238971",
+      "statement_descriptor": "IsyliumStore",
+      "external_reference": "userid",
       "items": [
         {
-          "id": "010983098",
+          "id": "id",
           "title": "My Product",
-          "quantity": 1,
           "unit_price": 0.1,
-          "description": "Description of my product",
-          "category_id": "retail"
+          "category_id": "categoriaid"
         }
       ],
       "payer": {
-        "name": "nickname",
-        "surname": "gold:7000"
+        "name": "nickname, username",
+        "surname": "gold, 7000"
       },
       "payment_methods": {
         "excluded_payment_types": [],
