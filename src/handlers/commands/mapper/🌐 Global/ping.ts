@@ -30,7 +30,6 @@ const payments = new Payment(client);
 const body = {
 	transaction_amount: 12.34,
 	description: 'a',
-	payment_method_id: 'master',
 	payer: {
 		email: 'ybriismc@gmail.com'
 	},
