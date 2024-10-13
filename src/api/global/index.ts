@@ -13,7 +13,7 @@ export function startExpress() {
   const directoryPath = '/var/lib/pterodactyl/volumes/67471a7a-a910-4148-8ee5-e67d9fdb8a3d/plugin_data/ProjectHarvest/players';
 
   app.get('/', function (req, res) {
-    res.send('Hello World');
+    res.send('Isylium Response');
   });
 
   app.post('/notification/receive', (req, res) => {
@@ -26,23 +26,22 @@ export function startExpress() {
     res.status(200).json({ message: 'Notificação recebida com sucesso', data: json });
 
 
-     var config = {
-           method: 'get',
-         maxBodyLength: Infinity,
-          url: `https://api.mercadopago.com/v1/payments/${json.data.id}`,
-         headers: {
-           Authorization: `Bearer ${payment.acesstoken}`
-          },
-        };
-    
-       axios(config)
-           .then(function (response) {
-           console.log(JSON.stringify(response.data));
-         })
-          .catch(function (error) {
-             console.log(error);
-          });
+    var config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: `https://api.mercadopago.com/v1/payments/${json.data.id}`,
+      headers: {
+        Authorization: `Bearer ${payment.acesstoken}`
+      },
+    };
 
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 
   app.listen(19134, () => {
