@@ -2,7 +2,7 @@ import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { TranscriptGenerator } from "@handlers/transcripts";
-import { Payments } from "@handlers/mercadopago"
+//import { Payments } from "@handlers/mercadopago"
 import { MercadoPagoConfig, Payment, Preference } from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
 import { Client, Application } from 'jspteroapi';
