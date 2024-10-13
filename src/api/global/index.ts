@@ -37,7 +37,11 @@ export function startExpress() {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        console.log(response.data.status)
+        console.log(response.data.payer)
+//const [username, nickname] = nomeVindoDaJson.split(", ");
+//const [type, value] = sobrenomeVindoDaJson.split(", ");
+      //  console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);
