@@ -76,7 +76,7 @@ export class Payment {
       const a =  JSON.stringify(response)
 console.log(a)
       
-      return response.data.init_point;
+   //   return response.data.init_point;
     } catch (error) {
       console.error(error);
       return null;
