@@ -20,37 +20,31 @@ export default new ExtendedCommand({
 
 
 
-// Configurar Mercado Pago com o token de acesso
-mercadopago.configurations.setAccessToken('APP_USR-6462663530067323-100302-1eb4b8ec5ae36bd96ec504f6d708b90b-779023770');
+    // Configurar Mercado Pago com o token de acesso
+    mercadopago.configurations.setAccessToken('APP_USR-6462663530067323-100302-1eb4b8ec5ae36bd96ec504f6d708b90b-779023770');
 
-// Criar uma preferência
-const preference = {
-  items: [
-    {
-      title: 'Meu Produto',
-      unit_price: 100,
-      quantity: 1,
-    },
-  ],
-  back_urls: {
-    success: 'https://www.sucessourl.com',
-    failure: 'https://www.errourl.com',
-    pending: 'https://www.pendentesurl.com',
-  },
-  auto_return: 'approved',
-};
+    // Criar uma preferência
+    const preference = {
+      items: [
+        {
+          title: 'Meu Produto',
+          unit_price: 100,
+          quantity: 1,
+        },
+      ],
+    };
 
-// Enviar a preferência
-mercadopago.preferences.create(preference)
-  .then(response => {
-    console.log(response.body.init_point); // Link gerado para pagamento
-  })
-  .catch(error => {
-    console.error(error);
-  });
-  
+    // Enviar a preferência
+    mercadopago.preferences.create(preference)
+      .then(response => {
+        console.log(response.body.init_point); // Link gerado para pagamento
+      })
+      .catch(error => {
+        console.error(error);
+      });
 
-    
+
+
 
   }
 });
