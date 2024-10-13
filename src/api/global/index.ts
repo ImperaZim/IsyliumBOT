@@ -41,7 +41,7 @@ export function startExpress() {
         console.log(response.data.additional_info.payer)
         //const [username, nickname] = nomeVindoDaJson.split(", ");
         //const [type, value] = sobrenomeVindoDaJson.split(", ");
-          console.log(response.data);
+       // console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);
