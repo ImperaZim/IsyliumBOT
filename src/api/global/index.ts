@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import express from 'express';
 import axios from 'axios';
-import { payment } from "@config";
+import { mercadopago} from "@config";
 
 export function startExpress() {
   const app = express();
@@ -31,7 +31,7 @@ export function startExpress() {
       maxBodyLength: Infinity,
       url: `https://api.mercadopago.com/v1/payments/${json.data.id}`,
       headers: {
-        Authorization: `Bearer ${payment.acesstoken}`
+        Authorization: `Bearer ${mercadopago.acesstoken}`
       },
     };
 
