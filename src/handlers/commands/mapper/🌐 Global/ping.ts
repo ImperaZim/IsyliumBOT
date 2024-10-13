@@ -7,6 +7,7 @@ import { MercadoPagoConfig, Preference } from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
 import { Client, Application } from 'jspteroapi';
 import { mercadopago } from "@config";
+import axios from 'axios';
 
 export default new ExtendedCommand({
   name: "ping",
@@ -24,73 +25,45 @@ export default new ExtendedCommand({
 
 
 
-    const body = {
-      items: [
-        {
-          title: 'My product',
-          quantity: 1,
-          unit_price: 2000
-        }
-      ],
-      payer: {
-        name: 'Test',
-        surname: 'User',
-        email: 'your_test_email@example.com',
-        phone: {
-          area_code: '11',
-          number: '4444-4444',
-        },
-        address: {
-          zip_code: '06233200',
-          street_name: 'Street',
-          street_number: 123,
-        },
+    
+
+// Defina o token de acesso do Mercado Pago
+const accessToken = mercadopago.acesstoken
+
+// Função para criar uma preferência
+async function criarPreferencia() {
+  const url = 'https://api.mercadopago.com/checkout/preferences';
+
+  const data = {
+    items: [
+      {
+        title: 'Produto Teste',
+        quantity: 1,
+        unit_price: 100.0,
+        currency_id: 'BRL',
       },
-      payment_methods: {
-        excluded_payment_methods: [
-          {
-            id: "amex"
-          },
-          {
-            id: "elo"
-          },
-          {
-            id: "hipercard"
-          },
-          {
-            id: "bolbradesco"
-          },
-          {
-            id: "pec"
-          }
-        ],
-        excluded_payment_types: [],
-        installments: 5
-      }
-    };
+    ],
+    payer: {
+      email: 'support@isylium.cloud',
+    }
+  };
 
+  try {
+    const response = await axios.post(url, data, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
 
+    console.log('Preferência criada:', response.data);
+  } catch (error) {
+    console.error('Erro ao criar preferência:', error.response?.data || error.message);
+  }
+}
 
-    // Configurar Mercado Pago com o token de acesso
-    const client = new MercadoPagoConfig({ accessToken: mercadopago.acesstoken });
-
-    const preference = new Preference(client);
-
-    preference.create({
-      body: {
-        items: [
-          {
-            id: '2000',
-            title: 'gold',
-            quantity: 1,
-            unit_price: 0.1
-          }
-        ],
-      }
-    }).then(console.log).catch(console.log);
-
-
-
+// Chama a função para criar a preferência
+criarPreferencia();
 
   }
 });
