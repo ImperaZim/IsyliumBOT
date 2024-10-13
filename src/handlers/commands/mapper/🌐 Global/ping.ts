@@ -30,15 +30,13 @@ export default new ExtendedCommand({
         }
       ],
       "payer": {
-        "email": "suportt@isylium.cloud",
-        "name": "Juan",
-        "surname": "Lopez"
+        "name": "nickname",
+        "surname": "gold:7000"
       },
       "payment_methods": {
         "excluded_payment_types": [],
         "excluded_payment_methods": [],
-        "installments": 12,
-        "default_payment_method_id": "pix"
+        "installments": 12
       }
     });
 
