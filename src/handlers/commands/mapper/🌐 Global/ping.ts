@@ -33,7 +33,6 @@ export default new ExtendedCommand({
       ]
     };
 
-    const a = mercadopago.preferences.create(preference)
-    console.log(a)
+    const a = mercadopago.preferences.create(preference).then(console.log)
   }
 });
