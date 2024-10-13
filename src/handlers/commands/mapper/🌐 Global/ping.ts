@@ -75,25 +75,16 @@ export default new ExtendedCommand({
 
     const preference = new Preference(client);
 
-
-    // Criar uma preferência
-    const preferences = {
-      items: [
-        {
-          title: 'Meu Produto',
-          unit_price: 100,
-          quantity: 1,
-        },
-      ],
-    };
-
-    // Enviar a preferência
-    await preference.create({ preferences }).then(response => {
-      console.log(response.body.init_point); // Link gerado para pagamento
-    })
-      .catch(error => {
-        console.error(error);
-      });
+preference.create({ body: {
+	items: [
+		{
+			id: '2000',
+			title: 'gold',
+			quantity: 1,
+			unit_price: 10
+		}
+	],
+} }).then(console.log).catch(console.log);
 
 
 
