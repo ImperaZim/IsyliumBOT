@@ -17,14 +17,14 @@ export default new ExtendedCommand({
 
 
     var data = JSON.stringify({
-      "statement_descriptor": "TestStore",
+      "statement_descriptor": "Isylium",
       "external_reference": "IWD1238971",
       "items": [
         {
           "id": "010983098",
           "title": "My Product",
           "quantity": 1,
-          "unit_price": 2000,
+          "unit_price": 0.1,
           "description": "Description of my product",
           "category_id": "retail"
         }
