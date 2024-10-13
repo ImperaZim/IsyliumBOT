@@ -16,7 +16,7 @@ export default new ExtendedCommand({
 
     const pay = await new Payment(mercadopago.acesstoken);
     try {
-      const paymentLink = await pay.createPayment(interaction.user, "yBriisMC", "gold", "10000");
+      const paymentLink = await pay.createPayment(interaction.user, "yBriisMC", "coins", "10000");
       if (paymentLink) {
         await interaction.reply({ content: `Seu link de pagamento: ${paymentLink}` });
       } else {
