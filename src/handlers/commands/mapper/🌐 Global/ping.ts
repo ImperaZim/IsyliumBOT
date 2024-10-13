@@ -24,41 +24,55 @@ export default new ExtendedCommand({
 
     const preference = new Preference(client);
 
-    preference.create({
-      body: {
-        payment_methods: {
-          excluded_payment_methods: [
-            {
-              id: "amex"
-            },
-            {
-              id: "elo"
-            },
-            {
-              id: "hipercard"
-            },
-            {
-              id: "bolbradesco"
-            },
-            {
-              id: "pec"
-            }
-          ],
-          excluded_payment_types: [],
-          installments: 12
+
+
+    const body = {
+      items: [
+        {
+          title: 'My product',
+          quantity: 1,
+          unit_price: 2000
+        }
+      ],
+      payer: {
+        name: 'Test',
+        surname: 'User',
+        email: 'your_test_email@example.com',
+        phone: {
+          area_code: '11',
+          number: '4444-4444',
         },
-        items: [
+        address: {
+          zip_code: '06233200',
+          street_name: 'Street',
+          street_number: 123,
+        },
+      },
+      payment_methods: {
+        excluded_payment_methods: [
           {
-            title: 'My product',
-            quantity: 1,
-            unit_price: 2000
+            id: "amex"
+          },
+          {
+            id: "elo"
+          },
+          {
+            id: "hipercard"
+          },
+          {
+            id: "bolbradesco"
+          },
+          {
+            id: "pec"
           }
         ],
+        excluded_payment_types: [],
+        installments: 5
       }
-    })
-      .then(console.log)
-      .catch(console.log);
+    };
 
+    const response = await preference.create({ body })
+      .then(console.log).catch(console.log);
 
   }
 });
