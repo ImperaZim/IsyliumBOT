@@ -75,16 +75,18 @@ export default new ExtendedCommand({
 
     const preference = new Preference(client);
 
-preference.create({ body: {
-	items: [
-		{
-			id: '2000',
-			title: 'gold',
-			quantity: 1,
-			unit_price: 10
-		}
-	],
-} }).then(console.log).catch(console.log);
+    preference.create({
+      body: {
+        items: [
+          {
+            id: '2000',
+            title: 'gold',
+            quantity: 1,
+            unit_price: 0.1
+          }
+        ],
+      }
+    }).then(console.log).catch(console.log);
 
 
 
