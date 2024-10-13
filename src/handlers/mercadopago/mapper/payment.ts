@@ -20,7 +20,7 @@ export class Payment {
           "id": "010983098",
           "title": "My Product",
           "quantity": 1,
-          "unit_price": 0.1,
+          "unit_price": 10,
           "category_id": "retail"
         }
       ],
@@ -48,7 +48,7 @@ export class Payment {
 
     try {
       const response = await axios(config);
-      return response.data.init_point;
+      return response.request.data.init_point;
     } catch (error) {
       console.error(error);
       return null;
