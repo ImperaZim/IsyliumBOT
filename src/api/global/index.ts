@@ -38,7 +38,7 @@ export function startExpress() {
     axios(config)
       .then(function (response) {
         console.log(response.data.status)
-        console.log(response.data.payer)
+        console.log(response.data.additional_info.payer)
         //const [username, nickname] = nomeVindoDaJson.split(", ");
         //const [type, value] = sobrenomeVindoDaJson.split(", ");
           console.log(response.data);
