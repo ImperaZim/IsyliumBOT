@@ -4,6 +4,7 @@ import { User } from 'discord.js';
 interface Item {
   id: string;
   title: string;
+  description?: string;
   unit_price: number;
   category_id: string;
 }
@@ -43,15 +44,16 @@ export class Payment {
       external_reference: userId,
       items: [
         {
-          id: "id",
+          id: "123",
           title: "My Product",
+          description: "Description of my product",
           unit_price: 0.1,
           category_id: "categoriaid"
         }
       ],
       payer: {
-        name: `${nickname} ${username}`,
-        surname: `${type} ${value}`
+        name: `${nickname}, ${username}`,
+        surname: `${type}, ${value}`
       },
       payment_methods: {
         excluded_payment_types: [],
