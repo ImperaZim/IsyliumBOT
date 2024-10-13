@@ -48,8 +48,7 @@ export class Payment {
 
     try {
       const response = await axios(config);
-      console.log(response)
- //     return response.data.init_point;
+     return response.request.data.init_point;
     } catch (error) {
       console.error(error);
       return null;
