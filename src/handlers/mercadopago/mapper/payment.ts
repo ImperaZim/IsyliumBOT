@@ -12,7 +12,7 @@ export class Payment {
     const userId = user.id;
     const username = user.username;
 
-var data = JSON.stringify({
+const data = JSON.stringify({
   "statement_descriptor": "IsyliumStore",
   "external_reference": `${userId}`,
   "items": [
@@ -48,9 +48,7 @@ var data = JSON.stringify({
 
     try {
       const response = await axios(config);
-      console.log(response)
-
-      //   return response.data.init_point;
+         return response.data.init_point;
     } catch (error) {
       console.error(error);
       return null;
