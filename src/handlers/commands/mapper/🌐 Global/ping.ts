@@ -16,55 +16,52 @@ export default new ExtendedCommand({
   async run({ interaction }: CommandProps) {
 
 
-    // Função para criar uma preferência
-
-
-
-    // Step 2: Initialize the client object
-    const client = new MercadoPagoConfig({ accessToken: payment.acesstoken, options: { timeout: 5000 } });
-
-    // Step 3: Initialize the API objectconst client = new MercadoPago({  accessToken: config.access_token });
-const preference = new Preference(client);
-
-const body = {
-  items: [
+var axios = require('axios');
+var data = JSON.stringify({
+  "statement_descriptor": "TestStore",
+  "external_reference": "IWD1238971",
+  "items": [
     {
-      id: '1234',
-      title: 'Dummy Title',
-      description: 'Dummy description',
-      picture_url: 'http://www.myapp.com/myimage.jpg',
-      quantity: 1,
-      currency_id: 'BRL',
-      unit_price: 10,
-    },
+      "id": "010983098",
+      "title": "My Product",
+      "quantity": 1,
+      "unit_price": 2000,
+      "description": "Description of my product",
+      "category_id": "retail"
+    }
   ],
-  marketplace_fee: 0,
-  payer: {
-    name: 'Test',
-    surname: 'User',
-    email: 'your_test_email@example.com',
+  "payer": {
+    "email": "test_user_12398378192@testuser.com",
+    "name": "Juan",
+    "surname": "Lopez"
   },
-  additional_info: 'Discount: 12.00',
-  binary_mode: true,
-  external_reference: '1643827245',
-  marketplace: 'marketplace',
-  operation_type: 'regular_payment',
-  payment_methods: {
-    default_payment_method_id: 'master',
-    excluded_payment_types: [
-      {
-        id: 'ticket',
-      },
-    ],
-    installments: 5,
-    default_installments: 1,
+  "payment_methods": {
+    "excluded_payment_types": [],
+    "excluded_payment_methods": [],
+    "installments": 12,
+    "default_payment_method_id": "account_money"
+  }
+});
+
+var config = {
+  method: 'post',
+maxBodyLength: Infinity,
+  url: 'https://api.mercadopago.com/checkout/preferences',
+  headers: { 
+    'Content-Type': 'application/json',
+    
   },
-  statement_descriptor: 'Test Store',
+  data : data
 };
 
-const response = await preference.create({ body })
-  .then(console.log).catch(console.log);
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
 
-    
+
   }
 });
