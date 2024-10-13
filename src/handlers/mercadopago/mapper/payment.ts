@@ -41,7 +41,7 @@ export class Payment {
 
     const data: PaymentPayload = {
       statement_descriptor: "IsyliumStore",
-      external_reference: userId,
+      external_reference: `IH-${userId}`,
       items: [
         {
           id: "123",
