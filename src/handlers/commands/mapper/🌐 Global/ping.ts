@@ -3,7 +3,7 @@ import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { TranscriptGenerator } from "@handlers/transcripts";
 import { Payments } from "@handlers/mercadopago"
-import { MercadoPagoConfig, Preference } from 'mercadopago';
+import mercadopago from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
 import { Client, Application } from 'jspteroapi';
 
@@ -20,59 +20,37 @@ export default new ExtendedCommand({
 
 
 
-    const client = new MercadoPagoConfig({ accessToken: 'APP_USR-6462663530067323-100302-1eb4b8ec5ae36bd96ec504f6d708b90b-779023770' });
+// Configurar Mercado Pago com o token de acesso
+mercadopago.configurations.setAccessToken('APP_USR-6462663530067323-100302-1eb4b8ec5ae36bd96ec504f6d708b90b-779023770');
 
-    const preference = new Preference(client);
+// Criar uma preferência
+const preference = {
+  items: [
+    {
+      title: 'Meu Produto',
+      unit_price: 100,
+      quantity: 1,
+    },
+  ],
+  back_urls: {
+    success: 'https://www.sucessourl.com',
+    failure: 'https://www.errourl.com',
+    pending: 'https://www.pendentesurl.com',
+  },
+  auto_return: 'approved',
+};
 
+// Enviar a preferência
+mercadopago.preferences.create(preference)
+  .then(response => {
+    console.log(response.body.init_point); // Link gerado para pagamento
+  })
+  .catch(error => {
+    console.error(error);
+  });
+  
 
-
-    const body = {
-      items: [
-        {
-          title: 'My product',
-          quantity: 1,
-          unit_price: 2000
-        }
-      ],
-      payer: {
-        name: 'Test',
-        surname: 'User',
-        email: 'your_test_email@example.com',
-        phone: {
-          area_code: '11',
-          number: '4444-4444',
-        },
-        address: {
-          zip_code: '06233200',
-          street_name: 'Street',
-          street_number: 123,
-        },
-      },
-      payment_methods: {
-        excluded_payment_methods: [
-          {
-            id: "amex"
-          },
-          {
-            id: "elo"
-          },
-          {
-            id: "hipercard"
-          },
-          {
-            id: "bolbradesco"
-          },
-          {
-            id: "pec"
-          }
-        ],
-        excluded_payment_types: [],
-        installments: 5
-      }
-    };
-
-    const response = await preference.create({ body })
-      .then(console.log).catch(console.log);
+    
 
   }
 });
