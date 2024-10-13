@@ -18,10 +18,10 @@ export class Payment {
       "items": [
         {
           "id": `${userId}`,
-          "title": "My Product",
+          "title": "my coins",
           "quantity": 1,
           "unit_price": 0.01,
-          "category_id": "retail"
+          "category_id": "store"
         }
       ],
       "payer": {
