@@ -60,7 +60,7 @@ export class Payment {
       }
     };
 
-    const config: AxiosRequestConfig = {
+    const config = {
       method: 'post',
       maxBodyLength: Infinity,
       url: 'https://api.mercadopago.com/checkout/preferences',
@@ -73,10 +73,10 @@ export class Payment {
 
     try {
       const response = await axios(config);
-      const a =  JSON.stringify(response)
-console.log(a)
-      
-   //   return response.data.init_point;
+      const a = JSON.stringify(response)
+      console.log(a)
+
+      //   return response.data.init_point;
     } catch (error) {
       console.error(error);
       return null;
