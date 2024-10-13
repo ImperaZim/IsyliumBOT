@@ -17,7 +17,7 @@ export default new ExtendedCommand({
 
 
     // Função para criar uma preferência
-    
+
     mercadopago.configure({
       access_token: payment.acesstoken
     });
@@ -33,7 +33,7 @@ export default new ExtendedCommand({
       ]
     };
 
-  const a =  mercadopago.preferences.create(preference)
-  console.log(a)
+    const a = mercadopago.preferences.create(preference)
+    console.log(a)
   }
 });
