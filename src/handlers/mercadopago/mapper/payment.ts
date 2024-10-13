@@ -49,7 +49,7 @@ export class Payment {
     try {
       const response = await axios(config);
   //    return response.data.init_point;
-      console.log(JSON.stringify(response))
+      console.log(response)
     } catch (error) {
       console.error(error);
       return null;
