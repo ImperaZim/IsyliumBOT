@@ -30,6 +30,8 @@ export default new ExtendedCommand({
     const body = {
       transaction_amount: 12.34,
       description: 'a',
+      payment_method_id: 'master',
+      token: "58",
       payer: {
         email: 'ybriismc@gmail.com'
       },
