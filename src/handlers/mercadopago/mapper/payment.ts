@@ -16,7 +16,7 @@ interface PaymentMethods {
 
 interface Payer {
   name: string;
-  surname: string; 
+  surname: string;
 }
 
 interface PaymentPayload {
@@ -73,7 +73,9 @@ export class Payment {
 
     try {
       const response = await axios(config);
-      console.log(response)
+      const a =  JSON.stringify(response)
+console.log(a)
+      
       return response.data.init_point;
     } catch (error) {
       console.error(error);
