@@ -18,14 +18,13 @@ export default new ExtendedCommand({
     try {
       await pay.createPayment(interaction.user, "yBriisMC", "gold", "10000")
       if (pay) {
-
-        await interaction.reply({ content: `Seu link de pagamento: ${pay}`});
+        await interaction.reply({ content: `Seu link de pagamento: ${pay}` });
       } else {
-        await interaction.reply({ content: 'Houve um erro ao gerar o pagamento.'});
+        await interaction.reply({ content: 'Houve um erro ao gerar o pagamento.' });
       }
     } catch (error) {
       console.error(error);
-      await interaction.reply({ content: 'Ocorreu um erro ao processar o pagamento.'});
+      await interaction.reply({ content: 'Ocorreu um erro ao processar o pagamento.' });
     }
 
   }
