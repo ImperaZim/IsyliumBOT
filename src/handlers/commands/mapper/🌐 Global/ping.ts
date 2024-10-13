@@ -3,9 +3,10 @@ import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { TranscriptGenerator } from "@handlers/transcripts";
 import { Payments } from "@handlers/mercadopago"
-import mercadopago, { MercadoPagoConfig, Preference } from 'mercadopago';
+import { MercadoPagoConfig, Preference } from 'mercadopago';
 import { ApplicationCommandType } from "discord.js";
 import { Client, Application } from 'jspteroapi';
+import { mercadopago } from "@config";
 
 export default new ExtendedCommand({
   name: "ping",
@@ -71,7 +72,7 @@ export default new ExtendedCommand({
 
 
     // Configurar Mercado Pago com o token de acesso
-    const client = new MercadoPagoConfig({ accessToken: 'APP_USR-6462663530067323-100302-1eb4b8ec5ae36bd96ec504f6d708b90b-779023770' });
+    const client = new MercadoPagoConfig({ accessToken: mercadopago.acesstoken });
 
     const preference = new Preference(client);
 
