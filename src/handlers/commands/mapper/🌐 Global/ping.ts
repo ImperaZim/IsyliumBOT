@@ -15,43 +15,24 @@ export default new ExtendedCommand({
   type: ApplicationCommandType.ChatInput,
   async run({ interaction }: CommandProps) {
 
-    // Defina o token de acesso do Mercado Pago
-    const accessToken = mercadopago.acesstoken
 
     // Função para criar uma preferência
-    async function criarPreferencia() {
-      const url = 'https://api.mercadopago.com/checkout/preferences';
+    var mercadopago = require('mercadopago');
+mercadopago.configure({
+    access_token: mercadopago.acesstoken
+});
 
-      const data = {
-        items: [
-          {
-            title: 'Produto Teste',
-            quantity: 1,
-            unit_price: 100.0,
-            currency_id: 'BRL',
-          },
-        ],
-        payer: {
-          email: 'support@isylium.cloud',
-        }
-      };
-
-      try {
-        const response = await axios.post(url, data, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-
-        console.log('Preferência criada:', response.data);
-      } catch (error) {
-        console.error('Erro ao criar preferência:', error.response?.data || error.message);
-      }
+var preference = {
+  items: [
+    {
+      title: 'Test',
+      quantity: 1,
+      currency_id: 'ARS',
+      unit_price: 10.5
     }
+  ]
+};
 
-    // Chama a função para criar a preferência
-    criarPreferencia();
-
+mercadopago.preferences.create(preference)
   }
 });
