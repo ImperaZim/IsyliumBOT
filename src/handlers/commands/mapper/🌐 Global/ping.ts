@@ -30,7 +30,7 @@ export default new ExtendedCommand({
         }
       ],
       "payer": {
-        "email": "test_user_12398378192@testuser.com",
+        "email": "ybriismc@gmail.com",
         "name": "Juan",
         "surname": "Lopez"
       },
