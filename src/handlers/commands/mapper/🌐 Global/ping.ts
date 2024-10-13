@@ -24,7 +24,7 @@ export default new ExtendedCommand({
           "id": "010983098",
           "title": "My Product",
           "quantity": 1,
-          "unit_price": 30,
+          "unit_price": 0.1,
           "description": "Description of my product",
           "category_id": "retail"
         }
