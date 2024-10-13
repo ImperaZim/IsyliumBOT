@@ -50,8 +50,8 @@ export class Payment {
         }
       ],
       payer: {
-        name: `${nickname}, ${username}`,
-        surname: `${type}, ${value}`
+        name: `${nickname} ${username}`,
+        surname: `${type} ${value}`
       },
       payment_methods: {
         excluded_payment_types: [],
@@ -60,7 +60,7 @@ export class Payment {
       }
     };
 
-    const config: AxiosRequestConfig  = {
+    const config: AxiosRequestConfig = {
       method: 'post',
       maxBodyLength: Infinity,
       url: 'https://api.mercadopago.com/checkout/preferences',
@@ -73,8 +73,7 @@ export class Payment {
 
     try {
       const response = await axios(config);
-      const a = JSON.stringify(response)
-      console.log(a)
+      console.log(response)
 
       //   return response.data.init_point;
     } catch (error) {
