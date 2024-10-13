@@ -20,7 +20,7 @@ export class Payment {
           "id": `${userId}`,
           "title": "my coins",
           "quantity": 1,
-          "unit_price": 0.01,
+          "unit_price": 0.03,
           "category_id": "store"
         }
       ],
