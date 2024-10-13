@@ -30,7 +30,7 @@ export default new ExtendedCommand({
         }
       ],
       "payer": {
-        "email": "ybriismc@gmail.com",
+        "email": "suportt@isylium.cloud",
         "name": "Juan",
         "surname": "Lopez"
       },
