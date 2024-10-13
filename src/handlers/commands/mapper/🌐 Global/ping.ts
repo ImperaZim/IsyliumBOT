@@ -45,7 +45,6 @@ const body = {
     email: 'your_test_email@example.com',
   },
   additional_info: 'Discount: 12.00',
-  auto_return: 'all',
   binary_mode: true,
   external_reference: '1643827245',
   marketplace: 'marketplace',
