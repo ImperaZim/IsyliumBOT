@@ -20,7 +20,7 @@ export class Payment {
           "id": "010983098",
           "title": "My Product",
           "quantity": 1,
-          "unit_price": 10,
+          "unit_price": 0.01,
           "category_id": "retail"
         }
       ],
