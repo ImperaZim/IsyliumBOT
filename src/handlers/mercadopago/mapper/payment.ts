@@ -17,7 +17,7 @@ export class Payment {
       "external_reference": `${userId}`,
       "items": [
         {
-          "id": "010983098",
+          "id": `${userId}`,
           "title": "My Product",
           "quantity": 1,
           "unit_price": 0.01,
