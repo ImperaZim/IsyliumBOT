@@ -74,7 +74,8 @@ export class HarvestConnection {
         return false;
       }
 
-      await axios.get(routes.addPlayerGift(nickname, giftType, giftValue));
+      const response = await axios.get(routes.addPlayerGift(nickname, giftType, giftValue));
+      console.log(response.data);
       return true;
     } catch (error) {
       console.error('Erro ao buscar ou verificar os dados:', (error as Error).message);
