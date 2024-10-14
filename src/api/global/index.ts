@@ -40,8 +40,9 @@ export function startExpress() {
         const status = response.data.status
         const user = response.data.additional_info.payer.first_name;
         const types = response.data.additional_info.payer.last_name;
-        const [username, nickname] = user.split(", ");
+        const [nickname, username] = user.split(", ");
         const [type, value] = types.split(", ");
+        console.log(nickname, username, type, value)
       })
       .catch(function (error) {
         console.log(error);
