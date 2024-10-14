@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { Interaction } from 'discord.js';
 
-import { 
-  DecodedMetadata, 
-  MessageCallback, 
-  PlayerDataResponse 
+import {
+  DecodedMetadata,
+  MessageCallback,
+  PlayerDataResponse
 } from '@types';
 import {
   getPlayerNickname,
@@ -64,15 +64,15 @@ export class HarvestConnection {
   }
 
   public async sendPlayerGift(
-    userId: string,
+    nickname: string,
     giftType: string,
     giftValue: string
   ): Promise<boolean> {
     try {
       // const player = await getPlayerNickname(userId);
-//       if (!player) {
-//         return false;
-//       }
+      //       if (!player) {
+      //         return false;
+      //       }
 
       await axios.get(routes.addPlayerGift(nickname, giftType, giftValue));
       return true;
