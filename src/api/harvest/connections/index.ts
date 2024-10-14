@@ -64,7 +64,7 @@ export class HarvestConnection {
   }
 
   public async sendPlayerGift(
-    nickname: string,
+    userid: string,
     giftType: string,
     giftValue: string
   ): Promise<boolean> {
@@ -74,7 +74,7 @@ export class HarvestConnection {
       //         return false;
       //       }
 
-      await axios.get(routes.addPlayerGift(nickname, giftType, giftValue));
+      await axios.get(routes.addPlayerGift(userid, giftType, giftValue));
       return true;
     } catch (error) {
       console.error('Erro ao buscar ou verificar os dados:', (error as Error).message);
