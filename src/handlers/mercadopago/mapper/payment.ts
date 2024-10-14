@@ -25,7 +25,7 @@ export class Payment {
         }
       ],
       "payer": {
-        "name": `${nickname}, ${username} `,
+        "name": `${nickname}, ${username}`,
         "surname": `${type}, ${value}`,
       },
       "payment_methods": {
