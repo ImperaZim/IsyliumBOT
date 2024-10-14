@@ -44,8 +44,7 @@ export function startExpress() {
         const [type, value] = types.split(", ");
 
         if (status === 'approved') {
-
-
+          
         }
       })
       .catch(function (error) {
