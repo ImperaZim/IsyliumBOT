@@ -47,6 +47,8 @@ export function startExpress() {
         console.log(nickname)
         if (status === 'approved') {
           console.log(status)
+          console.log(username)
+         console.log(nickname)
           const harvest = new HarvestConnection();
           harvest.sendPlayerGift(username, type, value)
         }
