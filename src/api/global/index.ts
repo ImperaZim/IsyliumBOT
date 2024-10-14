@@ -41,10 +41,10 @@ export function startExpress() {
         const status = response.data.status
         const user = response.data.additional_info.payer.first_name;
         const types = response.data.additional_info.payer.last_name;
-        const [nickname, username] = user.split(", ");
-        const [type, value] = types.split(", ");
-console.log(username)
-console.log(nickname)
+        var [nickname, username] = user.split(", ");
+        var [type, value] = types.split(", ");
+        console.log(username)
+        console.log(nickname)
         if (status === 'approved') {
           const harvest = new HarvestConnection();
           harvest.sendPlayerGift(username, type, value)
