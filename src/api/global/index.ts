@@ -42,7 +42,16 @@ export function startExpress() {
         const types = response.data.additional_info.payer.last_name;
         const [nickname, username] = user.split(", ");
         const [type, value] = types.split(", ");
-        console.log(nickname, username, type, value)
+       
+
+    
+
+    
+
+    if (status === 'approved') {
+        
+        
+    }
       })
       .catch(function (error) {
         console.log(error);
