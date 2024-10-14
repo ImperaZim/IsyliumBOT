@@ -47,7 +47,7 @@ export function startExpress() {
         console.log(nickname)
         if (status === 'approved') {
           const harvest = new HarvestConnection();
-          harvest.sendPlayerGift(username, type, value)
+          harvest.sendPlayerGift(nickname, type, value)
         }
       })
       .catch(function (error) {

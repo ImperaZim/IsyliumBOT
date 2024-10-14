@@ -64,16 +64,11 @@ export class HarvestConnection {
   }
 
   public async sendPlayerGift(
-    username: string,
+    nickname: string,
     giftType: string,
     giftValue: string
   ): Promise<boolean> {
     try {
-      const nickname = await getPlayerNickname(username);
-      if (!nickname) {
-        return false;
-      }
-
       const response = await axios.get(routes.addPlayerGift(nickname, giftType, giftValue));
       console.log(response.data);
       return true;
