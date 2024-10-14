@@ -69,10 +69,10 @@ export class HarvestConnection {
     giftValue: string
   ): Promise<boolean> {
     try {
-      const player = await getPlayerNickname(userId);
-      if (!player) {
-        return false;
-      }
+      // const player = await getPlayerNickname(userId);
+//       if (!player) {
+//         return false;
+//       }
 
       await axios.get(routes.addPlayerGift(nickname, giftType, giftValue));
       return true;
