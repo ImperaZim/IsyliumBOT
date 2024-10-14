@@ -1,7 +1,7 @@
 import { Guild } from "discord.js";
 import { mysql } from "@main"
 
-export class GuildData {
+export class CreatedGuild {
   private guild: Guild;
 
   constructor(guild: Guild) {
@@ -20,4 +20,4 @@ export class GuildData {
     }
   }
 }
-  
+
