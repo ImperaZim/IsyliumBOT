@@ -3,6 +3,7 @@ import * as path from "path";
 import express from 'express';
 import axios from 'axios';
 import { mercadopago } from "@config";
+import { HarvestConnection } from "@api/harvest";
 
 export function startExpress() {
   const app = express();
@@ -44,7 +45,7 @@ export function startExpress() {
         const [type, value] = types.split(", ");
 
         if (status === 'approved') {
-          
+
         }
       })
       .catch(function (error) {
