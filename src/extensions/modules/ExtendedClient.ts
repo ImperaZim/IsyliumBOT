@@ -102,11 +102,11 @@ export class ExtendedClient extends Client {
   private async registerTables(): Promise<void> {
     mysql.createTable("harvest_players", [
       {
-        name: "id",
-        type: "INT PRIMARY KEY"
+        name: "username",
+        type: "TEXT"
       },
       {
-        name: "player",
+        name: "nickname",
         type: "TEXT"
       }
     ]);

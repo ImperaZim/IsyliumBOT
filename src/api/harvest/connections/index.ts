@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { Interaction } from 'discord.js';
 
-import {
-  DecodedMetadata,
-  MessageCallback,
-  PlayerDataResponse
+import { 
+  DecodedMetadata, 
+  MessageCallback, 
+  PlayerDataResponse 
 } from '@types';
 import {
   getPlayerNickname,
@@ -64,17 +64,17 @@ export class HarvestConnection {
   }
 
   public async sendPlayerGift(
-    userid: string,
+    username: string,
     giftType: string,
     giftValue: string
   ): Promise<boolean> {
     try {
-      // const player = await getPlayerNickname(userId);
-      //       if (!player) {
-      //         return false;
-      //       }
+      const nickname = await getPlayerNickname(username);
+      if (!nickname) {
+        return false;
+      }
 
-      await axios.get(routes.addPlayerGift(userid, giftType, giftValue));
+      await axios.get(routes.addPlayerGift(nickname, giftType, giftValue));
       return true;
     } catch (error) {
       console.error('Erro ao buscar ou verificar os dados:', (error as Error).message);

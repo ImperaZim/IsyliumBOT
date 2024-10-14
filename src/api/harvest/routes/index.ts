@@ -2,13 +2,13 @@ import { GLOBAL_URL } from '@api';
 import { DynamicRoutes } from "@types";
 
 export const routes: DynamicRoutes = {
-  getPlayerData(playerName: string): string {
-    return `${GLOBAL_URL}/harvest/getplayerdata/${playerName}`;
+  getPlayerData(nickname: string): string {
+    return `${GLOBAL_URL}/harvest/getplayerdata/${nickname}`;
   },
-  setLinkPlayer(playerName: string): string {
-    return `${GLOBAL_URL}/harvest/linkplayer/${playerName}`;
+  setLinkPlayer(nickname: string): string {
+    return `${GLOBAL_URL}/harvest/linkplayer/${nickname}`;
   },
-  addPlayerGift(playerName: string, giftType: string, giftValue: string): string {
-    return `${GLOBAL_URL}/harvest/addgift/${playerName}/${giftType}/${giftValue}`;
+  addPlayerGift(nickname: string, giftType: string, giftValue: string): string {
+    return `${GLOBAL_URL}/harvest/addgift/${nickname}/${giftType}/${giftValue}`;
   },
 };
