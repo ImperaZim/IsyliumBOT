@@ -52,7 +52,7 @@ export class HarvestConnection {
 
       if (tokenMatches && usernameMatches) {
         await axios.get(routes.setLinkPlayer(nickname));
-        await insertPlayerRecord(interaction.user.id, nickname);
+        await insertPlayerRecord(interaction.user.username, nickname);
         handleCallback(interaction, onSuccess, 'Sua conta foi vinculada ao servidor Harvest com sucesso!');
       } else {
         handleCallback(interaction, onFailure, 'Verifique o token ou username e tente novamente!');
