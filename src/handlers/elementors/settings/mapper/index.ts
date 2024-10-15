@@ -86,6 +86,20 @@ export function register(): void {
         dcl_servers: {
           type: ButtonStyle.Primary,
           data: {
+            label: "Build Server",
+            emoji: "<:servers:1295609099819421747>"
+          }
+        },
+        dlc_rems: {
+          type: ButtonStyle.Primary,
+          data: {
+            label: "Delete server",
+            emoji: "<:servers:1295609099819421747>"
+          }
+        },
+        dcl_adds: {
+          type: ButtonStyle.Primary,
+          data: {
             label: "Create server",
             emoji: "<:servers:1295609099819421747>"
           }
