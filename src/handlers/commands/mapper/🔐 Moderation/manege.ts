@@ -31,18 +31,18 @@ export default new ExtendedCommand({
       ? client.user.displayAvatarURL() : "";
     const data = new CreatedGuild(interaction.guild).checkAndAddGuild();
     if (data) {
-const user = interaction.user;
-    const row = getRow("settings", {
-      user: user.globalName || "error 404",
-    });
-
-    if (row && row.embeds && row.components) {
-      await interaction.reply({
-        embeds: row.embeds,
-        components: row.components,
-        ephemeral: true
+      const user = interaction.user;
+      const start = getEmbed("settings", "embed_settings", {
+        user: user.globalName || "error 404",
       });
-    }
+
+      if ( && row.embeds && row.components) {
+        await interaction.reply({
+          embeds: start,
+          components: row.components,
+          ephemeral: true
+        });
+      }
     }
   }
 })
