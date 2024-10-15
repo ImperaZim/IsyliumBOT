@@ -1,6 +1,7 @@
 import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
+import { CreatedGuild } from "@handlers"
 
 export default new ExtendedCommand({
   name: "settings",
