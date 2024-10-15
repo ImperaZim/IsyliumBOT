@@ -67,13 +67,18 @@ export default new ExtendedCommand({
           guildid: interaction.guild.id,
           logs: channelid
         });
-        const success = getEmbed(settings, "success", {
-        user: user.globalName || "error 404",
-      });
+        const user = interaction.user;
+        const embed_discordlink = getEmbed(settings, "settings_discordlink", {
+          user: user.globalName || "error 404",
+        });
+        const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map((buttonName) => getButton(settings, buttonName));
+        const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
+        const components = ([row] || []).map((ar) => ar.toJSON());
+
         await interaction.reply({
-        embeds: [success],
-        ephemeral: true
-      });
+          embeds: [embed_discordlink],
+          components: components
+        });
       }
     ]
   ]),
