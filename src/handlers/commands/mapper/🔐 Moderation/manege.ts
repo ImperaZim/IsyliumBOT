@@ -2,6 +2,20 @@ import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { CreatedGuild } from "@handlers"
+import {
+  EmbedBuilder,
+  StringSelectMenuBuilder,
+  ApplicationCommandType,
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ChannelSelectMenuBuilder,
+  ChannelType,
+  ComponentType,
+  ModalBuilder,
+  TextInputBuilder,
+  TextInputStyle
+} from "discord.js";
 
 export default new ExtendedCommand({
   name: "settings",
