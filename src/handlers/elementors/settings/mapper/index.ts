@@ -23,7 +23,7 @@ export function register(): void {
           type: "string",
           data: {
             disabled: false,
-            placeholder: "Opções de configuração",
+            placeholder: " Opções de configuração",
             options: [
               {
                 label: "Ticket",
