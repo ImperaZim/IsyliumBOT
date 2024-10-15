@@ -68,10 +68,11 @@ export default new ExtendedCommand({
             logs: channelid
           },
           [
-          {
-            guildid: interaction.guild.id
-          }
-          ]);
+            {
+              guildid: interaction.guild.id
+            }
+          ]
+          );
 
         const user = interaction.user;
         const embed_discordlink = getEmbed(settings, "settings_discordlink", {
