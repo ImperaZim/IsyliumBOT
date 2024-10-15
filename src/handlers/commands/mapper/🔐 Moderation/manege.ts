@@ -61,8 +61,6 @@ export default new ExtendedCommand({
   buttons: new Collection([[
     "dcl_logs",
     async (interaction: any) => {
-      const options = interaction.values[0];
-      if (options === "settings:discordlink") {
         const user = interaction.user;
         const dcl_logs = getEmbed(settings, "dcl_logs", {
           user: user.globalName || "error 404",
@@ -74,7 +72,6 @@ export default new ExtendedCommand({
           components: new ActionRowBuilder<StringSelectMenuBuilder>().addComponents([select_logs])
         });
       }
-    }
   ]
   ])
 })
