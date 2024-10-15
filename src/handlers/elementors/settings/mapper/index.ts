@@ -24,6 +24,24 @@ export function register(): void {
           name: "Isylium Bot",
           iconURL: profile.icon,
         },
+      },
+      dcl_logs: {
+        color: color.primary,
+        description:
+          "> Olá, {user}! Selecione o canal de logs do seu servidor no select abaixo.",
+        author: {
+          name: "Isylium Bot",
+          iconURL: profile.icon,
+        },
+      },
+      dcl_servers: {
+        color: color.primary,
+        description:
+          "> Olá, {user}! Selecione a opção abaixo que deseja executar para fazer sua lista de servidores.",
+        author: {
+          name: "Isylium Bot",
+          iconURL: profile.icon,
+        },
       }
     },
     components: {
