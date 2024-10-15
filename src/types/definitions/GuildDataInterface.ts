@@ -1,7 +1,4 @@
-export interface DataBase {
+interface RowDataPacket {
   guildid: string;
-}
-
-export interface DeserializedData {
-  ticket: DataBase | Record<string, never>;
+  created_at: Date;
 }
