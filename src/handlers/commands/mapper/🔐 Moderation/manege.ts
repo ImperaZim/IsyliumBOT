@@ -41,7 +41,9 @@ export default new ExtendedCommand({
     "select_settings",
     async (interaction: any) => {
       const options = interaction.values[0];
-      console.log(options)
+      if(options === settings:discordlink){
+        
+      }
     }
   ]
   ])
