@@ -25,25 +25,27 @@ export function register(): void {
     },
     components: {
       selects: {
-      select_string: {
-        type: "string",
-        data: {
-          disabled: false,
-          placeholder: "Opções de configuração",
-          options: [
-            {
-              label: "Ticket",
-              description: "configurar sistema de ticket",
-              value: "settings:ticket"
-            },
-            {
-              label: "Discord Link",
-              description: "Configurar sistema de conexão ao discord",
-              value: "settings:discordlink"
-            }
-          ],
+        select_string: {
+          type: "string",
+          data: {
+            disabled: false,
+            placeholder: "Opções de configuração",
+            options: [
+              {
+                label: "Ticket",
+                description: "configurar sistema de ticket",
+                emoji: "",
+                value: "settings:ticket"
+              },
+              {
+                label: "Discord Link",
+                description: "Configurar sistema de conexão ao discord",
+                emoji: "<:discord:1295557503555207302>",
+                value: "settings:discordlink"
+              }
+            ],
+          }
         }
-      }
       },
     }
   });
