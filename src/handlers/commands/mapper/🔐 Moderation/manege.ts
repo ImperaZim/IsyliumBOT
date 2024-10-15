@@ -52,7 +52,7 @@ export default new ExtendedCommand({
 
         await interaction.reply({
           embeds: [embed_discordlink],
-          components: [components]
+          components: components
         });
       }
     }
