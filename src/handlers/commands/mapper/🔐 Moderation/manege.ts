@@ -2,6 +2,7 @@ import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { CreatedGuild } from "@handlers"
+import { getRow } from "DiscordElementor";
 import {
   EmbedBuilder,
   StringSelectMenuBuilder,
@@ -30,7 +31,18 @@ export default new ExtendedCommand({
       ? client.user.displayAvatarURL() : "";
     const data = new CreatedGuild(interaction.guild).checkAndAddGuild();
     if (data) {
-      
-      }
+const user = interaction.user;
+    const row = getRow("settings", {
+      user: user.globalName || "error 404",
+    });
+
+    if (row && row.embeds && row.components) {
+      await interaction.reply({
+        embeds: row.embeds,
+        components: row.components,
+        ephemeral: true
+      });
     }
-  })
+    }
+  }
+})
