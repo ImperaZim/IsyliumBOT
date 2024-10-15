@@ -52,7 +52,7 @@ export function register(): void {
       },
       buttons: {
         dcl_embed: {
-          type: ButtonStyle.Secondary,
+          type: ButtonStyle.Primary,
           data: {
             label: "Embed Creator",
             emoji: "<a:lapis:1295608106965012541>"
