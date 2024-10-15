@@ -119,4 +119,29 @@ export function register(): void {
       },
     }
   });
+registerModal("modal_1", {
+  title: "text",
+  components: {
+    inputs: {
+      short_input: {
+        label: "text",
+        minLength: 1,
+        maxLength: 100,
+        placeholder: "text",
+        value: "text",
+        required: false,
+        style: TextInputStyle.Short
+      },
+      paragraph_input: {
+        label: "text",
+        minLength: 1,
+        maxLength: 100,
+        placeholder: "text",
+        value: "text",
+        required: false,
+        style: TextInputStyle.Paragraph
+      }
+    }
+  }
+});`
 }
