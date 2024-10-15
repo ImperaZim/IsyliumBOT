@@ -2,7 +2,7 @@ import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { CreatedGuild } from "@handlers"
-import { getSelect, getEmbed } from "DiscordElementor";
+import { getSelect, getEmbed, getButton } from "DiscordElementor";
 import {
   ApplicationCommandType,
   ActionRowBuilder
