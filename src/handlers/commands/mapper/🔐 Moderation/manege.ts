@@ -28,6 +28,15 @@ export default new ExtendedCommand({
     const username = client.user ? client.user.username : "";
     const displayAvatar = client.user
       ? client.user.displayAvatarURL() : "";
-        const data = new CreatedGuild(interaction.guild).checkAndAddGuild();
+    const data = new CreatedGuild(interaction.guild).checkAndAddGuild();
+    if(data){
+      interaction.reply({
+        content: 'deu certo'
+      })
+    } else {
+      interaction.reply({
+        content: 'guild criada na db'
+      })
+    }
   }
 });
