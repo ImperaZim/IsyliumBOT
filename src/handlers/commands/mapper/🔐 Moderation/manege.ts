@@ -99,7 +99,7 @@ export default new ExtendedCommand({
       });
       const select_logs = getSelect(settings, "dcl_select_logs");
 
-      await interaction.reply({
+      await interaction.update({
         embeds: [dcl_logs],
         components: [
           new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([select_logs])
