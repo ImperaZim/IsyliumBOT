@@ -1,4 +1,4 @@
-import { client } from "../";
+import { client } from "@main";
 import { colors } from "@config";
 import { ButtonStyle } from "discord.js";
 import { registerRow } from "DiscordElementor";
