@@ -51,28 +51,28 @@ export function register(): void {
         }
       },
       buttons: {
-      dcl_embed: {
-        type: ButtonStyle.Primary,
-        data: {
-          label: "Embed Creator",
-          emoji: "<a:lapis:1295608106965012541>"
-        }
+        dcl_embed: {
+          type: ButtonStyle.Primary,
+          data: {
+            label: "Embed Creator",
+            emoji: "<a:lapis:1295608106965012541>"
+          }
+        },
+        dcl_logs: {
+          type: ButtonStyle.Primary,
+          data: {
+            label: "Log Channel",
+            emoji: "<:channel:1295608647484706858>"
+          }
+        },
+        dcl_servers: {
+          type: ButtonStyle.Primary,
+          data: {
+            label: "Create server",
+            emoji: "<:servers:1295609099819421747>"
+          }
+        },
       },
-      dcl_logs: {
-        type: ButtonStyle.Primary,
-        data: {
-          label: "Log Channel",
-          emoji: "<:channel:1295608647484706858>"
-        }
-      },
-      dcl_servers: {
-        type: ButtonStyle.Primary,
-        data: {
-          label: "Create server",
-          emoji: "text"
-        }
-      },
-    },
     }
   });
 }
