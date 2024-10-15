@@ -66,6 +66,27 @@ export function register(): void {
               }
             ],
           }
+        },
+        dcl_select_logs: {
+          type: "string",
+          data: {
+            disabled: false,
+            placeholder: " Escolha o canal a baixo",
+            options: [
+              {
+                label: "Ticket",
+                description: "configurar sistema de ticket",
+                emoji: "<:ticket:1295558483927629835>",
+                value: "settings:ticket"
+              },
+              {
+                label: "Discord Link",
+                description: "Configurar sistema de conexão ao discord",
+                emoji: "<:discord:1295557503555207302>",
+                value: "settings:discordlink"
+              }
+            ],
+          }
         }
       },
       buttons: {
