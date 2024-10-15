@@ -11,7 +11,7 @@ export function register(): void {
         color: color.primary,
         description:
           "> Olá {user}, logo abaixo está todos os meus sistemas disponíveis para configuração",
-        image: profile.icon,
+        thumbnail: profile.icon,
       }
     },
     components: {
