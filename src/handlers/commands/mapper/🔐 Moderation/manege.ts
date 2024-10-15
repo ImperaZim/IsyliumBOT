@@ -39,25 +39,25 @@ export default new ExtendedCommand({
   },
   selects: new Collection([
     [
-    "select_settings",
-    async (interaction: any) => {
-      const options = interaction.values[0];
-      if (options === "settings:discordlink") {
-        const user = interaction.user;
-        const embed_discordlink = getEmbed(settings, "settings_discordlink", {
-          user: user.globalName || "error 404",
-        });
-        const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map((buttonName) => getButton(settings, buttonName));
-        const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
-        const components = ([row] || []).map((ar) => ar.toJSON());
+      "select_settings",
+      async (interaction: any) => {
+        const options = interaction.values[0];
+        if (options === "settings:discordlink") {
+          const user = interaction.user;
+          const embed_discordlink = getEmbed(settings, "settings_discordlink", {
+            user: user.globalName || "error 404",
+          });
+          const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map((buttonName) => getButton(settings, buttonName));
+          const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
+          const components = ([row] || []).map((ar) => ar.toJSON());
 
-        await interaction.reply({
-          embeds: [embed_discordlink],
-          components: components
-        });
-      }
-    },
-  ]
+          await interaction.reply({
+            embeds: [embed_discordlink],
+            components: components
+          });
+        }
+      },
+    ]
   ]),
   channelselect: new Collection([
     [
@@ -93,30 +93,29 @@ export default new ExtendedCommand({
   ]),
   buttons: new Collection([
     [
-    "dcl_logs",
-    async (interaction: any) => {
-      const user = interaction.user;
-      const dcl_logs = getEmbed(settings, "dcl_logs", {
-        user: user.globalName || "error 404",
-      });
-      const select_logs = getSelect(settings, "dcl_select_logs");
+      "dcl_logs",
+      async (interaction: any) => {
+        const user = interaction.user;
+        const dcl_logs = getEmbed(settings, "dcl_logs", {
+          user: user.globalName || "error 404",
+        });
+        const select_logs = getSelect(settings, "dcl_select_logs");
 
-      await interaction.update({
-        embeds: [dcl_logs],
-        components: [
-          new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([select_logs])
-        ]
-      });
-    },
+        await interaction.update({
+          embeds: [dcl_logs],
+          components: [
+            new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([select_logs])
+          ]
+        });
+      },
     ],
     [
-    "dcl_embed",
-    async (interaction: any) => {
-      
-      const user = interaction.user;
-      const modal_embed = getModal("dcl_embed_modal");
-       await interaction.showModal(modal_embed);
-    }
+      "dcl_embed",
+      async (interaction: any) => {
+        const user = interaction.user;
+        const modal_embed = getModal("dcl_embed_modal");
+        await interaction.showModal(modal_embed);
+      }
     ]
   ])
 })
