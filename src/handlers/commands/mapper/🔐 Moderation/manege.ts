@@ -5,7 +5,8 @@ import { CreatedGuild } from "@handlers"
 import { getSelect, getEmbed, getButton } from "DiscordElementor";
 import {
   ApplicationCommandType,
-  ActionRowBuilder
+  ActionRowBuilder,
+  Collection
 } from "discord.js";
 
 export default new ExtendedCommand({
@@ -36,12 +37,12 @@ export default new ExtendedCommand({
       });
     }
   },
-  selects: new Collection([    [
-      "select_settings",
-      async (interaction: any) => {
-     const options = interaction.values[0];
-     console.log(options)
-      }
-      ]
-      ])
+  selects: new Collection([[
+    "select_settings",
+    async (interaction: any) => {
+      const options = interaction.values[0];
+      console.log(options)
+    }
+  ]
+  ])
 })
