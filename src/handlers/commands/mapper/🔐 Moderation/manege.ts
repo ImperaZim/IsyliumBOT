@@ -39,7 +39,8 @@ export default new ExtendedCommand({
   selects: new Collection([    [
       "select_settings",
       async (interaction: any) => {
-        interaction
+     const options = interaction.values[0];
+     console.log(options)
       }
       ]
       ])
