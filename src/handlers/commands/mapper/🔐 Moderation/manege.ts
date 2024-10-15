@@ -48,12 +48,12 @@ export default new ExtendedCommand({
           user: user.globalName || "error 404",
         });
         const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map((buttonName) => getButton(settings, buttonName));
+        const row = new ActionRowBuilder<ButtonBuilder>().addComponents([buttons])
+        const componentes = (row || []).map((ar) => ar.toJSON());
 
         await interaction.reply({
           embeds: [embed_discordlink],
-          components: [
-            new ActionRowBuilder<ButtonBuilder>().addComponents([buttons])
-          ],
+          components: [row],
           ephemeral: true
         });
       }
