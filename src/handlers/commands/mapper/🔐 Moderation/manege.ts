@@ -32,13 +32,13 @@ export default new ExtendedCommand({
     const data = new CreatedGuild(interaction.guild).checkAndAddGuild();
     if (data) {
       const user = interaction.user;
-      const start = getEmbed("settings", "embed_settings", {
+      const embed_start = getEmbed("settings", "embed_settings", {
         user: user.globalName || "error 404",
       });
       const select_start = getSelect("settings", "select_settings");
 
       await interaction.reply({
-        embeds: start,
+        embeds: embed_start,
         components: select_start,
         ephemeral: true
       });
