@@ -33,10 +33,6 @@ export default new ExtendedCommand({
       interaction.reply({
         content: 'deu certo'
       })
-    } else {
-      interaction.reply({
-        content: 'guild criada na db'
-      })
     }
   }
 });
