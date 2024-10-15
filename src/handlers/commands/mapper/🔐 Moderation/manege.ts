@@ -56,16 +56,16 @@ export default new ExtendedCommand({
         });
       }
     },
-]
+  ]
   ]),
   channelselect: new Collection([
     [
-          "dcl_select_logs",
-    async (interaction: any) => {
-      console.log(interaction)
-    }
-      ]
-      ])
+      "dcl_select_logs",
+      async (interaction: any) => {
+        console.log(interaction)
+      }
+    ]
+  ]),
   buttons: new Collection([[
     "dcl_logs",
     async (interaction: any) => {
