@@ -64,16 +64,14 @@ export default new ExtendedCommand({
       const options = interaction.values[0];
       if (options === "settings:discordlink") {
         const user = interaction.user;
-        const embed_discordlink = getEmbed(settings, "settings_discordlink", {
+        const dcl_logs = getEmbed(settings, "dcl_logs", {
           user: user.globalName || "error 404",
         });
-        const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map((buttonName) => getButton(settings, buttonName));
-        const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
-        const components = ([row] || []).map((ar) => ar.toJSON());
+        const select_logs = getSelect(settings, "dcl_select_logs");
 
         await interaction.reply({
-          embeds: [embed_discordlink],
-          components: components
+          embeds: [dcl_logs],
+          components: new ActionRowBuilder<StringSelectMenuBuilder>().addComponents([select_logs])
         });
       }
     }
