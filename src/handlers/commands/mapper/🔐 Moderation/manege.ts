@@ -67,6 +67,13 @@ export default new ExtendedCommand({
           guildid: interaction.guild.id,
           logs: channelid
         });
+        const success = getEmbed(settings, "success", {
+        user: user.globalName || "error 404",
+      });
+        await interaction.reply({
+        embeds: [success],
+        ephemeral: true
+      });
       }
     ]
   ]),
