@@ -41,9 +41,12 @@ export default new ExtendedCommand({
     "select_settings",
     async (interaction: any) => {
       const options = interaction.values[0];
-      if(options === settings:discordlink){
-        
-      }
+      if (options === "settings:discordlink"){
+const user = interaction.user;
+      const embed_start = getEmbed("settings", "embed_settings", {
+        user: user.globalName || "error 404",
+      });
+}
     }
   ]
   ])
