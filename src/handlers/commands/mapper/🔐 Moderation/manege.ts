@@ -58,8 +58,9 @@ export default new ExtendedCommand({
     },
     "dcl_select_logs",
     async (interaction: any) => {
+      console.log(interaction)
     }
-    
+
   ]
   ]),
   buttons: new Collection([[
@@ -74,8 +75,8 @@ export default new ExtendedCommand({
       await interaction.reply({
         embeds: [dcl_logs],
         components: [
-          new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([select_logs]) 
-          ]
+          new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([select_logs])
+        ]
       });
     }
   ]
