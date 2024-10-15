@@ -18,7 +18,7 @@ export function register(): void {
       }
     },
     components: {
-      select_start: {
+      select_settings: {
         settings: {
           type: "string",
           data: {
