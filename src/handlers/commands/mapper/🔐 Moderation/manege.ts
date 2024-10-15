@@ -28,8 +28,10 @@ export default new ExtendedCommand({
       const select_start = getSelect("settings", "select_settings");
 
       await interaction.reply({
-        embeds: embed_start,
-        components: new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(select_start),
+        embeds: [embed_start],
+        components: [
+          new ActionRowBuilder<StringSelectMenuBuilder>().addComponents([select_start])
+          ],
         ephemeral: true
       });
     }
