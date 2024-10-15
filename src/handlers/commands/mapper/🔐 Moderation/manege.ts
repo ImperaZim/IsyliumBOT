@@ -8,9 +8,10 @@ import {
   ActionRowBuilder,
   Collection
 } from "discord.js";
+const settings = "settings";
 
 export default new ExtendedCommand({
-  name: "settings",
+  name: settings,
   description: "Server systems configuration",
   defaultMemberPermissions: "Administrator",
   type: ApplicationCommandType.ChatInput,
@@ -23,10 +24,10 @@ export default new ExtendedCommand({
     const data = new CreatedGuild(interaction.guild).checkAndAddGuild();
     if (data) {
       const user = interaction.user;
-      const embed_start = getEmbed("settings", "embed_settings", {
+      const embed_start = getEmbed(settings, "embed_settings", {
         user: user.globalName || "error 404",
       });
-      const select_start = getSelect("settings", "select_settings");
+      const select_start = getSelect(settings, "select_settings");
 
       await interaction.reply({
         embeds: [embed_start],
@@ -43,10 +44,18 @@ export default new ExtendedCommand({
       const options = interaction.values[0];
       if (options === "settings:discordlink") {
         const user = interaction.user;
-        const embed_discordlink = getEmbed("settings", "settings_discordlink", {
+        const embed_discordlink = getEmbed(settings, "settings_discordlink", {
           user: user.globalName || "error 404",
         });
-        const buttons = getButton("settings", "select_settings");
+      const buttons =  ["dcl_embed", "dcl_logs", "dcl_category", "dcl_servers"]. map((buttonName) => getButton(settings, buttonName));
+      
+      await interaction.reply({
+        embeds: [embed_discordlink],
+        components: [
+          new ActionRowBuilder<StringSelectMenuBuilder>().addComponents([buttons])
+        ],
+        ephemeral: true
+      });
       }
     }
   ]
