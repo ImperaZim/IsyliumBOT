@@ -12,5 +12,6 @@ export const color: Config = {
   gray: "#2d2929",
   azure: "#007af5",
   light: "#0294ed",
-  midnight: "#18186a"
+  midnight: "#18186a",
+  primary: "#ffdd00"
 };
