@@ -61,17 +61,19 @@ export default new ExtendedCommand({
   buttons: new Collection([[
     "dcl_logs",
     async (interaction: any) => {
-        const user = interaction.user;
-        const dcl_logs = getEmbed(settings, "dcl_logs", {
-          user: user.globalName || "error 404",
-        });
-        const select_logs = getSelect(settings, "dcl_select_logs");
+      const user = interaction.user;
+      const dcl_logs = getEmbed(settings, "dcl_logs", {
+        user: user.globalName || "error 404",
+      });
+      const select_logs = getSelect(settings, "dcl_select_logs");
 
-        await interaction.reply({
-          embeds: [dcl_logs],
-          components: new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([select_logs])
-        });
-      }
+      await interaction.reply({
+        embeds: [dcl_logs],
+        components: [
+          new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([select_logs]) 
+          ]
+      });
+    }
   ]
   ])
 })
