@@ -10,7 +10,7 @@ export function register(): void {
 
   registerRow('settings', {
     embeds: {
-      embed_info: {
+      embed_settings: {
         color: colors.primary,
         description:
           "> Olá {user}, logo abaixo está todos os meus sistemas disponíveis para configuração",
@@ -25,7 +25,7 @@ export function register(): void {
     },
     components: {
       selects: {
-        select_string: {
+        settings: {
           type: "string",
           data: {
             disabled: false,
