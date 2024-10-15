@@ -35,14 +35,13 @@ export default new ExtendedCommand({
       const start = getEmbed("settings", "embed_settings", {
         user: user.globalName || "error 404",
       });
+      const select_start = getEmbed("settings", "select_settings");
 
-      if ( && row.embeds && row.components) {
         await interaction.reply({
           embeds: start,
-          components: row.components,
+          components: select_start,
           ephemeral: true
         });
       }
     }
-  }
 })
