@@ -4,18 +4,8 @@ import { ExtendedCommand } from "@extensions";
 import { CreatedGuild } from "@handlers"
 import { getSelect, getEmbed } from "DiscordElementor";
 import {
-  EmbedBuilder,
-  StringSelectMenuBuilder,
   ApplicationCommandType,
-  ActionRowBuilder,
-  ButtonBuilder,
-  ButtonStyle,
-  ChannelSelectMenuBuilder,
-  ChannelType,
-  ComponentType,
-  ModalBuilder,
-  TextInputBuilder,
-  TextInputStyle
+  ActionRowBuilder
 } from "discord.js";
 
 export default new ExtendedCommand({
@@ -39,7 +29,7 @@ export default new ExtendedCommand({
 
       await interaction.reply({
         embeds: embed_start,
-        components: select_start,
+        components: new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(select_start),
         ephemeral: true
       });
     }
