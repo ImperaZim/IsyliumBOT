@@ -69,7 +69,7 @@ export default new ExtendedCommand({
 
         await interaction.reply({
           embeds: [dcl_logs],
-          components: new ActionRowBuilder<StringSelectMenuBuilder>().addComponents([select_logs])
+          components: new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([select_logs])
         });
       }
   ]
