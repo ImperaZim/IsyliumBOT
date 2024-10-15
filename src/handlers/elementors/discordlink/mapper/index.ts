@@ -34,7 +34,7 @@ export function register(): void {
               {
                 label: "Ticket",
                 description: "configurar sistema de ticket",
-                emoji: "",
+                emoji: "<:ticket:1295558483927629835>",
                 value: "settings:ticket"
               },
               {
