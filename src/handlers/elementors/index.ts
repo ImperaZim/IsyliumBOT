@@ -1,1 +1,1 @@
-export * from './discordlink';
+export * from './settings';
