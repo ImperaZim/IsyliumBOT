@@ -50,6 +50,29 @@ export function register(): void {
           }
         }
       },
+      buttons: {
+      dcl_embed: {
+        type: ButtonStyle.Primary,
+        data: {
+          label: "Embed Creator",
+          emoji: "text"
+        }
+      },
+      dcl_logs: {
+        type: ButtonStyle.Primary,
+        data: {
+          label: "Log Channel",
+          emoji: "text"
+        }
+      },
+      dcl_servers: {
+        type: ButtonStyle.Primary,
+        data: {
+          label: "Create server",
+          emoji: "text"
+        }
+      },
+    },
     }
   });
 }
