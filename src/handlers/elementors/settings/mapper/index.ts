@@ -19,7 +19,7 @@ export function register(): void {
       settings_discordlink: {
         color: color.primary,
         description:
-          "> Olá, {user}! use os botões abaixo para configurar sistema de conexão ao discord.\n\n> 🔵 Use este [website]( para criar os json dos embeds se necessário.",
+          "> Olá, {user}! use os botões abaixo para configurar sistema de conexão ao discord.\n\n> 🔵 Use este [website](https://zira.bot/embedbuilder/) para criar os json dos embeds se necessário.",
         author: {
           name: "Isylium Bot",
           iconURL: profile.icon,
