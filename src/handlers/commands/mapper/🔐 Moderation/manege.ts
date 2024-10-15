@@ -47,7 +47,7 @@ export default new ExtendedCommand({
         const embed_discordlink = getEmbed(settings, "settings_discordlink", {
           user: user.globalName || "error 404",
         });
-        const buttons = ["dcl_embed", "dcl_logs", "dcl_category", "dcl_servers"].map((buttonName) => getButton(settings, buttonName));
+        const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map((buttonName) => getButton(settings, buttonName));
 
         await interaction.reply({
           embeds: [embed_discordlink],
