@@ -1,4 +1,4 @@
-import { client, mysql} from "@main";
+import { client, mysql } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { CreatedGuild } from "@handlers"
@@ -63,7 +63,7 @@ export default new ExtendedCommand({
       "dcl_select_logs",
       async (interaction: any) => {
         const channelid = interaction.values[0];
-        await mysql.insert('discord_link', {
+        mysql.insert('discord_link', {
           guildid: interaction.guild.id,
           logs: channelid
         });
