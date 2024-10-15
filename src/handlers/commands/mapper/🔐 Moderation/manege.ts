@@ -62,7 +62,8 @@ export default new ExtendedCommand({
     [
       "dcl_select_logs",
       async (interaction: any) => {
-        console.log(interaction)
+        const channelid = interaction.values[0];
+        console.log(channelid)
       }
     ]
   ]),
