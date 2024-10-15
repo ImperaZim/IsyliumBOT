@@ -57,5 +57,26 @@ export default new ExtendedCommand({
       }
     }
   ]
+  ]),
+  buttons: new Collection([[
+    "dcl_logs",
+    async (interaction: any) => {
+      const options = interaction.values[0];
+      if (options === "settings:discordlink") {
+        const user = interaction.user;
+        const embed_discordlink = getEmbed(settings, "settings_discordlink", {
+          user: user.globalName || "error 404",
+        });
+        const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map((buttonName) => getButton(settings, buttonName));
+        const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
+        const components = ([row] || []).map((ar) => ar.toJSON());
+
+        await interaction.reply({
+          embeds: [embed_discordlink],
+          components: components
+        });
+      }
+    }
+  ]
   ])
 })
