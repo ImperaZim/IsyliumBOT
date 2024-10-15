@@ -55,7 +55,11 @@ export default new ExtendedCommand({
           components: components
         });
       }
+    },
+    "dcl_select_logs",
+    async (interaction: any) => {
     }
+    
   ]
   ]),
   buttons: new Collection([[
