@@ -55,7 +55,7 @@ export function register(): void {
         type: ButtonStyle.Primary,
         data: {
           label: "Embed Creator",
-          emoji: "text"
+          emoji: "<a:lapis:1295608106965012541>"
         }
       },
       dcl_logs: {
