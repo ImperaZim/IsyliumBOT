@@ -1,14 +1,14 @@
 import { client } from "../";
 import { colors } from "@config";
 import { ButtonStyle } from "discord.js";
-import { registerRow } from "DiscordRow";
+import { registerRow } from "DiscordElementor";
 
 export function register(): void {
   const tohru = client.user;
 
   const isylium = client.user ? client.user.displayAvatarURL() : "";
 
-  registerRow('botinfo', {
+  registerRow('settings', {
     embeds: {
       embed_info: {
         color: colors.primary,
@@ -24,22 +24,27 @@ export function register(): void {
       }
     },
     components: {
-      buttons: {
-        add_me: {
-          type: ButtonStyle.Link,
-          data: {
-            label: "Me Adicione",
-            url: "https://discord.com/api/oauth2/authorize?client_id=1141401998709760051&permissions=8&scope=bot"
-          }
-        },
-        support: {
-          type: ButtonStyle.Link,
-          data: {
-            label: "Suporte",
-            url: "https://discord.com/api/oauth2/authorize?client_id=1141401998709760051&permissions=8&scope=bot"
-          }
+      selects: {
+      select_string: {
+        type: "string",
+        data: {
+          disabled: false,
+          placeholder: "Opções de configuração",
+          options: [
+            {
+              label: "Ticket",
+              description: "configurar sistema de ticket",
+              value: "settings:ticket"
+            },
+            {
+              label: "Discord Link",
+              description: "Configurar sistema de conexão ao discord",
+              value: "settings:discordlink"
+            }
+          ],
         }
       }
+      },
     }
   });
 }
