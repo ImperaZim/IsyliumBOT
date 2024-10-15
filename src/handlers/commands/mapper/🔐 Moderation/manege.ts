@@ -72,7 +72,7 @@ export default new ExtendedCommand({
               guildid: interaction.guild.id
             }
           ]
-          );
+        );
 
         const user = interaction.user;
         const embed_discordlink = getEmbed(settings, "settings_discordlink", {
@@ -82,7 +82,8 @@ export default new ExtendedCommand({
         const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
         const components = ([row] || []).map((ar) => ar.toJSON());
 
-        await interaction.reply({
+
+        await interaction.update({
           embeds: [embed_discordlink],
           components: components
         });
