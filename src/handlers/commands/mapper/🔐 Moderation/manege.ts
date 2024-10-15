@@ -54,7 +54,7 @@ export default new ExtendedCommand({
         await interaction.reply({
           embeds: [embed_discordlink],
           components: [components],
-          ephemeral: true
+          ephemeral: false
         });
       }
     }
