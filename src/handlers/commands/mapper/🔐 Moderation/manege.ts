@@ -2,7 +2,7 @@ import { client, mysql } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { CreatedGuild } from "@handlers"
-import { getSelect, getEmbed, getButton } from "DiscordElementor";
+import { getSelect, getEmbed, getButton, getModal } from "DiscordElementor";
 import {
   ApplicationCommandType,
   ActionRowBuilder,
@@ -37,7 +37,8 @@ export default new ExtendedCommand({
       });
     }
   },
-  selects: new Collection([[
+  selects: new Collection([
+    [
     "select_settings",
     async (interaction: any) => {
       const options = interaction.values[0];
@@ -90,7 +91,8 @@ export default new ExtendedCommand({
       }
     ]
   ]),
-  buttons: new Collection([[
+  buttons: new Collection([
+    [
     "dcl_logs",
     async (interaction: any) => {
       const user = interaction.user;
@@ -106,6 +108,13 @@ export default new ExtendedCommand({
         ]
       });
     }
-  ]
+  ],
+      [
+    "dcl_embed",
+    async (interaction: any) => {
+      const user = interaction.user;
+      const modal_embed = getModal("dcl_embed_modal");
+    }
+    ]
   ])
 })
