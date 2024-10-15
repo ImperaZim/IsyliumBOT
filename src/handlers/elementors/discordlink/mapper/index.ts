@@ -16,7 +16,7 @@ export function register(): void {
           "> Olá {user}, logo abaixo está todos os meus sistemas disponíveis para configuração",
         thumbnail: isylium,
         image:
-          "https://cdn.discordapp.com/attachments/1141418051284250724/1144087125193674802/1692842014805.png",
+          "https://cdn.discordapp.com/attachments/1261777733399347313/1295560563585454100/f1968b752dd03cce586e494eac75c237-1.png?ex=670f184c&is=670dc6cc&hm=c80a6d80e14b455d0fa9d49c63be64e9ea7ad278863a7ce2caf990d0e7d966b5&",
         author: {
           name: `Isylium`,
           iconURL: isylium,
