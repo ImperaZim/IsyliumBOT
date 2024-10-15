@@ -29,7 +29,6 @@ public async checkAndAddGuild(): Promise<boolean> {
         return await this.addGuild();
       }
 
-      console.log(`A guilda ${guildId} já existe nas tabelas.`);
       return false;
     } catch (error) {
       console.error(`Erro ao verificar ou adicionar guilda ${guildId}:`, error);
