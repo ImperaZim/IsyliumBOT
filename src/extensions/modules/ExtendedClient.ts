@@ -110,6 +110,22 @@ export class ExtendedClient extends Client {
         type: "TEXT"
       }
     ]);
+    await mysql.createTable('ticket_discord', [
+      { name: 'guildid', type: 'VARCHAR(255) NOT NULL PRIMARY KEY' },
+      { name: 'embeds_json', type: 'JSON DEFAULT NULL' },
+      { name: 'role_perms', type: 'VARCHAR(255) DEFAULT NULL' },  // ID
+      { name: 'logs', type: 'VARCHAR(255) DEFAULT NULL' },        // ID
+      { name: 'send_channel', type: 'VARCHAR(255) DEFAULT NULL' },// ID
+      { name: 'send_category', type: 'VARCHAR(255) DEFAULT NULL' } // ID
+    ]);
+    await mysql.createTable('discord_link', [
+      { name: 'guildid', type: 'VARCHAR(255) NOT NULL PRIMARY KEY' },
+      { name: 'servers', type: 'JSON DEFAULT NULL' },
+      { name: 'embeds_json', type: 'JSON DEFAULT NULL' },
+      { name: 'logs', type: 'VARCHAR(255) DEFAULT NULL' },
+      { name: 'send_channel', type: 'VARCHAR(255) DEFAULT NULL' },
+      { name: 'created_at', type: 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP' }
+    ]);
   }
 
   /**
