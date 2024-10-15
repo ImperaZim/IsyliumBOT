@@ -11,7 +11,7 @@ export function register(): void {
         color: color.primary,
         description:
           "> Olá {user}, logo abaixo está todos os meus sistemas disponíveis para configuração",
-        thumbnail: isylium,
+        thumbnail: profile.icon,
         image: profile.icon,
         author: {
           name: `Isylium`,
