@@ -10,7 +10,7 @@ export function register(): void {
       embed_settings: {
         color: color.primary,
         description:
-          "> Olá, {user}! Bem-vindo ao menu de configurações do Isylium Bot.\n\nAqui você encontrará todas as opções disponíveis para personalizar os sistemas do Isylium Bot de acordo com as necessidades. Explore as categorias abaixo para ajustar permissões categorias loga e muito mais,\ngarantindo que tudo funcione perfeitamente para sua comunidade.\nVamos começar!",
+          "> Olá, {user}! Bem-vindo ao menu de configurações do Isylium Bot.\n\nAqui você encontrará todas as opções disponíveis para personalizar os sistemas do Isylium Bot de acordo com as necessidades. Explore as categorias abaixo para ajustar permissões categorias loga e muito mais,\n\ngarantindo que tudo funcione perfeitamente para sua comunidade.\n\nVamos começar!",
         author: {
           name: "Isylium",
           iconURL: profile.icon,
