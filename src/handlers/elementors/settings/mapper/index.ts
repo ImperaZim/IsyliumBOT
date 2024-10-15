@@ -11,7 +11,10 @@ export function register(): void {
         color: color.primary,
         description:
           "> Olá {user}, logo abaixo está todos os meus sistemas disponíveis para configuração",
-        thumbnail: profile.icon,
+        author: {
+          name: "Isylium",
+          iconURL: profile.icon,
+        },
       }
     },
     components: {
