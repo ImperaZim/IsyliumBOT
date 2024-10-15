@@ -1,16 +1,16 @@
 import { client } from "@main";
-import { colors } from "@config";
+import { color } from "@config";
 import { ButtonStyle } from "discord.js";
 import { registerRow } from "DiscordElementor";
 
 export function register(): void {
-  
+
   const isylium = client.user ? client.user.displayAvatarURL() : "";
 
   registerRow('settings', {
     embeds: {
       embed_settings: {
-        color: colors.primary,
+        color: color.primary,
         description:
           "> Olá {user}, logo abaixo está todos os meus sistemas disponíveis para configuração",
         thumbnail: isylium,
