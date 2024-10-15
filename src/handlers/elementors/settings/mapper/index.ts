@@ -68,17 +68,17 @@ export function register(): void {
           }
         },
         dcl_select_logs: {
-        type: "channel",
-        data: {
-          disabled: false,
-          placeholder: " Escolha o canal de logs abaixo.",
-          minValue: 1,
-          maxValue: 10,
-          channelTypes: [
-            ChannelType.GuildText
-          ]
-        }
-      },
+          type: "channel",
+          data: {
+            disabled: false,
+            placeholder: " Escolha o canal de logs abaixo.",
+            minValue: 1,
+            maxValue: 10,
+            channelTypes: [
+              ChannelType.GuildText
+            ]
+          }
+        },
       },
       buttons: {
         dcl_embed: {
@@ -119,29 +119,29 @@ export function register(): void {
       },
     }
   });
-registerModal("modal_1", {
-  title: "text",
-  components: {
-    inputs: {
-      short_input: {
-        label: "text",
-        minLength: 1,
-        maxLength: 100,
-        placeholder: "text",
-        value: "text",
-        required: false,
-        style: TextInputStyle.Short
-      },
-      paragraph_input: {
-        label: "text",
-        minLength: 1,
-        maxLength: 100,
-        placeholder: "text",
-        value: "text",
-        required: false,
-        style: TextInputStyle.Paragraph
+  registerModal("dcl_embed_modal", {
+    title: "Criar painel de conexão",
+    components: {
+      inputs: {
+        short_input: {
+          label: "text",
+          minLength: 1,
+          maxLength: 100,
+          placeholder: "text",
+          value: "text",
+          required: false,
+          style: TextInputStyle.Short
+        },
+        paragraph_input: {
+          label: "text",
+          minLength: 1,
+          maxLength: 100,
+          placeholder: "text",
+          value: "text",
+          required: false,
+          style: TextInputStyle.Paragraph
+        }
       }
     }
-  }
-});`
+  }); `
 }
