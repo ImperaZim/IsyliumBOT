@@ -12,7 +12,16 @@ export function register(): void {
         description:
           "> Olá, {user}! Bem-vindo ao menu de configurações do Isylium Bot.\n> Aqui você encontrará todas as opções disponíveis para personalizar os sistemas do Isylium Bot de acordo com as necessidades.",
         author: {
-          name: "Isylium",
+          name: "Isylium Bot",
+          iconURL: profile.icon,
+        },
+      },
+      settings_discordlink: {
+        color: color.primary,
+        description:
+          "> Olá, {user}! use os botões abaixo para configurar sistema de conexão ao discord.",
+        author: {
+          name: "Isylium Bot",
           iconURL: profile.icon,
         },
       }
