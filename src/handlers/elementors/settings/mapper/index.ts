@@ -18,8 +18,8 @@ export function register(): void {
       }
     },
     components: {
-      select_settings: {
-        settings: {
+      selects: {
+        select_settings: {
           type: "string",
           data: {
             disabled: false,
