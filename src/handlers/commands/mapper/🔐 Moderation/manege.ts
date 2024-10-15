@@ -33,8 +33,7 @@ export default new ExtendedCommand({
         embeds: [embed_start],
         components: [
           new ActionRowBuilder<StringSelectMenuBuilder>().addComponents([select_start])
-        ],
-        ephemeral: true
+        ]
       });
     }
   },
@@ -53,8 +52,7 @@ export default new ExtendedCommand({
 
         await interaction.reply({
           embeds: [embed_discordlink],
-          components: [components],
-          ephemeral: false
+          components: [components]
         });
       }
     }
