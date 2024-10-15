@@ -125,8 +125,7 @@ export function register(): void {
       inputs: {
         paragraph_input: {
           label: "Embed Json",
-          minLength: 1,
-          maxLength: 100,
+          maxLength: 180,
           placeholder: '{\n "title": "teste"\n}',
           value: "embed_creator",
           required: true,
@@ -134,5 +133,5 @@ export function register(): void {
         }
       }
     }
-  }); 
+  });
 }
