@@ -31,9 +31,16 @@ export default new ExtendedCommand({
         embeds: [embed_start],
         components: [
           new ActionRowBuilder<StringSelectMenuBuilder>().addComponents([select_start])
-          ],
+        ],
         ephemeral: true
       });
     }
-  }
+  },
+  selects: new Collection([    [
+      "select_settings",
+      async (interaction: any) => {
+        interaction
+      }
+      ]
+      ])
 })
