@@ -9,20 +9,7 @@ export class CreatedGuild {
     this.guild = guild;
   }
 
-  private async addGuild(): Promise<boolean> {
-    const guildId: string = this.guild.id;
-
-    try {
-      await mysql.insert("discord_link", { guildid: guildId, created_at: new Date() });
-      await mysql.insert("ticket_discord", { guildid: guildId, created_at: new Date() });
-      return true;
-    } catch (error) {
-      console.error(`Erro ao adicionar guilda ${guildId}:`, error);
-      return false;
-    }
-  }
-
-  public async checkAndAddGuild(): Promise<boolean> {
+public async checkAndAddGuild(): Promise<boolean> {
     const guildId: string = this.guild.id;
 
     try {
@@ -46,6 +33,19 @@ export class CreatedGuild {
       return false;
     } catch (error) {
       console.error(`Erro ao verificar ou adicionar guilda ${guildId}:`, error);
+      return false;
+    }
+  }
+
+  private async addGuild(): Promise<boolean> {
+    const guildId: string = this.guild.id;
+
+    try {
+      await mysql.insert("discord_link", { guildid: guildId, created_at: new Date() });
+      await mysql.insert("ticket_discord", { guildid: guildId, created_at: new Date() });
+      return true;
+    } catch (error) {
+      console.error(`Erro ao adicionar guilda ${guildId}:`, error);
       return false;
     }
   }
