@@ -64,14 +64,14 @@ export default new ExtendedCommand({
       async (interaction: any) => {
         const channelid = interaction.values[0];
         mysql.update('discord_link',
-          { 
+          {
             logs: channelid
-            },
-            [
-              {
-                guildid: interaction.guild.id 
-              }
-              ]);
+          },
+          [
+          {
+            guildid: interaction.guild.id
+          }
+          ]);
 
         const user = interaction.user;
         const embed_discordlink = getEmbed(settings, "settings_discordlink", {
