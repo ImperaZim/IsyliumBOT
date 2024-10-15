@@ -30,9 +30,7 @@ export default new ExtendedCommand({
       ? client.user.displayAvatarURL() : "";
     const data = new CreatedGuild(interaction.guild).checkAndAddGuild();
     if (data) {
-      interaction.reply({
-        content: 'deu certo'
-      })
+      
+      }
     }
-  }
-});
+  })
