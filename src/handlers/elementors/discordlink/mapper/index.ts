@@ -4,8 +4,7 @@ import { ButtonStyle } from "discord.js";
 import { registerRow } from "DiscordElementor";
 
 export function register(): void {
-  const tohru = client.user;
-
+  
   const isylium = client.user ? client.user.displayAvatarURL() : "";
 
   registerRow('settings', {
