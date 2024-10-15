@@ -62,7 +62,7 @@ export function register(): void {
         type: ButtonStyle.Primary,
         data: {
           label: "Log Channel",
-          emoji: "text"
+          emoji: "<:channel:1295608647484706858>"
         }
       },
       dcl_servers: {
