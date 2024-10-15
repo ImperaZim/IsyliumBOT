@@ -63,7 +63,10 @@ export default new ExtendedCommand({
       "dcl_select_logs",
       async (interaction: any) => {
         const channelid = interaction.values[0];
-        console.log(channelid)
+        await mysql.insert('discord_link', {
+  guildid: interaction.guild.id,
+  logs: channelid
+});
       }
     ]
   ]),
