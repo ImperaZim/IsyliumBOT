@@ -48,7 +48,7 @@ export default new ExtendedCommand({
         });
         const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map((buttonName) => getButton(settings, buttonName));
         const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
-        const components = (row || []).map((ar) => ar.toJSON());
+        const components = (row || [buttons]).map((ar) => ar.toJSON());
 
         await interaction.reply({
           embeds: [embed_discordlink],
