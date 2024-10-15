@@ -2,7 +2,7 @@ import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { CreatedGuild } from "@handlers"
-import { getRow } from "DiscordElementor";
+import { getSelect, getEmbed } from "DiscordElementor";
 import {
   EmbedBuilder,
   StringSelectMenuBuilder,
@@ -35,13 +35,13 @@ export default new ExtendedCommand({
       const start = getEmbed("settings", "embed_settings", {
         user: user.globalName || "error 404",
       });
-      const select_start = getEmbed("settings", "select_settings");
+      const select_start = getSelect("settings", "select_settings");
 
-        await interaction.reply({
-          embeds: start,
-          components: select_start,
-          ephemeral: true
-        });
-      }
+      await interaction.reply({
+        embeds: start,
+        components: select_start,
+        ephemeral: true
+      });
     }
+  }
 })
