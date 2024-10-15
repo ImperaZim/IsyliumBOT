@@ -123,25 +123,16 @@ export function register(): void {
     title: "Criar painel de conexão",
     components: {
       inputs: {
-        short_input: {
-          label: "text",
-          minLength: 1,
-          maxLength: 100,
-          placeholder: "text",
-          value: "text",
-          required: false,
-          style: TextInputStyle.Short
-        },
         paragraph_input: {
-          label: "text",
+          label: "Embed Json",
           minLength: 1,
           maxLength: 100,
-          placeholder: "text",
-          value: "text",
-          required: false,
+          placeholder: '{\n "title": "teste"\n}',
+          value: "embed_creator",
+          required: true,
           style: TextInputStyle.Paragraph
         }
       }
     }
-  }); `
+  }); 
 }
