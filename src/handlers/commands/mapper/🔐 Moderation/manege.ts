@@ -115,7 +115,7 @@ export default new ExtendedCommand({
         const user = interaction.user;
         const modal_embed = getModal("dcl_embed_modal");
         await interaction.showModal(modal_embed);
-        await interaction.deferReply();
+        await interaction.deferUpdate();
       }
     ]
   ])
