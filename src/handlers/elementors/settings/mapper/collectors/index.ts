@@ -25,21 +25,11 @@ export class SettingsController {
     this.guild = guild;
   }
 
-  async startSettingsInteraction(interaction: any) {
-    const message = await interaction.reply({
-      embeds: [
-        new EmbedBuilder()
-          .setTitle("Configurações do Discord")
-          .setDescription("Carregando configurações... Por favor, aguarde!")
-          .setColor("#5865F2"),
-      ],
-      fetchReply: true,
-    });
-
-    await this.updateSettingsPage(null, message);
+  async startSettingsInteraction(response: any) {
+    await this.updateSettingsPage(null, response);
 
     new SelectCollector(
-      message,
+      response,
       async (menu: SelectMenuInteraction) => this.handleSelectMenu(menu),
       ComponentType.StringSelect,
       time,
@@ -47,7 +37,7 @@ export class SettingsController {
     );
 
     new SelectCollector(
-      message,
+      response,
       async (channel: ChannelSelectMenuInteraction) => this.handleChannelSelectMenu(channel),
       ComponentType.ChannelSelect,
       time,
@@ -55,7 +45,7 @@ export class SettingsController {
     );
 
     new ButtonCollector(
-      message,
+      response,
       async (button: ButtonInteraction) => this.handleButtonInteraction(button),
       ComponentType.Button,
       time,
