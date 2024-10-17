@@ -3,162 +3,129 @@ import {
   Guild,
   SelectMenuInteraction,
   ButtonInteraction,
-  RoleSelectMenuInteraction,
   ChannelSelectMenuInteraction,
   ComponentType,
   ActionRowBuilder,
   ButtonBuilder,
-  ChannelSelectMenuBuilder
+  ChannelSelectMenuBuilder,
+  EmbedBuilder
 } from "discord.js";
-import {
-  ButtonCollector,
-  SelectCollector,
-  ModalCollector,
-  getSelect,
-  getEmbed,
-  getButton,
-  getModal
-} from "DiscordElementor";
-import { client, mysql } from "@main";
+import { ButtonCollector, SelectCollector, getEmbed, getButton, getSelect, getModal } from "DiscordElementor";
+import { mysql } from "@main";
 
 const settings = "settings";
 const time = 20 * 60 * 1000;
 
 export class SettingsController {
-  private message: any;
   private user: User;
   private guild: Guild;
 
-  constructor(message: any, user: User, guild: Guild) {
-    this.message = message;
+  constructor(user: User, guild: Guild) {
     this.user = user;
     this.guild = guild;
   }
 
-  startCollectors() {
-    this.initButtonInteraction(this.message);
-    this.initSelectMenuInteraction(this.message);
-    this.initChannelSelectMenuInteraction(this.message);
-  }
+  async startSettingsInteraction(interaction: any) {
+    const message = await interaction.reply({
+      embeds: [
+        new EmbedBuilder()
+          .setTitle("Configurações do Discord")
+          .setDescription("Carregando configurações... Por favor, aguarde!")
+          .setColor("#5865F2"),
+      ],
+      fetchReply: true,
+    });
 
-  // SelectMenuInteraction
-  private initSelectMenuInteraction(
-    message: any = null
-  ) {
-    return new SelectCollector(
+    await this.updateSettingsPage(null, message);
+
+    // Coletor de StringSelect
+    new SelectCollector(
       message,
-      async (select: SelectMenuInteraction) => {
-        console.log("called select string");
-        const { values, user } = select;
-        const options = values[0];
-
-        if (options === "settings:discordlink") {
-          const embed_discordlink = getEmbed(
-            settings,
-            "settings_discordlink",
-            { user: user.globalName || "error 404" }
-          );
-
-          const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map(
-            buttonName => getButton(settings, buttonName)
-          );
-          const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons);
-          const components = ([row] || []).map(ar => ar.toJSON());
-
-          const response = await select.update({
-            embeds: [embed_discordlink],
-            components: components
-          });
-          this.initButtonInteraction(response);
-        }
-      },
+      async (menu: SelectMenuInteraction) => this.handleSelectMenu(menu),
       ComponentType.StringSelect,
       time,
       (select: SelectMenuInteraction) => select.user.id === this.user.id
     );
-  }
 
-  // ChannelSelectMenuInteraction
-  private initChannelSelectMenuInteraction(
-    message: any = null
-  ) {
-    return new SelectCollector(
+    new SelectCollector(
       message,
-      async (channel: ChannelSelectMenuInteraction) => {
-        console.log("called select channel");
-        const { values, user } = channel;
-
-        mysql.update(
-          "discord_link",
-          { logs: values[0] },
-          [{ guildid: this.guild.id }]
-        );
-
-        const embed_discordlink = getEmbed(
-          settings,
-          "settings_discordlink",
-          { user: user.globalName || "error 404" }
-        );
-
-        const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map(
-          buttonName => getButton(settings, buttonName)
-        );
-        const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons);
-        const components = ([row] || []).map(ar => ar.toJSON());
-
-        const response = await channel.update({
-          embeds: [embed_discordlink],
-          components: components
-        });
-        this.initButtonInteraction(response);
-      },
+      async (channel: ChannelSelectMenuInteraction) => this.handleChannelSelectMenu(channel),
       ComponentType.ChannelSelect,
       time,
       (channel: ChannelSelectMenuInteraction) => channel.user.id === this.user.id
     );
-  }
 
-  // ButtonInteraction
-  private initButtonInteraction(
-    message: any = null
-  ) {
-    return new ButtonCollector(
+    new ButtonCollector(
       message,
-      async (button: ButtonInteraction) => {
-        console.log("called button");
-        const { customId, user, showModal } = button;
-        const clicked = customId;
-
-        // Discord Link - Logs
-        if (clicked.includes("dcl_logs")) {
-          const dcl_logs = getEmbed(settings, "dcl_logs", {
-            user: user.globalName || "error 404"
-          });
-
-          const select_logs = getSelect(settings, "dcl_select_logs");
-          const response = await button.update({
-              embeds: [dcl_logs],
-            components: [
-              new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(
-                [select_logs]
-              )
-            ]
-            });
-          this.initButtonInteraction(response);
-        }
-
-        // Discord Link - Embed Modal
-        if (clicked.includes("dcl_embed")) {
-          const modal_embed = getModal("dcl_embed_modal");
-          showModal(modal_embed);
-        }
-      },
+      async (button: ButtonInteraction) => this.handleButtonInteraction(button),
       ComponentType.Button,
       time,
       (button: ButtonInteraction) => button.user.id === this.user.id
     );
   }
+
+  private async updateSettingsPage(button: any = null, message: any = null) {
+    const embed = getEmbed(settings, "settings_discordlink", { user: this.user.globalName || "Desconhecido" });
+    const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map(buttonName => getButton(settings, buttonName));
+    const components = [
+      new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
+    ];
+
+    if (button == null) {
+      await message.edit({
+        embeds: [embed],
+        components: components
+      });
+    } else {
+      await button.update({
+        embeds: [embed],
+        components: components
+      });
+    }
+  }
+
+  // Handler do SelectMenuInteraction
+  private async handleSelectMenu(select: SelectMenuInteraction) {
+    const { values } = select;
+    const option = values[0];
+
+    if (option === "settings:discordlink") {
+      await this.updateSettingsPage(null, select);
+    } else {
+      select.reply({ content: `A função ${option} não está habilitada.` });
+    }
+  }
+
+  // Handler do ChannelSelectMenuInteraction
+  private async handleChannelSelectMenu(channel: ChannelSelectMenuInteraction) {
+    const { values } = channel;
+
+    mysql.update("discord_link", { logs: values[0] }, [{ guildid: this.guild.id }]);
+
+    await this.updateSettingsPage(null, channel);
+  }
+
+  // Handler do ButtonInteraction
+  private async handleButtonInteraction(button: ButtonInteraction) {
+    const { customId } = button;
+
+    if (customId.includes("dcl_logs")) {
+      const embedLogs = getEmbed(settings, "dcl_logs", { user: this.user.globalName || "Desconhecido" });
+      const selectLogs = getSelect(settings, "dcl_select_logs");
+
+      await button.update({
+        embeds: [embedLogs],
+        components: [new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(selectLogs)]
+      });
+    } else if (customId.includes("dcl_embed")) {
+      const modalEmbed = getModal("dcl_embed_modal");
+      button.showModal(modalEmbed);
+    } else {
+      button.reply({ content: `A função ${customId} não está habilitada.` });
+    }
+  }
 }
+
 
 
 /*
