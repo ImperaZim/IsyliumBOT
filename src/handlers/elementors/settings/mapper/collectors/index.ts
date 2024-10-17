@@ -24,7 +24,7 @@ const time = 20 * 60 * 1000;
 //ComponentType.RoleSelect
 
 export function SettingsController(response: any, user: User, guild: Guild) {
-  //SelectMenuInteraction
+    //SelectMenuInteraction
     return new SelectCollector(
         response,
         (select: SelectMenuInteraction) => {
@@ -117,6 +117,10 @@ export function SettingsController(response: any, user: User, guild: Guild) {
                         )
                     ]
                 });
+            }
+            if(clicked.includes("dcl_embed")) {
+              const modal_embed = getModal("dcl_embed_modal");
+        await interaction.showModal(modal_embed);
             }
         },
         ComponentType.Button,
