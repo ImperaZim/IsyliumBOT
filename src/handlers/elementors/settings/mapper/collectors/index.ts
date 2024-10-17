@@ -42,7 +42,21 @@ const time = 20 * 60 * 1000;
       time,
       (select: SelectMenuInteraction) => select.user.id === user.id )
      return new ButtonCollector(response, (buttons: ButtonInteraction) => {
-        
+       const { customId, user } = buttons
+       const clicked = customId;
+        if (clicked.includes("dcl_logs")) {
+          const dcl_logs = getEmbed(settings, "dcl_logs", {
+          user: user.globalName || "error 404",
+        });
+        const select_logs = getSelect(settings, "dcl_select_logs");
+
+         buttons.edit({
+          embeds: [dcl_logs],
+          components: [
+            new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([select_logs])
+          ]
+        });
+        }
       },
       ComponentType.Button, 
       time,
