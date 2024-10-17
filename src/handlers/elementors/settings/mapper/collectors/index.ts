@@ -80,8 +80,6 @@ export class SettingsController {
     const { values } = channel;
 
     mysql.update("discord_link", { logs: values[0] }, [{ guildid: this.guild.id }]);
-
-    await this.updateSettingsPage(channel);
   }
 
   private async handleButtonInteraction(button: ButtonInteraction) {
