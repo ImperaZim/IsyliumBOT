@@ -38,7 +38,6 @@ export class SettingsController {
 
     await this.updateSettingsPage(null, message);
 
-    // Coletor de StringSelect
     new SelectCollector(
       message,
       async (menu: SelectMenuInteraction) => this.handleSelectMenu(menu),
@@ -84,7 +83,6 @@ export class SettingsController {
     }
   }
 
-  // Handler do SelectMenuInteraction
   private async handleSelectMenu(select: SelectMenuInteraction) {
     const { values } = select;
     const option = values[0];
@@ -96,7 +94,6 @@ export class SettingsController {
     }
   }
 
-  // Handler do ChannelSelectMenuInteraction
   private async handleChannelSelectMenu(channel: ChannelSelectMenuInteraction) {
     const { values } = channel;
 
@@ -105,7 +102,6 @@ export class SettingsController {
     await this.updateSettingsPage(null, channel);
   }
 
-  // Handler do ButtonInteraction
   private async handleButtonInteraction(button: ButtonInteraction) {
     const { customId } = button;
 
