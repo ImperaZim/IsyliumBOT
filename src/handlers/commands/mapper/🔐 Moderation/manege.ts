@@ -27,7 +27,8 @@ export default new ExtendedCommand({
                     new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
                         [select_start]
                     )
-                ]
+                ],
+                fetchReply: true
             });
             SettingsController(response, user, guild);
         }
