@@ -43,7 +43,6 @@ export class SettingsController {
 
   // SelectMenuInteraction
   private initSelectMenuInteraction(
-    response: any = null,
     message: any = null
   ) {
     return new SelectCollector(
