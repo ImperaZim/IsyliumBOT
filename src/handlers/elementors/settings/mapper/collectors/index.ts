@@ -2,6 +2,7 @@ import {
   User,
   Guild,
   SelectMenuInteraction,
+  ButtonInteraction,
   ComponentType,
   ActionRowBuilder
 } from 'discord.js';
@@ -40,5 +41,11 @@ const time = 20 * 60 * 1000;
     ComponentType.StringSelect, 
       time,
       (select: SelectMenuInteraction) => select.user.id === user.id )
-      new ButtonCollector(response, (buttons: Button))
+      new ButtonCollector(response, (buttons: ButtonInteraction) => {
+        
+      },
+      ComponentType.Button, 
+      time,
+         (button: ButtonInteraction) => button.user.id === user.id
+      )
   }
