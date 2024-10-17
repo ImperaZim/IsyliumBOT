@@ -36,9 +36,9 @@ export class SettingsController {
   }
 
   startCollectors() {
-    this.initButtonInteraction(null, this.message);
-    this.initSelectMenuInteraction(null, this.message);
-    this.initChannelSelectMenuInteraction(null, this.message);
+    this.initButtonInteraction(this.message);
+    this.initSelectMenuInteraction(this.message);
+    this.initChannelSelectMenuInteraction(this.message);
   }
 
   // SelectMenuInteraction
