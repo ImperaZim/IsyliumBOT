@@ -43,7 +43,7 @@ export class SettingsController {
 
   // SelectMenuInteraction
   private initSelectMenuInteraction(
-    reponse: any = null,
+    response: any = null,
     message: any = null
   ) {
     return new SelectCollector(
@@ -65,20 +65,20 @@ export class SettingsController {
           const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons);
           const components = ([row] || []).map(ar => ar.toJSON());
 
-          let newReponse;
-          if (reponse == null) {
-            newReponse = await message.edit({
+          let newresponse;
+          if (response == null) {
+            newresponse = await message.edit({
               embeds: [embed_discordlink],
               components: components
             });
           } else {
-            newReponse = await reponse.update({
+            newresponse = await response.update({
               embeds: [embed_discordlink],
               components: components
             });
           }
-          if (newReponse) {
-            this.initButtonInteraction(newReponse, null);
+          if (newresponse) {
+            this.initButtonInteraction(newresponse, null);
           }
         }
       },
@@ -90,11 +90,11 @@ export class SettingsController {
 
   // ChannelSelectMenuInteraction
   private initChannelSelectMenuInteraction(
-    reponse: any = null,
+    response: any = null,
     message: any = null
   ) {
     return new SelectCollector(
-      message,
+      (response === null ? message : response),
       async (channel: ChannelSelectMenuInteraction) => {
         const { values, user } = channel;
 
@@ -116,20 +116,20 @@ export class SettingsController {
         const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons);
         const components = ([row] || []).map(ar => ar.toJSON());
 
-        let newReponse;
-        if (reponse == null) {
-          newReponse = await message.edit({
+        let newresponse;
+        if (response == null) {
+          newresponse = await message.edit({
             embeds: [embed_discordlink],
             components: components
           });
         } else {
-          newReponse = await reponse.update({
+          newresponse = await response.update({
             embeds: [embed_discordlink],
             components: components
           });
         }
-        if (newReponse) {
-          this.initButtonInteraction(newReponse, null);
+        if (newresponse) {
+          this.initButtonInteraction(newresponse, null);
         }
       },
       ComponentType.ChannelSelect,
@@ -140,7 +140,7 @@ export class SettingsController {
 
   // ButtonInteraction
   private initButtonInteraction(
-    reponse: any = null,
+    response: any = null,
     message: any = null
   ) {
     return new ButtonCollector(
@@ -157,9 +157,9 @@ export class SettingsController {
 
           const select_logs = getSelect(settings, "dcl_select_logs");
 
-          let newReponse;
-          if (reponse == null) {
-            newReponse = await message.edit({
+          let newresponse;
+          if (response == null) {
+            newresponse = await message.edit({
               embeds: [dcl_logs],
               components: [
                 new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(
@@ -168,7 +168,7 @@ export class SettingsController {
               ]
             });
           } else {
-            newReponse = await reponse.update({
+            newresponse = await response.update({
               embeds: [dcl_logs],
               components: [
                 new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(
@@ -177,8 +177,8 @@ export class SettingsController {
               ]
             });
           }
-          if (newReponse) {
-            this.initSelectMenuInteraction(newReponse, null);
+          if (newresponse) {
+            this.initSelectMenuInteraction(newresponse, null);
           }
         }
 
