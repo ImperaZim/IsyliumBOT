@@ -1,7 +1,7 @@
 import { client, mysql } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
-import { CreatedGuild, Responder } from "@handlers"
+import { CreatedGuild, Controller } from "@handlers"
 import { getSelect, getEmbed, getButton, getModal } from "DiscordElementor";
 import {
   ApplicationCommandType,
@@ -35,7 +35,7 @@ export default new ExtendedCommand({
           new ActionRowBuilder<StringSelectMenuBuilder>().addComponents([select_start])
         ]
       });
-      Responder(response, interaction.user, interaction.guild);
+      Controller(response, interaction.user, interaction.guild);
     }
   },
 /*  selects: new Collection([
