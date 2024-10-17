@@ -6,7 +6,7 @@ import {
 } from 'discord.js';
 import { 
   ButtonColletor, 
-  SelectColletor, 
+  SelectCollector, 
   ModalColletor, 
   getSelect, 
   getEmbed, 
@@ -16,7 +16,7 @@ import {
 import { client, mysql } from '@main';
   
   export function SettingsController(response: any, user: User, guild: Guild){
-   return new SelectColletor(response, 
+   return new SelectCollector(response, 
     (select: SelectMenuInteraction ) => {
       const { values, user } = select
       const options = values[0];
