@@ -1,7 +1,7 @@
 import { client, mysql } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
-import { CreatedGuild } from "@handlers"
+import { CreatedGuild, Responder } from "@handlers"
 import { getSelect, getEmbed, getButton, getModal } from "DiscordElementor";
 import {
   ApplicationCommandType,
@@ -11,7 +11,7 @@ import {
 const settings = "settings";
 
 export default new ExtendedCommand({
-  name: settings,
+  name: "settings",
   description: "Server systems configuration",
   defaultMemberPermissions: "Administrator",
   type: ApplicationCommandType.ChatInput,
@@ -29,15 +29,16 @@ export default new ExtendedCommand({
       });
       const select_start = getSelect(settings, "select_settings");
 
-      await interaction.reply({
+    const response =  await interaction.reply({
         embeds: [embed_start],
         components: [
           new ActionRowBuilder<StringSelectMenuBuilder>().addComponents([select_start])
         ]
       });
+      Responder(response, interaction.user, interaction.guild);
     }
   },
-  selects: new Collection([
+/*  selects: new Collection([
     [
       "select_settings",
       async (interaction: any) => {
@@ -58,7 +59,7 @@ export default new ExtendedCommand({
         }
       },
     ]
-  ]),
+  ]),*/
   channelselect: new Collection([
     [
       "dcl_select_logs",
