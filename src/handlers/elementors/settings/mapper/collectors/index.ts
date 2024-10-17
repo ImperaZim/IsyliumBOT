@@ -7,7 +7,7 @@ import {
 import { 
   ButtonCollector, 
   SelectCollector, 
-  ModalColletor, 
+  ModalCollector, 
   getSelect, 
   getEmbed, 
   getButton, 
