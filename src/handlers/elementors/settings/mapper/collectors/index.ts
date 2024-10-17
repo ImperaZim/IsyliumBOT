@@ -66,9 +66,9 @@ export class SettingsController {
           const components = ([row] || []).map(ar => ar.toJSON());
 
           const response = await select.update({
-              embeds: [embed_discordlink],
-              components: components
-            });
+            embeds: [embed_discordlink],
+            components: components
+          });
           this.initButtonInteraction(response);
         }
       },
@@ -107,10 +107,10 @@ export class SettingsController {
         const components = ([row] || []).map(ar => ar.toJSON());
 
         const response = await channel.update({
-              embeds: [embed_discordlink],
-              components: components
-            });
-          this.initButtonInteraction(response);
+          embeds: [embed_discordlink],
+          components: components
+        });
+        this.initButtonInteraction(response);
       },
       ComponentType.ChannelSelect,
       time,
@@ -137,15 +137,15 @@ export class SettingsController {
           });
 
           const select_logs = getSelect(settings, "dcl_select_logs");
-          const newresponse = await buttons.update({
-            embeds: [dcl_logs],
+          const response = await select.update({
+              embeds: [dcl_logs],
             components: [
               new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(
                 [select_logs]
               )
             ]
-          });
-          new SettingsController(newresponse, buttons.user, buttons.guild);
+            });
+          this.initButtonInteraction(response);
         }
 
         // Discord Link - Embed Modal
