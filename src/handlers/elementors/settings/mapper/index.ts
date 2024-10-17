@@ -15,6 +15,7 @@ export function register(): void {
                     iconURL: profile.icon
                 }
             },
+            // Embeds Discordlink
             settings_discordlink: {
                 color: color.primary,
                 description:
@@ -76,6 +77,7 @@ export function register(): void {
                         ]
                     }
                 },
+                // Components Discordlink
                 dcl_select_logs: {
                     type: "channel",
                     data: {
@@ -134,6 +136,13 @@ export function register(): void {
                     type: ButtonStyle.Primary,
                     data: {
                         label: "Send Message",
+                        emoji: "<:send:1296616875727388704>"
+                    }
+                },
+                dcl_embed_reviewed: {
+                    type: ButtonStyle.Primary,
+                    data: {
+                        label: "Reviewed Message",
                         emoji: "<:send:1296616875727388704>"
                     }
                 }
