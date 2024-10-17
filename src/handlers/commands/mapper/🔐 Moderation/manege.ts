@@ -35,7 +35,7 @@ export default new ExtendedCommand({
           new ActionRowBuilder<StringSelectMenuBuilder>().addComponents([select_start])
         ]
       });
-      Controller(response, interaction.user, interaction.guild);
+      SettingsController(response, interaction.user, interaction.guild);
     }
   },
 /*  selects: new Collection([
