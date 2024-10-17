@@ -144,7 +144,7 @@ export class SettingsController {
     message: any = null
   ) {
     return new ButtonCollector(
-      message,
+      (response === null ? message : response),
       async (buttons: ButtonInteraction) => {
         const { customId, user, showModal } = buttons;
         const clicked = customId;
