@@ -123,7 +123,7 @@ export class SettingsController {
             components: components
           });
         } else {
-          newresponse = await response.update({
+          newresponse = await channel.update({
             embeds: [embed_discordlink],
             components: components
           });
