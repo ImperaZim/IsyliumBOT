@@ -67,7 +67,7 @@ export class SettingsController {
       const components = [
         new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
       ];
-      await interaction.update({
+      await select.update({
         embeds: [embed],
         components: components
       });
