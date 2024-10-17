@@ -24,6 +24,7 @@ const time = 20 * 60 * 1000;
 //ComponentType.RoleSelect
 
 export function SettingsController(response: any, user: User, guild: Guild) {
+  //SelectMenuInteraction
     return new SelectCollector(
         response,
         (select: SelectMenuInteraction) => {
@@ -55,6 +56,7 @@ export function SettingsController(response: any, user: User, guild: Guild) {
         time,
         (select: SelectMenuInteraction) => select.user.id === user.id
     );
+    //ChannelSelectMenuInteraction
     return new SelectCollector(
         response,
         (channel: ChannelSelectMenuInteraction) => {
@@ -93,8 +95,9 @@ export function SettingsController(response: any, user: User, guild: Guild) {
         },
         ComponentType.ChannelSelect,
         time,
-        (select: ChannelSelectMenuInteraction) => select.user.id === user.id
+        (channel: ChannelSelectMenuInteraction) => channel.user.id === user.id
     );
+    //ButtonInteraction
     return new ButtonCollector(
         response,
         (buttons: ButtonInteraction) => {
