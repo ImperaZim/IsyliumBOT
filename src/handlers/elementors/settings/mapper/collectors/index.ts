@@ -3,6 +3,8 @@ import {
   Guild,
   SelectMenuInteraction,
   ButtonInteraction,
+  RoleSelectMenuInteraction,
+  ChannelSelectMenuInteraction,
   ComponentType,
   ActionRowBuilder
 } from 'discord.js';
@@ -41,8 +43,8 @@ const time = 20 * 60 * 1000;
     ComponentType.StringSelect, 
       time,
       (select: SelectMenuInteraction) => select.user.id === user.id )
-      return new SelectCollector(response, (select: SelectMenuInteraction) => {
-        const { values, user } = select
+      return new SelectCollector(response, (channel: ChannelSelectMenuInteraction) => {
+        const { values, user } = channel
         
       },
       ComponentType.StringSelect, 
