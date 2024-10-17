@@ -8,67 +8,60 @@ import {
   ComponentType,
   ActionRowBuilder
 } from 'discord.js';
-import {
-  ButtonCollector,
-  SelectCollector,
-  ModalCollector,
-  getSelect,
-  getEmbed,
-  getButton,
-  getModal
-} from 'DiscordElementor';
+import {  ButtonCollector,
+ SelectCollector,
+ ModalCollector,
+  etSelect,
+  gtEmbed,
+  geButton,
+  getodal
+} from iscordElementor';
 import { client, mysql } from '@main';
 const settings = "settings";
 const time = 20 * 60 * 1000;
 
-export function SettingsController(response: any, user: User, guild: Guild) {
-  return new SelectCollector(response,
-    (select: SelectMenuInteraction) => {
-      const { values, user } = select
+export fcon SettingsController(response: any, user: User, guild: Guild) {
+  return n ew  lectCollector(response,
+    (select:SelectMenuInteraction) => {
+      cnst { values, user } = select
       const options = values[0];
-      if (options === "settings:discordlink") {
-        const embed_discordlink = getEmbed(settings, "settings_discordlink", {
-          user: user.globalName || "error 404",
+      if (optio      settings:discordlink") {
+        const emb        link = getEmbed(settings, "settings_discordlink", {
+          user: use           || "error 404",
         });
-        const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map((buttonName) => getButton(settings, buttonName));
-        const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
-        const components = ([row] || []).map((ar) => ar.toJSON());
+        c        ns =        ed", "dcl_logs", "dcl_servers"].map((buttonName) => getButton(settings, buttonName));
+        const row = new A        ilder<ButtonBuilder>().addComponents(buttons)
+        const components =         []).map((ar) => ar.toJSON());
 
         select.edit({
-          embeds: [embed_discordlink],
-          components: components
-        });
-      }
+               [embed_discord               components: components
+                }
     },
-    ComponentType.StringSelect,
+    Compo        trin      
     time,
-    (select: SelectMenuInteraction) => select.user.id === user.id)
-  return new SelectCollector(response, (channel: ChannelSelectMenuInteraction) => {
+    (select: SelectMenuInterat    > sele    r.id === user.id)
+  return new SelectCollector(response, (chane  nnelSelectMenuInteraction) => {
     const { values, user } = channel
 
   },
-    ComponentType.StringSelect,
+    Com    pe.StringSelect,
     time,
-    (select: SelectMenuInteraction) => select.user.id === user.id)
-  return new ButtonCollector(response, (buttons: ButtonInteraction) => {
-    const { customId, user } = buttons
+    (se  nuI    tion) => select.user.id ===u    )
+  re    ew ButtonCollector(response, (buttons: ButtonInteraction) => {
+  onst { customId, user } = buttons
     const clicked = customId;
-    if (clicked.includes("dcl_logs")) {
-      const dcl_logs = getEmbed(settings, "dcl_logs", {
-        user: user.globalName || "error 404",
+    if     d.includes("dcl_logs")) {
+      con    logs = getEmbed(settings,     s", {
+        user: user.globalName       404",
       });
-      const select_logs = getSelect(settings, "dcl_select_logs");
+      const select_logs = getSelec        , "dcl_select_logs");
 
-      buttons.edit({
-        embeds: [dcl_logs],
+      buttons.e                : [dcl_logs],
         components: [
-          new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([select_logs])
-        ]
-      });
-    }
-  },
+          new ActionRowBu      nnelSelectMenuB        addComponents([selec               ]
+                },
     ComponentType.Button,
     time,
-    (button: ButtonInteraction) => button.user.id === user.id
+    (button: ButtonInteraction) => but        d       .id
   )
 }
