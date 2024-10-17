@@ -88,18 +88,14 @@ export class SettingsController {
     }
   }
 
-  // Trata interações de menus de seleção de canais
   private async handleChannelSelectMenu(channel: ChannelSelectMenuInteraction) {
     const { values } = channel;
 
-    // Atualiza o log de discord_link
     mysql.update("discord_link", { logs: values[0] }, [{ guildid: this.guild.id }]);
 
-    // Atualiza a página de configurações
     await this.updateSettingsPage(channel);
   }
 
-  // Trata interações de botões
   private async handleButtonInteraction(button: ButtonInteraction) {
     const { customId } = button;
 
