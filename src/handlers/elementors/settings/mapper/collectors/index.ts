@@ -1,5 +1,18 @@
 import {
   User,
-  Guild
+  Guild,
+  InteractionResponse
 } from 'discord.js';
-import { ButtonColletor, SelectColletor, ModalColletor, getSelect, getEmbed, getButton, getModal } from 'DiscordElementor';
+import { 
+  ButtonColletor, 
+  SelectColletor, 
+  ModalColletor, 
+  getSelect, 
+  getEmbed, 
+  getButton, 
+  getModal
+  } from 'DiscordElementor';
+  
+  export function Responder(response: any, user: User, guild: Guild){
+    
+  }
