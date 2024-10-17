@@ -103,6 +103,7 @@ export function SettingsController(response: any, user: User, guild: Guild) {
         (buttons: ButtonInteraction) => {
             const { customId, user, showModal } = buttons;
             const clicked = customId;
+            // Discord Link
             if (clicked.includes("dcl_logs")) {
                 const dcl_logs = getEmbed(settings, "dcl_logs", {
                     user: user.globalName || "error 404"
