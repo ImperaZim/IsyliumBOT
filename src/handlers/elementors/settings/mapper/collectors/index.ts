@@ -67,10 +67,11 @@ export class SettingsController {
       const components = [
         new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
       ];
-      await select.update({
+      const response = await select.update({
         embeds: [embed],
         components: components
       });
+      await this.startSettingsInteraction(response);
     } else {
       await select.reply({ content: `A função ${option} não está habilitada.` });
     }
