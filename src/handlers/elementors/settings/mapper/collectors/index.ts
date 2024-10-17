@@ -118,7 +118,7 @@ export class SettingsController {
           embeds: [embed_discordlink],
           components: components
         });
-        new SettingsController(newresponse, newresponse.user, newresponse.guild);
+        new SettingsController(newresponse, channel.user, channel.guild);
       },
       ComponentType.ChannelSelect,
       time,
