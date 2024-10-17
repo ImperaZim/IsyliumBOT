@@ -5,7 +5,7 @@ import {
   ComponentType
 } from 'discord.js';
 import { 
-  ButtonColletor, 
+  ButtonCollector, 
   SelectCollector, 
   ModalColletor, 
   getSelect, 
