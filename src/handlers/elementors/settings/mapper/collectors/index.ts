@@ -30,13 +30,13 @@ const settings = "settings";
           const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
           const components = ([row] || []).map((ar) => ar.toJSON());
 
-           select.reply({
+           select.edit({
             embeds: [embed_discordlink],
             components: components
           });
         }
     },
     ComponentType.StringSelect, 
-      60000, 
+      , 
       (select: SelectMenuInteraction) => select.user.id === user.id )
   }
