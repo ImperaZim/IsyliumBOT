@@ -30,7 +30,8 @@ export default new ExtendedCommand({
                 ],
                 fetchReply: true
             });
-            const controller = SettingsController(response, user, guild);
+            const controller = new SettingsController(response, user, guild);
+            controller.startCollectors();
         }
     }
 });
