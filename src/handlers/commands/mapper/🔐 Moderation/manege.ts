@@ -13,7 +13,7 @@ export default new ExtendedCommand({
     type: ApplicationCommandType.ChatInput,
     async run({ interaction }: CommandProps) {
         if (!interaction.inCachedGuild()) return;
-        const { user, guild } = interaction!
+        const { user, guild } = interaction;
         const data = new CreatedGuild(guild).checkAndAddGuild();
         if (data) {
             const embed_start = getEmbed(settings, "embed_settings", {
