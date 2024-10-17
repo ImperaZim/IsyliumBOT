@@ -57,32 +57,20 @@ export class SettingsController {
     );
   }
 
-  private async updateSettingsPage(interaction: SelectMenuInteraction | ButtonInteraction) {
-    const embed = getEmbed(settings, "settings_discordlink", { user: this.user.globalName || "Desconhecido" });
-    const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map(buttonName => getButton(settings, buttonName));
-    const components = [
-      new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
-    ];
-
-    if (interaction.isButton()) {
-      await interaction.update({
-        embeds: [embed],
-        components: components
-      });
-    } else if (interaction.isSelectMenu()) {
-      await interaction.update({
-        embeds: [embed],
-        components: components
-      });
-    }
-  }
-
   private async handleSelectMenu(select: SelectMenuInteraction) {
     const { values } = select;
     const option = values[0];
 
     if (option === "settings:discordlink") {
-      await this.updateSettingsPage(select);
+      const embed = getEmbed(settings, "settings_discordlink", { user: this.user.globalName || "Desconhecido" });
+      const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map(buttonName => getButton(settings, buttonName));
+      const components = [
+        new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
+      ];
+      await interaction.update({
+        embeds: [embed],
+        components: components
+      });
     } else {
       await select.reply({ content: `A função ${option} não está habilitada.` });
     }
