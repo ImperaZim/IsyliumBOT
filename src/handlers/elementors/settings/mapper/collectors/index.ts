@@ -59,32 +59,41 @@ export function SettingsController(response: any, user: User, guild: Guild) {
         response,
         (channel: ChannelSelectMenuInteraction) => {
             const { values, user } = channel;
-        mysql.update('discord_link',
-          {
-            logs: values[0]
-          },
-          [
-            {
-              guildid: guild.id
-            }
-          ]
-        );
+            mysql.update(
+                "discord_link",
+                {
+                    logs: values[0]
+                },
+                [
+                    {
+                        guildid: guild.id
+                    }
+                ]
+            );
 
-        const embed_discordlink = getEmbed(settings, "settings_discordlink", {
-          user: user.globalName || "error 404",
-        });
-        const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map((buttonName) => getButton(settings, buttonName));
-        const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
-        const components = ([row] || []).map((ar) => ar.toJSON());
+            const embed_discordlink = getEmbed(
+                settings,
+                "settings_discordlink",
+                {
+                    user: user.globalName || "error 404"
+                }
+            );
+            const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map(
+                buttonName => getButton(settings, buttonName)
+            );
+            const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
+                buttons
+            );
+            const components = ([row] || []).map(ar => ar.toJSON());
 
-        channel.edit({
-          embeds: [embed_discordlink],
-          components: components
-        });
+            channel.edit({
+                embeds: [embed_discordlink],
+                components: components
+            });
         },
         ComponentType.ChannelSelect,
         time,
-        (select: SelectMenuInteraction) => select.user.id === user.id
+        (select: ChannelSelectMenuInteraction) => select.user.id === user.id
     );
     return new ButtonCollector(
         response,
