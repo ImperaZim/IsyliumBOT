@@ -13,9 +13,9 @@ export default new ExtendedCommand({
     type: ApplicationCommandType.ChatInput,
     async run({ interaction }: CommandProps) {
         if (!interaction.inCachedGuild()) return;
-        const data = new CreatedGuild(interaction.guild).checkAndAddGuild();
+        const { user, guild } = interaction!
+        const data = new CreatedGuild(guild).checkAndAddGuild();
         if (data) {
-            const user = interaction.user;
             const embed_start = getEmbed(settings, "embed_settings", {
                 user: user.globalName || "error 404"
             });
@@ -29,7 +29,7 @@ export default new ExtendedCommand({
                     )
                 ]
             });
-            SettingsController(response, interaction.user, interaction.guild);
+            SettingsController(response, user, guild);
         }
     }
 });
