@@ -152,7 +152,7 @@ export class SettingsController {
               )
             ]
           });
-          new SettingsController(newresponse, newresponse.user, newresponse.guild);
+          new SettingsController(newresponse, buttons.user, buttons.guild);
         }
 
         // Discord Link - Embed Modal
