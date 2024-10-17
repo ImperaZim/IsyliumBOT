@@ -65,19 +65,11 @@ export class SettingsController {
           const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons);
           const components = ([row] || []).map(ar => ar.toJSON());
 
-          let newresponse;
-          if (response == null) {
-            newresponse = await message.edit({
+          const newresponse = await select.update({
               embeds: [embed_discordlink],
               components: components
             });
-          } else {
-            newresponse = await select.update({
-              embeds: [embed_discordlink],
-              components: components
-            });
-          }
-          new SettingsController(newresponse, newresponse.user, newresponse.guild);
+          new SettingsController(newresponse, select.user, select.guild);
         }
       },
       ComponentType.StringSelect,
