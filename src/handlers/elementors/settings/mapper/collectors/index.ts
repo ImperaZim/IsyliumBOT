@@ -35,7 +35,7 @@ export class SettingsController {
     this.guild = guild;
   }
 
-  public startCollectors() {
+  startCollectors() {
     this.initButtonInteraction(null, this.message);
     this.initSelectMenuInteraction(null, this.message);
     this.initChannelSelectMenuInteraction(null, this.message);
