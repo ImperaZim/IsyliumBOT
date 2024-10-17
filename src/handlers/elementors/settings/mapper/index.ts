@@ -116,6 +116,20 @@ export function register(): void {
             emoji: "<:servers:1295609099819421747>"
           }
         },
+        dlc_embed_edit: {
+          type: ButtonStyle.Primary,
+          data: {
+            label: "Edit Embed",
+            emoji: "<a:lapis:1295608106965012541>"
+          }
+        },
+        dcl_embed_send: {
+          type: ButtonStyle.Primary,
+          data: {
+            label: "Send Message",
+            emoji: "<:servers:1295609099819421747>"
+          }
+        },
       },
     }
   });
