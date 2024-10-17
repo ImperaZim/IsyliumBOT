@@ -71,7 +71,7 @@ export class SettingsController {
         embeds: [embed],
         components: components
       });
-      await this.startSettingsInteraction(response);
+      await this.initButtonCollector(response);
     } else {
       await select.reply({ content: `A função ${option} não está habilitada.` });
     }
