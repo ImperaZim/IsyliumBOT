@@ -120,14 +120,13 @@ export class SettingsController {
 
   // ButtonInteraction
   private initButtonInteraction(
-    response: any = null,
     message: any = null
   ) {
     return new ButtonCollector(
-      (response === null ? message : response),
-      async (buttons: ButtonInteraction) => {
-        console.log("called buttons");
-        const { customId, user, showModal } = buttons;
+      message,
+      async (button: ButtonInteraction) => {
+        console.log("called button");
+        const { customId, user, showModal } = button;
         const clicked = customId;
 
         // Discord Link - Logs
@@ -137,7 +136,7 @@ export class SettingsController {
           });
 
           const select_logs = getSelect(settings, "dcl_select_logs");
-          const response = await select.update({
+          const response = await button.update({
               embeds: [dcl_logs],
             components: [
               new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(
