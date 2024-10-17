@@ -126,6 +126,7 @@ export class SettingsController {
     return new ButtonCollector(
       (response === null ? message : response),
       async (buttons: ButtonInteraction) => {
+        console.log("called buttons");
         const { customId, user, showModal } = buttons;
         const clicked = customId;
 
