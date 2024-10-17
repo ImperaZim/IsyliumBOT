@@ -92,10 +92,11 @@ export class SettingsController {
       const embedLogs = getEmbed(settings, "dcl_logs", { user: this.user.globalName || "Desconhecido" });
       const selectLogs = getSelect(settings, "dcl_select_logs");
 
-      await button.update({
+      const response = await button.update({
         embeds: [embedLogs],
         components: [new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(selectLogs)]
       });
+      await this.startSettingsInteraction(response);
     } else if (customId.includes("dcl_embed")) {
       const modalEmbed = getModal("dcl_embed_modal");
       button.showModal(modalEmbed);
