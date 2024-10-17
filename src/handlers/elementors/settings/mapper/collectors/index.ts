@@ -26,8 +26,6 @@ export class SettingsController {
   }
 
   async startSettingsInteraction(response: any) {
-    await this.updateSettingsPage(null, response);
-
     new SelectCollector(
       response,
       async (menu: SelectMenuInteraction) => this.handleSelectMenu(menu),
