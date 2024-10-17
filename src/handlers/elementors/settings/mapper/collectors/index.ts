@@ -14,6 +14,7 @@ import {
   getModal
   } from 'DiscordElementor';
 import { client, mysql } from '@main';
+const settings = "settings";
   
   export function SettingsController(response: any, user: User, guild: Guild){
    return new SelectCollector(response, 
