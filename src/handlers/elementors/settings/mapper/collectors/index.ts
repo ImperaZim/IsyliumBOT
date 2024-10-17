@@ -77,9 +77,7 @@ export class SettingsController {
               components: components
             });
           }
-          if (newresponse) {
-            this.initButtonInteraction(newresponse, null);
-          }
+          new SettingsController(newresponse, newresponse.user, newresponse.guild);
         }
       },
       ComponentType.StringSelect,
@@ -175,9 +173,7 @@ export class SettingsController {
               ]
             });
           }
-          if (newresponse) {
-            this.initSelectMenuInteraction(newresponse, null);
-          }
+          new SettingsController(newresponse, newresponse.user, newresponse.guild);
         }
 
         // Discord Link - Embed Modal
