@@ -46,7 +46,7 @@ export function SettingsController(response: any, user: User, guild: Guild) {
                 );
                 const components = ([row] || []).map(ar => ar.toJSON());
 
-                select.edit({
+                select.update({
                     embeds: [embed_discordlink],
                     components: components
                 });
