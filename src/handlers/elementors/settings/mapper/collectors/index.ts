@@ -47,7 +47,7 @@ export class SettingsController {
     message: any = null
   ) {
     return new SelectCollector(
-      message,
+      (response === null ? message : response),
       async (select: SelectMenuInteraction) => {
         const { values, user } = select;
         const options = values[0];
