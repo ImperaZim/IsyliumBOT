@@ -72,7 +72,7 @@ export class SettingsController {
               components: components
             });
           } else {
-            newresponse = await response.update({
+            newresponse = await select.update({
               embeds: [embed_discordlink],
               components: components
             });
@@ -168,7 +168,7 @@ export class SettingsController {
               ]
             });
           } else {
-            newresponse = await response.update({
+            newresponse = await buttons.update({
               embeds: [dcl_logs],
               components: [
                 new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(
