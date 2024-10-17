@@ -7,8 +7,7 @@ import {
   ComponentType,
   ActionRowBuilder,
   ButtonBuilder,
-  ChannelSelectMenuBuilder,
-  EmbedBuilder
+  ChannelSelectMenuBuilder
 } from "discord.js";
 import { ButtonCollector, SelectCollector, getEmbed, getButton, getSelect, getModal } from "DiscordElementor";
 import { mysql } from "@main";
@@ -26,6 +25,13 @@ export class SettingsController {
   }
 
   async startSettingsInteraction(response: any) {
+    // Inicia coletores para Select e Button
+    this.initSelectCollector(response);
+    this.initButtonCollector(response);
+  }
+
+  // Inicializa o coletor de menus de seleção
+  private initSelectCollector(response: any) {
     new SelectCollector(
       response,
       async (menu: SelectMenuInteraction) => this.handleSelectMenu(menu),
@@ -41,7 +47,10 @@ export class SettingsController {
       time,
       (channel: ChannelSelectMenuInteraction) => channel.user.id === this.user.id
     );
+  }
 
+  // Inicializa o coletor de botões
+  private initButtonCollector(response: any) {
     new ButtonCollector(
       response,
       async (button: ButtonInteraction) => this.handleButtonInteraction(button),
@@ -51,45 +60,53 @@ export class SettingsController {
     );
   }
 
-  private async updateSettingsPage(button: any = null, message: any = null) {
+  // Atualiza a página de configurações
+  private async updateSettingsPage(interaction: SelectMenuInteraction | ButtonInteraction) {
     const embed = getEmbed(settings, "settings_discordlink", { user: this.user.globalName || "Desconhecido" });
     const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map(buttonName => getButton(settings, buttonName));
     const components = [
       new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
     ];
 
-    if (button == null) {
-      await message.edit({
+    // Verifica se é um SelectMenuInteraction ou ButtonInteraction
+    if (interaction.isButton()) {
+      await interaction.update({
         embeds: [embed],
         components: components
       });
-    } else {
-      await button.update({
+    } else if (interaction.isSelectMenu()) {
+      await interaction.update({
         embeds: [embed],
         components: components
       });
     }
   }
 
+  // Trata interações de menus de seleção
   private async handleSelectMenu(select: SelectMenuInteraction) {
     const { values } = select;
     const option = values[0];
 
     if (option === "settings:discordlink") {
-      await this.updateSettingsPage(null, select);
+      // Atualiza a página de configurações ao selecionar o item
+      await this.updateSettingsPage(select);
     } else {
-      select.reply({ content: `A função ${option} não está habilitada.` });
+      await select.reply({ content: `A função ${option} não está habilitada.` });
     }
   }
 
+  // Trata interações de menus de seleção de canais
   private async handleChannelSelectMenu(channel: ChannelSelectMenuInteraction) {
     const { values } = channel;
 
+    // Atualiza o log de discord_link
     mysql.update("discord_link", { logs: values[0] }, [{ guildid: this.guild.id }]);
 
-    await this.updateSettingsPage(null, channel);
+    // Atualiza a página de configurações
+    await this.updateSettingsPage(channel);
   }
 
+  // Trata interações de botões
   private async handleButtonInteraction(button: ButtonInteraction) {
     const { customId } = button;
 
@@ -105,10 +122,11 @@ export class SettingsController {
       const modalEmbed = getModal("dcl_embed_modal");
       button.showModal(modalEmbed);
     } else {
-      button.reply({ content: `A função ${customId} não está habilitada.` });
+      await button.reply({ content: `A função ${customId} não está habilitada.` });
     }
   }
 }
+
 
 
 
