@@ -3,7 +3,7 @@ import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
 import { CreatedGuild, SettingsController } from "@handlers";
 import { getSelect, getEmbed } from "DiscordElementor";
-import { ApplicationCommandType } from "discord.js";
+import { ApplicationCommandType, ActionRowBuilder } from "discord.js";
 const settings = "settings";
 
 export default new ExtendedCommand({
