@@ -106,11 +106,11 @@ export class SettingsController {
         const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons);
         const components = ([row] || []).map(ar => ar.toJSON());
 
-        const newresponse = await channel.update({
-          embeds: [embed_discordlink],
-          components: components
-        });
-        new SettingsController(newresponse, channel.user, channel.guild);
+        const response = await channel.update({
+              embeds: [embed_discordlink],
+              components: components
+            });
+          this.initButtonInteraction(response);
       },
       ComponentType.ChannelSelect,
       time,
