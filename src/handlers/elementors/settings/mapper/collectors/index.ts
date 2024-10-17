@@ -114,18 +114,10 @@ export class SettingsController {
         const row = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons);
         const components = ([row] || []).map(ar => ar.toJSON());
 
-        let newresponse;
-        if (response == null) {
-          newresponse = await message.edit({
-            embeds: [embed_discordlink],
-            components: components
-          });
-        } else {
-          newresponse = await channel.update({
-            embeds: [embed_discordlink],
-            components: components
-          });
-        }
+        const newresponse = await channel.update({
+          embeds: [embed_discordlink],
+          components: components
+        });
         new SettingsController(newresponse, newresponse.user, newresponse.guild);
       },
       ComponentType.ChannelSelect,
