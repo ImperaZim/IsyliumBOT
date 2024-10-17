@@ -101,7 +101,7 @@ export function SettingsController(response: any, user: User, guild: Guild) {
     return new ButtonCollector(
         response,
         (buttons: ButtonInteraction) => {
-            const { customId, user } = buttons;
+            const { customId, user, showModal } = buttons;
             const clicked = customId;
             if (clicked.includes("dcl_logs")) {
                 const dcl_logs = getEmbed(settings, "dcl_logs", {
@@ -118,9 +118,9 @@ export function SettingsController(response: any, user: User, guild: Guild) {
                     ]
                 });
             }
-            if(clicked.includes("dcl_embed")) {
-              const modal_embed = getModal("dcl_embed_modal");
-        await interaction.showModal(modal_embed);
+            if (clicked.includes("dcl_embed")) {
+                const modal_embed = getModal("dcl_embed_modal");
+                showModal(modal_embed);
             }
         },
         ComponentType.Button,
