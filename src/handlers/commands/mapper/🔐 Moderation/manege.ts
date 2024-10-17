@@ -1,7 +1,7 @@
 import { client, mysql } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
-import { CreatedGuild, Controller } from "@handlers"
+import { CreatedGuild, SettingsController } from "@handlers"
 import { getSelect, getEmbed, getButton, getModal } from "DiscordElementor";
 import {
   ApplicationCommandType,
