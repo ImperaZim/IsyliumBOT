@@ -88,7 +88,7 @@ export function SettingsController(response: any, user: User, guild: Guild) {
             );
             const components = ([row] || []).map(ar => ar.toJSON());
 
-            channel.edit({
+            channel.update({
                 embeds: [embed_discordlink],
                 components: components
             });
@@ -110,7 +110,7 @@ export function SettingsController(response: any, user: User, guild: Guild) {
                 });
                 const select_logs = getSelect(settings, "dcl_select_logs");
 
-                buttons.edit({
+                buttons.update({
                     embeds: [dcl_logs],
                     components: [
                         new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(
