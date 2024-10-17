@@ -84,6 +84,8 @@ export class SettingsController {
 
   private async handleButtonInteraction(button: ButtonInteraction) {
     const { customId } = button;
+    
+    console.log(customId);
 
     if (customId.includes("dcl_logs")) {
       const embedLogs = getEmbed(settings, "dcl_logs", { user: this.user.globalName || "Desconhecido" });
