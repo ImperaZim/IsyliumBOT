@@ -128,9 +128,7 @@ export class SettingsController {
             components: components
           });
         }
-        if (newresponse) {
-          this.initButtonInteraction(newresponse, null);
-        }
+        new SettingsController(newresponse, newresponse.user, newresponse.guild);
       },
       ComponentType.ChannelSelect,
       time,
