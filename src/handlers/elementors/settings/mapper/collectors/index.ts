@@ -21,6 +21,8 @@ import { client, mysql } from "@main";
 const settings = "settings";
 const time = 20 * 60 * 1000;
 
+//ComponentType.RoleSelect
+
 export function SettingsController(response: any, user: User, guild: Guild) {
     return new SelectCollector(
         response,
@@ -58,7 +60,7 @@ export function SettingsController(response: any, user: User, guild: Guild) {
         (channel: ChannelSelectMenuInteraction) => {
             const { values, user } = channel;
         },
-        ComponentType.StringSelect,
+        ComponentType.ChannelSelect,
         time,
         (select: SelectMenuInteraction) => select.user.id === user.id
     );
