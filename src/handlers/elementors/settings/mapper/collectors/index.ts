@@ -49,6 +49,7 @@ export class SettingsController {
     return new SelectCollector(
       (response === null ? message : response),
       async (select: SelectMenuInteraction) => {
+        console.log("called select string");
         const { values, user } = select;
         const options = values[0];
 
@@ -86,6 +87,7 @@ export class SettingsController {
     return new SelectCollector(
       (response === null ? message : response),
       async (channel: ChannelSelectMenuInteraction) => {
+        console.log("called select channel");
         const { values, user } = channel;
 
         mysql.update(
