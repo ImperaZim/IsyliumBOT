@@ -152,27 +152,14 @@ export class SettingsController {
           });
 
           const select_logs = getSelect(settings, "dcl_select_logs");
-
-          let newresponse;
-          if (response == null) {
-            newresponse = await message.edit({
-              embeds: [dcl_logs],
-              components: [
-                new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(
-                  [select_logs]
-                )
-              ]
-            });
-          } else {
-            newresponse = await buttons.update({
-              embeds: [dcl_logs],
-              components: [
-                new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(
-                  [select_logs]
-                )
-              ]
-            });
-          }
+          const newresponse = await buttons.update({
+            embeds: [dcl_logs],
+            components: [
+              new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(
+                [select_logs]
+              )
+            ]
+          });
           new SettingsController(newresponse, newresponse.user, newresponse.guild);
         }
 
