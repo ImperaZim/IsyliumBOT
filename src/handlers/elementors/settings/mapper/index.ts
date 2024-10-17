@@ -133,4 +133,25 @@ export function register(): void {
       }
     }
   });
+  registerModal("dcl_servers_modal", {
+    title: "Criar servidor",
+    components: {
+      inputs: {
+        server_name: {
+          label: "Nome do Servidor",
+          maxLength: 180,
+          placeholder: 'SkyBlock',
+          required: true,
+          style: TextInputStyle.Paragraph
+        },
+        server_available: {
+          label: "Servidor Disponivel?",
+          maxLength: 180,
+          placeholder: 'true or false',
+          required: true,
+          style: TextInputStyle.Paragraph
+        }
+      }
+    }
+  });
 }
