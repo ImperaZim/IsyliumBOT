@@ -25,12 +25,10 @@ export class SettingsController {
   }
 
   async startSettingsInteraction(response: any) {
-    // Inicia coletores para Select e Button
     this.initSelectCollector(response);
     this.initButtonCollector(response);
   }
 
-  // Inicializa o coletor de menus de seleção
   private initSelectCollector(response: any) {
     new SelectCollector(
       response,
@@ -49,7 +47,6 @@ export class SettingsController {
     );
   }
 
-  // Inicializa o coletor de botões
   private initButtonCollector(response: any) {
     new ButtonCollector(
       response,
@@ -60,7 +57,6 @@ export class SettingsController {
     );
   }
 
-  // Atualiza a página de configurações
   private async updateSettingsPage(interaction: SelectMenuInteraction | ButtonInteraction) {
     const embed = getEmbed(settings, "settings_discordlink", { user: this.user.globalName || "Desconhecido" });
     const buttons = ["dcl_embed", "dcl_logs", "dcl_servers"].map(buttonName => getButton(settings, buttonName));
@@ -68,7 +64,6 @@ export class SettingsController {
       new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)
     ];
 
-    // Verifica se é um SelectMenuInteraction ou ButtonInteraction
     if (interaction.isButton()) {
       await interaction.update({
         embeds: [embed],
@@ -82,13 +77,11 @@ export class SettingsController {
     }
   }
 
-  // Trata interações de menus de seleção
   private async handleSelectMenu(select: SelectMenuInteraction) {
     const { values } = select;
     const option = values[0];
 
     if (option === "settings:discordlink") {
-      // Atualiza a página de configurações ao selecionar o item
       await this.updateSettingsPage(select);
     } else {
       await select.reply({ content: `A função ${option} não está habilitada.` });
