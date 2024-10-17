@@ -15,7 +15,7 @@ import {
   } from 'DiscordElementor';
 import { client, mysql } from '@main';
   
-  export function Responder(response: any, user: User, guild: Guild){
+  export function Controller(response: any, user: User, guild: Guild){
    return new SelectColletor(response, 
     (select: SelectMenuInteraction ) => {
       const { values, user } = select
