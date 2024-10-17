@@ -41,6 +41,13 @@ const time = 20 * 60 * 1000;
     ComponentType.StringSelect, 
       time,
       (select: SelectMenuInteraction) => select.user.id === user.id )
+      return new SelectCollector(response, (select: SelectMenuInteraction) => {
+        const { values, user } = select
+        
+      },
+      ComponentType.StringSelect, 
+      time,
+      (select: SelectMenuInteraction) => select.user.id === user.id)
      return new ButtonCollector(response, (buttons: ButtonInteraction) => {
        const { customId, user } = buttons
        const clicked = customId;
