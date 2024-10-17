@@ -80,11 +80,10 @@ export class SettingsController {
 
   // ChannelSelectMenuInteraction
   private initChannelSelectMenuInteraction(
-    response: any = null,
     message: any = null
   ) {
     return new SelectCollector(
-      (response === null ? message : response),
+      message,
       async (channel: ChannelSelectMenuInteraction) => {
         console.log("called select channel");
         const { values, user } = channel;
