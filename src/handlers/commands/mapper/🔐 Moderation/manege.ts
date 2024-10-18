@@ -43,9 +43,11 @@ export default new ExtendedCommand({
         message: message
       });
 
-      new GlobalCollector(
-        message,
-        async (select: SelectInteractionTypes) => {
+      new GlobalCollector({
+        response: message,
+        componentType: ComponentType.StringSelect,
+        timeout: null,
+        callback: async (select: SelectInteractionTypes) => {
           const { values } = select;
           const selected = values[0];
 
@@ -63,12 +65,16 @@ export default new ExtendedCommand({
               break;
           }
         },
-        ComponentType.StringSelect
-      );
+        filter: async (select: SelectInteractionTypes) => {
+          button.user.id === interaction.user.id
+        },
+      });
 
-      new GlobalCollector(
-        message,
-        async (button: ButtonInteraction) => {
+      new GlobalCollector({
+        response: message,
+        componentType: ComponentType.Button,
+        timeout: null,
+        callback: async (button: ButtonInteraction) => {
           const { customId } = button;
           button.update({ content: `Você clicou: ${customId}` });
           return;
@@ -87,8 +93,10 @@ export default new ExtendedCommand({
               break;
           }
         },
-        ComponentType.Button
-      );
+        filter: async (button: ButtonInteraction) => {
+          button.user.id === interaction.user.id
+        },
+      });
     }
   }
 });
