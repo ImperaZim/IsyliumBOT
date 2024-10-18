@@ -108,22 +108,18 @@ export default new ExtendedCommand({
         },
       });
 
-      const modal = await interaction.awaitModalSubmit({
-        time: 60000,
-        filter: i => i.user.id === interaction.user.id,
-      }).catch(error => {
-        console.error(error)
-        return null
-      })
-      
-      if (modal) {
-        if (modal.customId === "discord_embed_creator") {
-          const text = modal.fields.getTextInputValue("embed_creator");
-
-          console.log("Feito => " + text);
-          await modal.reply({ content: "Modal recebido com sucesso!", ephemeral: true });
-        }
-      }
+      new ModalCollector({
+        response: interaction,
+        timeout: 60000,
+        filter: (i) => i.user.id === interaction.user.id,
+        callback: async (modal) => {
+          if (modal.customId === "discord_embed_creator") {
+            const text = modal.fields.getTextInputValue("embed_creator");
+            console.log("Feito => " + text);
+            await modal.reply({ content: "Modal recebido com sucesso!", ephemeral: true });
+          }
+        },
+      });
     }
   }
 });
