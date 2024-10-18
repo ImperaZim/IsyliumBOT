@@ -2,7 +2,7 @@ import { getEmbed, getSelect, getButton } from "DiscordElementor";
 import { ActionRowBuilder } from "discord.js";
 import { LoadPagesinterface } from "@types";
 
-class PageManager {
+export class PageManager {
     private static settings = "settings";
 
     static async loadPage(id: string, properties: LoadPageinterface) {
