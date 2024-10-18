@@ -23,7 +23,7 @@ export class CollectorsManager {
         this.registerModalCollector(interaction);
     }
 
-    private static registerGlobalCollector(
+    public static registerGlobalCollector(
         interaction: CommandProps,
         message: any
     ) {
@@ -91,7 +91,7 @@ export class CollectorsManager {
         });
     }
 
-    private static registerButtonCollector(
+    public static registerButtonCollector(
         interaction: CommandProps,
         message: any
     ) {
@@ -142,7 +142,7 @@ export class CollectorsManager {
         });
     }
 
-    private static registerModalCollector(interaction: CommandProps) {
+    public static registerModalCollector(interaction: CommandProps) {
         new ModalCollector({
             response: interaction,
             timeout: 2147483647,
