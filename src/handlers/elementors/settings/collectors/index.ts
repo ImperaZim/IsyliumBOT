@@ -1,5 +1,6 @@
 import { CommandProps } from "@types";
 import { client, mysql } from "@main";
+import { PageManager } from "@handlers";
 import {
     getModal,
     getEmbed,
@@ -44,7 +45,7 @@ export class CollectorsManager {
                                 });
                                 break;
                             case "settings:discordlink":
-                                PageManager.loadPage(
+                               new PageManager().loadPage(
                                     "open:discord_link_settings",
                                     {
                                         interaction,
@@ -76,7 +77,7 @@ export class CollectorsManager {
                 switch (select.customId) {
                     case "discord_logs_select":
                         console.log(selected);
-                        PageManager.loadPage("open:discord_link_settings", {
+                        new PageManager().loadPage("open:discord_link_settings", {
                             interaction,
                             collectorResponse: select
                         });
@@ -122,7 +123,7 @@ export class CollectorsManager {
                         }
                         return;
                     case "discord_log_channel":
-                        PageManager.loadPage("open:discord_logs_select", {
+                        new PageManager().loadPage("open:discord_logs_select", {
                             interaction,
                             collectorResponse: button
                         });
