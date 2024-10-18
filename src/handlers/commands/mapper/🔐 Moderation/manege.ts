@@ -88,7 +88,7 @@ export default new ExtendedCommand({
                 const embedJson = result[0].embed_json;
 
                 let defaultValue = '{\n "title": "teste"\n}';
-                if (embedJson !== null) {
+                if (embedJson !== undefined) {
                   defaultValue = embedJson;
                 }
                 button.showModal(getModal("discord_embed_creator", {
