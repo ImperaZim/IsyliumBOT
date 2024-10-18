@@ -133,7 +133,7 @@ async function loadPage(id: string, properties: Props) {
       break;
   }
 
-  components = new ActionRowBuilder().addComponents(components);
+  components = [new ActionRowBuilder().addComponents(...components)];
 
   // update interaction
   if (properties.collectorResponse) {
