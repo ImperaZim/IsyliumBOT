@@ -1,12 +1,14 @@
 import { CommandProps } from "@types";
 import { client, mysql } from "@main";
 import { ExtendedCommand } from "@extensions";
-import { CreatedGuild } from "@handlers";
+import { CreatedGuild, SettingsController } from "@handlers";
 import {
   getModal,
   getEmbed,
   getSelect,
   getButton,
+  ModalCollector,
+  GlobalCollector,
   SelectInteractionTypes
 } from "DiscordElementor";
 import {
@@ -14,8 +16,11 @@ import {
   ActionRowBuilder,
   ButtonInteraction,
   ModalSubmitInteraction,
-  ApplicationCommandType
+  ApplicationCommandType,
+  StringSelectMenuBuilder
 } from "discord.js";
+
+const settings = "settings";
 
 // PageManager class to handle different pages
 class PageManager {
