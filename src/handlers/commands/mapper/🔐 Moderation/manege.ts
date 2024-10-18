@@ -115,7 +115,7 @@ export default new ExtendedCommand({
             case "discord_log_channel":
               loadPage("open:settings_main_menu", {
                 interaction,
-                message: button
+                collectorResponse: button
               });
               return;
             default:
