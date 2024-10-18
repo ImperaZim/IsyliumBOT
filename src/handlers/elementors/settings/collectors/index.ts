@@ -1,3 +1,21 @@
+import { CommandProps } from "@types";
+import { client, mysql } from "@main";
+import {
+    getModal,
+    getEmbed,
+    getSelect,
+    getButton,
+    ModalCollector,
+    GlobalCollector,
+    SelectInteractionTypes
+} from "DiscordElementor";
+import {
+    ComponentType,
+    ButtonInteraction,
+    ModalSubmitInteraction,
+    StringSelectMenuBuilder
+} from "discord.js";
+
 class CollectorsManager {
     static registerCollectors(interaction: CommandProps, message: any) {
         this.registerGlobalCollector(interaction, message);
