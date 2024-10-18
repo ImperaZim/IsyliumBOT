@@ -53,7 +53,7 @@ export default new ExtendedCommand({
         callback: async (select: SelectInteractionTypes) => {
           const { values } = select;
           const selected = values[0];
-          
+
           console.log(select.customId);
 
           switch (select.customId) {
@@ -113,9 +113,9 @@ export default new ExtendedCommand({
 
               return;
             case "discord_log_channel":
-              loadPage("open:discord_logs_select", {
+              loadPage("open:settings_main_menu", {
                 interaction,
-                collectorResponse: button
+                message: button
               });
               return;
             default:
