@@ -134,7 +134,7 @@ export default new ExtendedCommand({
                 collectorResponse: button
               });
               return;
-            case "discord_servers_setup":
+            case "discord_server_manager":
               button.showModal(getModal("discord_servers_modal"));
               return;
             default:
