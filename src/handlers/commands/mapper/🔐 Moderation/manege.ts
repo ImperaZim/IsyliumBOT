@@ -66,7 +66,7 @@ export default new ExtendedCommand({
           }
         },
         filter: async (select: SelectInteractionTypes) => {
-          select.user.id === interaction.user.id
+          return select.user.id === interaction.user.id
         },
       });
 
@@ -94,7 +94,7 @@ export default new ExtendedCommand({
           }
         },
         filter: async (button: ButtonInteraction) => {
-          button.user.id === interaction.user.id
+          return button.user.id === interaction.user.id
         },
       });
     }
