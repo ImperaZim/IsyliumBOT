@@ -132,10 +132,12 @@ async function loadPage(id: string, properties: Props) {
     default:
       break;
   }
-  
-  components = new ActionRowBuilder().addComponents(components);
-  components = ([components] || []).map((ar) => ar.toJSON());
-  
+
+  components = [
+    new ActionRowBuilder().addComponents(components)
+  ];
+  components = (components || []).map((ar) => ar.toJSON());
+
   // update interaction
   if (properties.collectorResponse) {
     properties.collectorResponse.update({
