@@ -139,12 +139,12 @@ async function loadPage(id: string, properties: Props) {
   if (properties.collectorResponse) {
     properties.collectorResponse.update({
       embeds: embeds,
-      components: components.toJSON()
+      components: components
     });
   } else if (properties.message) {
     properties.message.edit({
       embeds: embeds,
-      components: components.toJSON()
+      components: components
     });
   }
 }
