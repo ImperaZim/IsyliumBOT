@@ -6,8 +6,6 @@ import {
   getEmbed,
   getSelect,
   getButton,
-  ButtonCollector,
-  SelectCollector,
   GlobalCollector,
   SelectInteractionTypes
 } from "DiscordElementor";
@@ -45,7 +43,7 @@ export default new ExtendedCommand({
         message: message
       });
 
-      new SelectCollector(
+      new GlobalCollector(
         message,
         async (select: SelectInteractionTypes) => {
           const { values } = select;
@@ -68,7 +66,7 @@ export default new ExtendedCommand({
         ComponentType.StringSelect
       );
 
-      new ButtonCollector(
+      new GlobalCollector(
         message,
         async (button: ButtonInteraction) => {
           const { customId } = button;
