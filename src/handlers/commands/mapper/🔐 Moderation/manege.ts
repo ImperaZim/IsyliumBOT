@@ -3,22 +3,8 @@ import { client, mysql } from "@main";
 import { ExtendedCommand } from "@extensions";
 import { CreatedGuild, PageManager, CollectorsManager } from "@handlers";
 import {
-    getModal,
     getEmbed,
-    getSelect,
-    getButton,
-    ModalCollector,
-    GlobalCollector,
-    SelectInteractionTypes
 } from "DiscordElementor";
-import {
-    ComponentType,
-    ActionRowBuilder,
-    ButtonInteraction,
-    ModalSubmitInteraction,
-    ApplicationCommandType,
-    StringSelectMenuBuilder
-} from "discord.js";
 
 const settings = "settings";
 
@@ -47,7 +33,7 @@ export default new ExtendedCommand({
                 message
             });
 
-           new  CollectorsManager.registerCollectors(interaction, message);
+            new CollectorsManager.registerCollectors(interaction, message);
         }
     }
 });
