@@ -8,6 +8,7 @@ import {
   getButton,
   ButtonCollector,
   SelectCollector,
+  GlobalCollector,
   SelectInteractionTypes
 } from "DiscordElementor";
 import {
@@ -64,8 +65,7 @@ export default new ExtendedCommand({
               break;
           }
         },
-        ComponentType.StringSelectMenuBuilder,
-        1200000
+        ComponentType.StringSelect
       );
 
       new GlobalCollector(
@@ -89,8 +89,7 @@ export default new ExtendedCommand({
               break;
           }
         },
-        ComponentType.Button,
-        1200000
+        ComponentType.Button
       );
     }
   }
