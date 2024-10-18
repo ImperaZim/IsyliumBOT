@@ -1,8 +1,9 @@
-import { client } from "@main";
 import { CommandProps } from "@types";
+import { client, mysql } from "@main";
 import { ExtendedCommand } from "@extensions";
 import { CreatedGuild, SettingsController } from "@handlers";
 import {
+  getModal,
   getEmbed,
   getSelect,
   getButton,
@@ -76,22 +77,31 @@ export default new ExtendedCommand({
         timeout: null,
         callback: async (button: ButtonInteraction) => {
           const { customId } = button;
-          button.update({ content: `Você clicou: ${customId}` });
-          return;
 
           switch (customId) {
-            case "settings:ticket":
-              button.update({ content: `A função ${selected} não está habilitada` });
-              break;
-            case "settings:discordlink":
-              loadPage("open:discord_link_settings", {
-                interaction,
-                collectorResponse: button
-              });
+            case "discord_log_channel":
+              const result = await mysql.select('discord_link', 'embeds_json', [{ guildid: guild.id }]);
+
+              if (result === null) {
+                return
+              } else {
+                const embedJson = result[0].embed_json;
+
+                let defaultValue = '{\n "title": "teste"\n}';
+                if (embedJson !== null) {
+                  defaultValue = embedJson;
+                }
+                const modal = getModal("discord_embed_creator");
+                button.showModal(getModal("discord_embed_creator", {
+                  value: defaultValue
+                }));
+              }
+
               break;
             default:
               break;
           }
+          button.update({ content: `Você clicou: ${customId}` });
         },
         filter: async (button: ButtonInteraction) => {
           return button.user.id === interaction.user.id

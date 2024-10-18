@@ -156,14 +156,14 @@ export function register(): void {
 
     }
   });
-  registerModal("dcl_embed_modal", {
+  registerModal("discord_embed_creator", {
     title: "Criar painel de conexão",
     components: {
       inputs: {
         embed_creator: {
           label: "Embed Json",
           maxLength: 180,
-          placeholder: '{\n "title": "teste"\n}',
+          placeholder: '{value}',
           required: true,
           style: TextInputStyle.Paragraph
         }
