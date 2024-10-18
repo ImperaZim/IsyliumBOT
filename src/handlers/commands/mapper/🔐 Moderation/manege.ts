@@ -45,7 +45,7 @@ export default new ExtendedCommand({
         message: message
       });
 
-      new GlobalCollector(
+      new SelectCollector(
         message,
         async (select: SelectInteractionTypes) => {
           const { values } = select;
@@ -68,7 +68,7 @@ export default new ExtendedCommand({
         ComponentType.StringSelect
       );
 
-      new GlobalCollector(
+      new ButtonCollector(
         message,
         async (button: ButtonInteraction) => {
           const { customId } = button;
