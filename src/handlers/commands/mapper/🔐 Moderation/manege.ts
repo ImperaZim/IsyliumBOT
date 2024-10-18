@@ -91,6 +91,7 @@ export default new ExtendedCommand({
                 if (embedJson !== null) {
                   defaultValue = embedJson;
                 }
+                console.log(embedJson);
                 button.showModal(getModal("discord_embed_creator", {
                   value: defaultValue
                 }));
