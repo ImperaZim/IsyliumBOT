@@ -20,11 +20,14 @@ import {
   StringSelectMenuBuilder
 } from "discord.js";
 
-const settings = "settings";
+export interface Props {
+  interaction: any;
+  message?: any;
+  collectorResponse?: any;
+}
 
-// PageManager class to handle different pages
-class PageManager {
-  private static settings = "settings";
+export class PageManager {
+  public static settings = "settings";
 
   static async loadPage(id: string, properties: Props) {
     let embeds = [];
@@ -81,8 +84,7 @@ class PageManager {
   }
 }
 
-// CollectorsManager class to manage all collector types
-class CollectorsManager {
+export class CollectorsManager {
   static registerCollectors(interaction: CommandProps, message: any) {
     this.registerGlobalCollector(interaction, message);
     this.registerButtonCollector(interaction, message);
@@ -226,7 +228,6 @@ class CollectorsManager {
   }
 }
 
-// Command definition
 export default new ExtendedCommand({
   name: "settings",
   description: "Server systems configuration",
@@ -240,7 +241,7 @@ export default new ExtendedCommand({
     if (new CreatedGuild(guild).checkAndAddGuild()) {
       const message = await interaction.reply({
         embeds: [
-          getEmbed("settings", "loading_settings", {
+          getEmbed(PageManager.settings, "loading_settings", {
             user: user.globalName || "error 404",
           }),
         ],
@@ -256,9 +257,3 @@ export default new ExtendedCommand({
     }
   },
 });
-
-interface Props {
-  interaction: any;
-  message?: any;
-  collectorResponse?: any;
-}
