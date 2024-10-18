@@ -50,15 +50,6 @@ export function register(): void {
           name: "Isylium Bot",
           iconURL: profile.icon
         }
-      },
-      discord_embed_management: {
-        color: color.primary,
-        description:
-          "> Olá, {user}! Escolha uma das opções abaixo para editar ou enviar seu embed.",
-        author: {
-          name: "Isylium Bot",
-          iconURL: profile.icon
-        }
       }
     },
     components: {
@@ -90,7 +81,7 @@ export function register(): void {
             disabled: false,
             placeholder: "Escolha o canal de logs",
             minValue: 1,
-            maxValue: 10,
+            maxValue: 50,
             channelTypes: [ChannelType.GuildText]
           }
         }

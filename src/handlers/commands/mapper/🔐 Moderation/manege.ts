@@ -54,15 +54,21 @@ export default new ExtendedCommand({
           const { values } = select;
           const selected = values[0];
 
-          switch (selected) {
-            case "settings:ticket":
-              select.update({ content: `A função ${selected} não está habilitada` });
-              break;
-            case "settings:discordlink":
-              loadPage("open:discord_link_settings", {
-                interaction,
-                collectorResponse: select
-              });
+          switch (select.customId) {
+            case "settings_menu":
+              switch (selected) {
+                case "settings:ticket":
+                  select.update({ content: `A função ${selected} não está habilitada` });
+                  break;
+                case "settings:discordlink":
+                  loadPage("open:discord_link_settings", {
+                    interaction,
+                    collectorResponse: select
+                  });
+                  break;
+                default:
+                  break;
+              }
               break;
             default:
               break;
@@ -82,7 +88,7 @@ export default new ExtendedCommand({
 
           switch (customId) {
             case "discord_embed_creator":
-              const result = await mysql.select('discord_link', 'embeds_json', [{ guildid: guild.id }]);
+              var result = await mysql.select('discord_link', 'embeds_json', [{ guildid: guild.id }]);
 
               if (result !== null) {
                 const embedJson = result[0].embed_json;
@@ -96,6 +102,12 @@ export default new ExtendedCommand({
                 }));
               }
 
+              return;
+            case "discord_log_channel":
+              loadPage("open:discord_logs_select", {
+                interaction,
+                collectorResponse: button
+              });
               return;
             default:
               break;
@@ -142,6 +154,12 @@ async function loadPage(id: string, properties: Props) {
         user: user.globalName || "error 404"
       }));
       components.push(getSelect(settings, "settings_menu"));
+      break;
+    case "open:discord_logs_select":
+      embeds.push(getEmbed(settings, "discord_servers_setup", {
+        user: user.globalName || "error 404"
+      }));
+      components.push(getSelect(settings, "discord_logs_select"));
       break;
     case "open:discord_link_settings":
       embeds.push(getEmbed(settings, "discord_link_settings", {
