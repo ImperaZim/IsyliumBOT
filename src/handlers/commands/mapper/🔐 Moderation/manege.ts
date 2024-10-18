@@ -1,24 +1,9 @@
 import { CommandProps } from "@types";
 import { client, mysql } from "@main";
 import { ExtendedCommand } from "@extensions";
-import { CreatedGuild, SettingsController } from "@handlers";
-import {
-  getModal,
-  getEmbed,
-  getSelect,
-  getButton,
-  ModalCollector,
-  GlobalCollector,
-  SelectInteractionTypes
-} from "DiscordElementor";
-import {
-  ComponentType,
-  ActionRowBuilder,
-  ButtonInteraction,
-  ModalSubmitInteraction,
-  ApplicationCommandType,
-  StringSelectMenuBuilder
-} from "discord.js";
+import { CreatedGuild, PageManager, CollectorsManager } from "@handlers";
+import { getEmbed } from "DiscordElementor";
+import { ApplicationCommandType } from "discord.js";
 
 export interface Props {
   interaction: any;
@@ -26,6 +11,7 @@ export interface Props {
   collectorResponse?: any;
 }
 
+<<<<<<< HEAD
 export class PageManager {
   public static settings = "settings";
 
@@ -228,16 +214,19 @@ export class CollectorsManager {
   }
 }
 
+=======
+>>>>>>> 77050b9d531cf09a63abe153270e53546b54973c
 export default new ExtendedCommand({
-  name: "settings",
-  description: "Server systems configuration",
-  defaultMemberPermissions: "Administrator",
-  type: ApplicationCommandType.ChatInput,
-  async run({ interaction }: CommandProps) {
-    if (!interaction.inCachedGuild()) return;
+    name: "settings",
+    description: "Server systems configuration",
+    defaultMemberPermissions: "Administrator",
+    type: ApplicationCommandType.ChatInput,
+    async run({ interaction }: CommandProps) {
+        if (!interaction.inCachedGuild()) return;
 
-    const { user, guild } = interaction;
+        const { user, guild } = interaction;
 
+<<<<<<< HEAD
     if (new CreatedGuild(guild).checkAndAddGuild()) {
       const message = await interaction.reply({
         embeds: [
@@ -247,13 +236,29 @@ export default new ExtendedCommand({
         ],
         fetchReply: true,
       });
+=======
+        if (new CreatedGuild(guild).checkAndAddGuild()) {
+            const message = await interaction.reply({
+                embeds: [
+                    getEmbed("settings", "loading_settings", {
+                        user: user.globalName || "error 404"
+                    })
+                ],
+                fetchReply: true
+            });
+>>>>>>> 77050b9d531cf09a63abe153270e53546b54973c
 
-      PageManager.loadPage("open:settings_main_menu", {
-        interaction,
-        message,
-      });
+            new PageManager().loadPage("open:settings_main_menu", {
+                interaction,
+                message
+            });
 
-      CollectorsManager.registerCollectors(interaction, message);
+            new CollectorsManager().registerCollectors(interaction, message);
+        }
     }
+<<<<<<< HEAD
   },
 });
+=======
+});
+>>>>>>> 77050b9d531cf09a63abe153270e53546b54973c

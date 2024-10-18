@@ -4,3 +4,4 @@ export * from "./ConfigInterface";
 export * from "./CommandInterface";
 export * from "./TranscriptInterface";
 export * from "./GuildDataInterface";
+export * from "./LoadPagesinterface";
