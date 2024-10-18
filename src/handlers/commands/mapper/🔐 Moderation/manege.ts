@@ -53,6 +53,8 @@ export default new ExtendedCommand({
         callback: async (select: SelectInteractionTypes) => {
           const { values } = select;
           const selected = values[0];
+          
+          console.log(select.customId);
 
           switch (select.customId) {
             case "settings_menu":
