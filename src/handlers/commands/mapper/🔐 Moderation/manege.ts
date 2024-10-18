@@ -69,7 +69,7 @@ export default new ExtendedCommand({
           }
         },
         filter: async (select: SelectInteractionTypes) => {
-          return select.user.id === interaction.user.id
+          return select.user.id === interaction.user.id;
         },
       });
 
@@ -92,6 +92,12 @@ export default new ExtendedCommand({
                   defaultValue = embedJson;
                 }
                 console.log(embedJson);
+
+                loadPage("open:discord_link_settings", {
+                  interaction,
+                  collectorResponse: modal,
+                });
+
                 button.showModal(getModal("discord_embed_creator", {
                   value: defaultValue
                 }));
@@ -101,36 +107,27 @@ export default new ExtendedCommand({
             default:
               break;
           }
+
           button.update({ content: `Você clicou: ${customId}` });
         },
         filter: async (button: ButtonInteraction) => {
-          return button.user.id === interaction.user.id
+          return button.user.id === interaction.user.id;
         },
       });
-      
-      new ModalCollector({
-        response: message,
-        timeout: 1200000,
-        callback: async (modal: ModalSubmitInteraction) => {
-          const { id } = interaction;
-          
-          switch (id) {
-            case "discord_embed_creator":
-              loadPage("open:discord_link_settings", {
-                interaction,
-                collectorResponse: modal
-              });
-              const text = modal.fields.getTextInputValue("embed_creator");
-              
-              console.log("feito => " + text);
-              break;
-            default:
-              break;
-          }
-        },
-        filter: async (modal: ModalSubmitInteraction) => {
-          return modal.user.id === interaction.user.id
-        },
+
+      const modalCollector = interaction.channel.createMessageComponentCollector({
+        componentType: ComponentType.ModalSubmit,
+        time: 60000,
+        filter: (modal) => modal.user.id === interaction.user.id,
+      });
+
+      modalCollector.on('collect', async (modal: ModalSubmitInteraction) => {
+        if (modal.customId === "discord_embed_creator") {
+          const text = modal.fields.getTextInputValue("embed_creator");
+
+          console.log("Feito => " + text);
+          await modal.reply({ content: "Modal recebido com sucesso!", ephemeral: true });
+        }
       });
     }
   }
