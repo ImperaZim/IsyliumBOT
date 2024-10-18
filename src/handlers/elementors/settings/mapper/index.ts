@@ -4,184 +4,191 @@ import { ButtonStyle, ChannelType, TextInputStyle } from "discord.js";
 import { registerRow, registerModal } from "DiscordElementor";
 
 export function register(): void {
-    registerRow("settings", {
-        embeds: {
-            embed_settings: {
-                color: color.primary,
-                description:
-                    "> Olá, {user}! Bem-vindo ao menu de configurações do Isylium Bot.\n> Aqui você encontrará todas as opções disponíveis para personalizar os sistemas do Isylium Bot de acordo com as necessidades.",
-                author: {
-                    name: "Isylium Bot",
-                    iconURL: profile.icon
-                }
-            },
-            // Embeds Discordlink
-            settings_discordlink: {
-                color: color.primary,
-                description:
-                    "> Olá, {user}! use os botões abaixo para configurar sistema de conexão ao discord.\n\n> 🔵 Use este [website](https://zira.bot/embedbuilder/) para criar os json dos embeds se necessário.",
-                author: {
-                    name: "Isylium Bot",
-                    iconURL: profile.icon
-                }
-            },
-            dcl_logs: {
-                color: color.primary,
-                description:
-                    "> Olá, {user}! Selecione o canal de logs do seu servidor no select abaixo.",
-                author: {
-                    name: "Isylium Bot",
-                    iconURL: profile.icon
-                }
-            },
-            dcl_servers: {
-                color: color.primary,
-                description:
-                    "> Olá, {user}! Selecione a opção abaixo que deseja executar para fazer sua lista de servidores.",
-                author: {
-                    name: "Isylium Bot",
-                    iconURL: profile.icon
-                }
-            },
-            dcl_embed: {
-                color: color.primary,
-                description:
-                    "> Olá, {user}! Selecione a opção abaixo que deseja executar, para editar ou enviar seu embed.",
-                author: {
-                    name: "Isylium Bot",
-                    iconURL: profile.icon
-                }
-            }
+  registerRow("settings", {
+    embeds: {
+      loading_settings: {
+        color: color.primary,
+        description:
+          "> Estou carregando as configurações, por favor espere um pouco!",
+        author: {
+          name: "Isylium Bot",
+          iconURL: profile.icon
+        }
+      },
+      settings_main_menu: {
+        color: color.primary,
+        description:
+          "> Olá, {user}! Bem-vindo ao menu de configurações do Isylium Bot. Aqui você pode personalizar os sistemas do bot conforme suas necessidades.",
+        author: {
+          name: "Isylium Bot",
+          iconURL: profile.icon
+        }
+      },
+      discord_link_settings: {
+        color: color.primary,
+        description:
+          "> Olá, {user}! Use os botões abaixo para configurar o sistema de integração com o Discord. Consulte este [website](https://zira.bot/embedbuilder/) para criar JSONs de embeds, se necessário.",
+        author: {
+          name: "Isylium Bot",
+          iconURL: profile.icon
+        }
+      },
+      discord_logs_setup: {
+        color: color.primary,
+        description:
+          "> Olá, {user}! Escolha o canal de logs do seu servidor no seletor abaixo.",
+        author: {
+          name: "Isylium Bot",
+          iconURL: profile.icon
+        }
+      },
+      discord_servers_setup: {
+        color: color.primary,
+        description:
+          "> Olá, {user}! Use a opção abaixo para gerenciar sua lista de servidores.",
+        author: {
+          name: "Isylium Bot",
+          iconURL: profile.icon
+        }
+      },
+      discord_embed_management: {
+        color: color.primary,
+        description:
+          "> Olá, {user}! Escolha uma das opções abaixo para editar ou enviar seu embed.",
+        author: {
+          name: "Isylium Bot",
+          iconURL: profile.icon
+        }
+      }
+    },
+    components: {
+      selects: {
+        settings_menu: {
+          type: "string",
+          data: {
+            disabled: false,
+            placeholder: "Selecione uma opção de configuração",
+            options: [
+              {
+                label: "Sistema de Tickets",
+                description: "Configurar o sistema de tickets",
+                emoji: "<:ticket:1295558483927629835>",
+                value: "settings:ticket"
+              },
+              {
+                label: "Sistema de Conexão ao Discord",
+                description: "Configurar a integração do Discord",
+                emoji: "<:discord:1295557503555207302>",
+                value: "settings:discordlink"
+              }
+            ]
+          }
         },
-        components: {
-            selects: {
-                select_settings: {
-                    type: "string",
-                    data: {
-                        disabled: false,
-                        placeholder: " Opções de configuração",
-                        options: [
-                            {
-                                label: "Ticket",
-                                description: "configurar sistema de ticket",
-                                emoji: "<:ticket:1295558483927629835>",
-                                value: "settings:ticket"
-                            },
-                            {
-                                label: "Discord Link",
-                                description:
-                                    "Configurar sistema de conexão ao discord",
-                                emoji: "<:discord:1295557503555207302>",
-                                value: "settings:discordlink"
-                            }
-                        ]
-                    }
-                },
-                // Components Discordlink
-                dcl_select_logs: {
-                    type: "channel",
-                    data: {
-                        disabled: false,
-                        placeholder: " Escolha o canal de logs abaixo.",
-                        minValue: 1,
-                        maxValue: 10,
-                        channelTypes: [ChannelType.GuildText]
-                    }
-                }
-            },
-            buttons: {
-                dcl_embed: {
-                    type: ButtonStyle.Primary,
-                    data: {
-                        label: "Embed Creator",
-                        emoji: "<a:lapis:1295608106965012541>"
-                    }
-                },
-                dcl_logs: {
-                    type: ButtonStyle.Primary,
-                    data: {
-                        label: "Log Channel",
-                        emoji: "<:channel:1295608647484706858>"
-                    }
-                },
-                dcl_servers: {
-                    type: ButtonStyle.Primary,
-                    data: {
-                        label: "Build Server",
-                        emoji: "<:servers:1295609099819421747>"
-                    }
-                },
-                dlc_rems: {
-                    type: ButtonStyle.Primary,
-                    data: {
-                        label: "Delete server",
-                        emoji: "<:servers:1295609099819421747>"
-                    }
-                },
-                dcl_adds: {
-                    type: ButtonStyle.Primary,
-                    data: {
-                        label: "Create server",
-                        emoji: "<:servers:1295609099819421747>"
-                    }
-                },
-                dlc_embed_edit: {
-                    type: ButtonStyle.Primary,
-                    data: {
-                        label: "Edit Embed",
-                        emoji: "<a:lapis:1295608106965012541>"
-                    }
-                },
-                dcl_embed_send: {
-                    type: ButtonStyle.Primary,
-                    data: {
-                        label: "Send Message",
-                        emoji: "<:send:1296616875727388704>"
-                    }
-                },
-                dcl_embed_reviewed: {
-                    type: ButtonStyle.Primary,
-                    data: {
-                        label: "Reviewed Message",
-                        emoji: "<:send:1296616875727388704>"
-                    }
-                }
-            }
+        discord_logs_select: {
+          type: "channel",
+          data: {
+            disabled: false,
+            placeholder: "Escolha o canal de logs",
+            minValue: 1,
+            maxValue: 10,
+            channelTypes: [ChannelType.GuildText]
+          }
         }
-    });
-    registerModal("dcl_embed_modal", {
-        title: "Criar painel de conexão",
-        components: {
-            inputs: {
-                embed_creator: {
-                    label: "Embed Json",
-                    maxLength: 180,
-                    placeholder: '{\n "title": "teste"\n}',
-                    required: true,
-                    style: TextInputStyle.Paragraph
-                }
-            }
+      },
+      buttons: {
+        discord_embed_creator: {
+          type: ButtonStyle.Primary,
+          data: {
+            label: "Criador de Embed",
+            emoji: "<a:lapis:1295608106965012541>"
+          }
+        },
+        discord_log_channel: {
+          type: ButtonStyle.Primary,
+          data: {
+            label: "Canal de Logs",
+            emoji: "<:channel:1295608647484706858>"
+          }
+        },
+        discord_server_manager: {
+          type: ButtonStyle.Primary,
+          data: {
+            label: "Gerenciar Servidor",
+            emoji: "<:servers:1295609099819421747>"
+          }
+        },
+        discord_server_delete: {
+          type: ButtonStyle.Danger,
+          data: {
+            label: "Excluir Servidor",
+            emoji: "<:servers:1295609099819421747>"
+          }
+        },
+        discord_server_create: {
+          type: ButtonStyle.Success,
+          data: {
+            label: "Criar Servidor",
+            emoji: "<:servers:1295609099819421747>"
+          }
+        },
+        discord_embed_edit: {
+          type: ButtonStyle.Primary,
+          data: {
+            label: "Editar Embed",
+            emoji: "<a:lapis:1295608106965012541>"
+          }
+        },
+        discord_embed_send: {
+          type: ButtonStyle.Success,
+          data: {
+            label: "Enviar Mensagem",
+            emoji: "<:send:1296616875727388704>"
+          }
+        },
+        discord_embed_review: {
+          type: ButtonStyle.Primary,
+          data: {
+            label: "Revisar Mensagem",
+            emoji: "<:send:1296616875727388704>"
+          }
         }
-    });
-    registerModal("dcl_servers_modal", {
-        title: "Criar servidor",
-        components: {
-            inputs: {
-                server_name: {
-                    label: "Nome do Servidor",
-                    maxLength: 180,
-                    placeholder: "SkyBlock",
-                    required: true,
-                    style: TextInputStyle.Paragraph
-                },
-                server_available: {
-                    label: "Servidor Disponivel?",
-                    maxLength: 180,
-                    placeholder: "true or false",
-                    required: true,
-                    style: TextInputStyle.Paragraph
-                }
-            }
+      }
+
+    }
+  });
+  registerModal("dcl_embed_modal", {
+    title: "Criar painel de conexão",
+    components: {
+      inputs: {
+        embed_creator: {
+          label: "Embed Json",
+          maxLength: 180,
+          placeholder: '{\n "title": "teste"\n}',
+          required: true,
+          style: TextInputStyle.Paragraph
         }
-    });
+      }
+    }
+  });
+  registerModal("dcl_servers_modal", {
+    title: "Criar servidor",
+    components: {
+      inputs: {
+        server_name: {
+          label: "Nome do Servidor",
+          maxLength: 180,
+          placeholder: "SkyBlock",
+          required: true,
+          style: TextInputStyle.Paragraph
+        },
+        server_available: {
+          label: "Servidor Disponivel?",
+          maxLength: 180,
+          placeholder: "true or false",
+          required: true,
+          style: TextInputStyle.Paragraph
+        }
+      }
+    }
+  });
 }
