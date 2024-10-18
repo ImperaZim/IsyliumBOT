@@ -109,25 +109,18 @@ async function loadPage(id: string, properties: Props) {
   // add elements 
   switch (id) {
     case "open:settings_main_menu":
-      embeds.push(...[
-        getEmbed(settings, "settings_main_menu", {
-          user: user.globalName || "error 404"
-        })
-      ]);
-      components.push(...[
-        getSelect(settings, "settings_menu")
-      ]);
+      embeds.push(getEmbed(settings, "settings_main_menu", {
+        user: user.globalName || "error 404"
+      }));
+      components.push(getSelect(settings, "settings_menu"));
+      break;
     case "open:discord_link_settings":
-      embeds.push(...[
-        getEmbed(settings, "discord_link_settings", {
-          user: user.globalName || "error 404"
-        })
-      ]);
-      components.push(...[
-        getButton(settings, "discord_embed_creator"),
-        getButton(settings, "discord_log_channel"),
-        getButton(settings, "discord_server_manager")
-      ]);
+      embeds.push(getEmbed(settings, "discord_link_settings", {
+        user: user.globalName || "error 404"
+      }));
+      components.push(getButton(settings, "discord_embed_creator"));
+      components.push(getButton(settings, "discord_log_channel"));
+      components.push(getButton(settings, "discord_server_manager"));
       break;
     default:
       break;
