@@ -70,6 +70,13 @@ export default new ExtendedCommand({
                   break;
               }
               break;
+            case "discord_logs_select":
+              console.log(selected);
+              loadPage("open:discord_link_settings", {
+                interaction,
+                collectorResponse: select
+              });
+              break;
             default:
               break;
           }
@@ -149,18 +156,21 @@ async function loadPage(id: string, properties: Props) {
 
   // add elements 
   switch (id) {
+
     case "open:settings_main_menu":
       embeds.push(getEmbed(settings, "settings_main_menu", {
         user: user.globalName || "error 404"
       }));
       components.push(getSelect(settings, "settings_menu"));
       break;
+
     case "open:discord_logs_select":
       embeds.push(getEmbed(settings, "discord_servers_setup", {
         user: user.globalName || "error 404"
       }));
       components.push(getSelect(settings, "discord_logs_select"));
       break;
+
     case "open:discord_link_settings":
       embeds.push(getEmbed(settings, "discord_link_settings", {
         user: user.globalName || "error 404"
@@ -169,6 +179,7 @@ async function loadPage(id: string, properties: Props) {
       components.push(getButton(settings, "discord_log_channel"));
       components.push(getButton(settings, "discord_server_manager"));
       break;
+
     default:
       break;
   }
