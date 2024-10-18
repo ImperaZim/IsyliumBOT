@@ -7,6 +7,7 @@ import {
   getEmbed,
   getSelect,
   getButton,
+  ModalCollector,
   GlobalCollector,
   SelectInteractionTypes
 } from "DiscordElementor";
@@ -14,6 +15,7 @@ import {
   ComponentType,
   ActionRowBuilder,
   ButtonInteraction,
+  ModalSubmitInteraction,
   ApplicationCommandType,
   StringSelectMenuBuilder
 } from "discord.js";
@@ -82,22 +84,19 @@ export default new ExtendedCommand({
             case "discord_log_channel":
               const result = await mysql.select('discord_link', 'embeds_json', [{ guildid: guild.id }]);
 
-              if (result === null) {
-                return
-              } else {
+              if (result !== null) {
                 const embedJson = result[0].embed_json;
 
                 let defaultValue = '{\n "title": "teste"\n}';
                 if (embedJson !== null) {
                   defaultValue = embedJson;
                 }
-                const modal = getModal("discord_embed_creator");
                 button.showModal(getModal("discord_embed_creator", {
                   value: defaultValue
                 }));
               }
 
-              break;
+              return;
             default:
               break;
           }
@@ -105,6 +104,31 @@ export default new ExtendedCommand({
         },
         filter: async (button: ButtonInteraction) => {
           return button.user.id === interaction.user.id
+        },
+      });
+      
+      new ModalCollector({
+        response: message,
+        timeout: 1200000,
+        callback: async (modal: ModalSubmitInteraction) => {
+          const { id } = interaction;
+          
+          switch (id) {
+            case "discord_embed_creator":
+              loadPage("open:discord_link_settings", {
+                interaction,
+                collectorResponse: modal
+              });
+              const text = modal.fields.getTextInputValue("embed_creator");
+              
+              console.log("feito => " + text);
+              break;
+            default:
+              break;
+          }
+        },
+        filter: async (modal: ModalSubmitInteraction) => {
+          return modal.user.id === interaction.user.id
         },
       });
     }
