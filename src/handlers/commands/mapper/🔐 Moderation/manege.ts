@@ -54,8 +54,6 @@ export default new ExtendedCommand({
           const { values } = select;
           const selected = values[0];
 
-          console.log(select.customId);
-
           switch (select.customId) {
             case "settings_menu":
               switch (selected) {
@@ -80,7 +78,7 @@ export default new ExtendedCommand({
           return select.user.id === interaction.user.id;
         },
       });
-      
+
       new GlobalCollector({
         response: message,
         componentType: ComponentType.ChannelSelect,
@@ -88,8 +86,6 @@ export default new ExtendedCommand({
         callback: async (select: SelectInteractionTypes) => {
           const { values } = select;
           const selected = values[0];
-
-          console.log(select.customId);
 
           switch (select.customId) {
             case "discord_logs_select":
@@ -138,6 +134,9 @@ export default new ExtendedCommand({
                 collectorResponse: button
               });
               return;
+            case "discord_servers_setup":
+              button.showModal(getModal("discord_servers_modal"));
+              return;
             default:
               break;
           }
@@ -154,10 +153,19 @@ export default new ExtendedCommand({
         timeout: 2147483647,
         filter: (i) => i.user.id === interaction.user.id,
         callback: async (modal) => {
-          if (modal.customId === "discord_embed_creator") {
-            const text = modal.fields.getTextInputValue("embed_creator");
-            console.log("Feito => " + text);
-            await modal.reply({ content: "Modal recebido com sucesso!", ephemeral: true });
+          switch (modal.customId) {
+            case "discord_embed_creator":
+              var text = modal.fields.getTextInputValue("embed_creator");
+              console.log("Feito => " + text);
+              await modal.reply({ content: "Modal recebido com sucesso!", ephemeral: true });
+              break;
+            case "discord_servers_modal":
+              var server_names = modal.fields.getTextInputValue("server_name");
+              var server_available = modal.fields.getTextInputValue("server_available");
+              console.log([server_names, server_available]);
+              break;
+            default:
+              break;
           }
         },
       });

@@ -161,7 +161,7 @@ export function register(): void {
       }
     }
   });
-  registerModal("dcl_servers_modal", {
+  registerModal("discord_servers_modal", {
     title: "Criar servidor",
     components: {
       inputs: {
