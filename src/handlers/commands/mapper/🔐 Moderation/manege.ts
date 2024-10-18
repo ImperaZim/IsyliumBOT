@@ -91,13 +91,6 @@ export default new ExtendedCommand({
                 if (embedJson !== null) {
                   defaultValue = embedJson;
                 }
-                console.log(embedJson);
-
-                loadPage("open:discord_link_settings", {
-                  interaction,
-                  collectorResponse: modal,
-                });
-
                 button.showModal(getModal("discord_embed_creator", {
                   value: defaultValue
                 }));
@@ -115,20 +108,22 @@ export default new ExtendedCommand({
         },
       });
 
-      const modalCollector = interaction.channel.createMessageComponentCollector({
-        componentType: ComponentType.ModalSubmit,
+      const modal = await interaction.awaitModalSubmit({
         time: 60000,
-        filter: (modal) => modal.user.id === interaction.user.id,
-      });
-
-      modalCollector.on('collect', async (modal: ModalSubmitInteraction) => {
+        filter: i => i.user.id === interaction.user.id,
+      }).catch(error => {
+        console.error(error)
+        return null
+      })
+      
+      if (modal) {
         if (modal.customId === "discord_embed_creator") {
           const text = modal.fields.getTextInputValue("embed_creator");
 
           console.log("Feito => " + text);
           await modal.reply({ content: "Modal recebido com sucesso!", ephemeral: true });
         }
-      });
+      }
     }
   }
 });
