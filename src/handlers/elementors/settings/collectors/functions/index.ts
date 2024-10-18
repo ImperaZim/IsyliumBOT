@@ -1,7 +1,6 @@
 import { getEmbed, getSelect, getButton } from "DiscordElementor";
 import { ActionRowBuilder } from "discord.js";
-import { LoadPagesinterface
-} from "@types";
+import { LoadPagesinterface } from "@types";
 
 class PageManager {
     private static settings = "settings";
