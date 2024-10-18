@@ -102,8 +102,8 @@ interface Props {
 }
 
 async function loadPage(id: string, properties: Props) {
-  const embeds = [];
-  const components = [];
+  let embeds = [];
+  let components = [];
   const { user, guild } = properties.interaction;
 
   // add elements 
@@ -132,17 +132,20 @@ async function loadPage(id: string, properties: Props) {
     default:
       break;
   }
-
+  
+  components = new ActionRowBuilder().addComponents(components);
+  components = ([components] || []).map((ar) => ar.toJSON());
+  
   // update interaction
   if (properties.collectorResponse) {
     properties.collectorResponse.update({
       embeds: embeds,
-      components: new ActionRowBuilder().addComponents(components)
+      components: components
     });
   } else if (properties.message) {
     properties.message.edit({
       embeds: embeds,
-      components: new ActionRowBuilder().addComponents(components)
+      components: components
     });
   }
 }
