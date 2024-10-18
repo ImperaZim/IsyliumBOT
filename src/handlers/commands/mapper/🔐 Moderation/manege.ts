@@ -72,6 +72,26 @@ export default new ExtendedCommand({
                   break;
               }
               break;
+            default:
+              break;
+          }
+        },
+        filter: async (select: SelectInteractionTypes) => {
+          return select.user.id === interaction.user.id;
+        },
+      });
+      
+      new GlobalCollector({
+        response: message,
+        componentType: ComponentType.ChannelSelect,
+        timeout: null,
+        callback: async (select: SelectInteractionTypes) => {
+          const { values } = select;
+          const selected = values[0];
+
+          console.log(select.customId);
+
+          switch (select.customId) {
             case "discord_logs_select":
               console.log(selected);
               loadPage("open:discord_link_settings", {
@@ -113,7 +133,7 @@ export default new ExtendedCommand({
 
               return;
             case "discord_log_channel":
-              loadPage("open:settings_main_menu", {
+              loadPage("open:discord_logs_select", {
                 interaction,
                 collectorResponse: button
               });
