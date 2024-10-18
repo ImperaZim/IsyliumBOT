@@ -1,16 +1,11 @@
-import {
-    getEmbed,
-    getSelect,
-    getButton,
-} from "DiscordElementor";
-import {
-    ActionRowBuilder
-} from "discord.js";
+import { getEmbed, getSelect, getButton } from "DiscordElementor";
+import { ActionRowBuilder } from "discord.js";
+import { LoadPageinterface } from "@types";
 
 class PageManager {
     private static settings = "settings";
 
-    static async loadPage(id: string, properties: Props) {
+    static async loadPage(id: string, properties: LoadPageinterface) {
         let embeds = [];
         let components = [];
         const { user } = properties.interaction;
