@@ -3,7 +3,7 @@ import { client, mysql } from "@main";
 import { ExtendedCommand } from "@extensions";
 import { CreatedGuild, PageManager, CollectorsManager } from "@handlers";
 import { getEmbed } from "DiscordElementor";
-import { ApplicationCommandType } from 'discord.js';
+import { ApplicationCommandType } from "discord.js";
 
 const settings = "settings";
 
@@ -27,12 +27,12 @@ export default new ExtendedCommand({
                 fetchReply: true
             });
 
-            new PageManager.loadPage("open:settings_main_menu", {
+            new PageManager().loadPage("open:settings_main_menu", {
                 interaction,
                 message
             });
 
-            new CollectorsManager.registerCollectors(interaction, message);
+            new CollectorsManager().registerCollectors(interaction, message);
         }
     }
 });
