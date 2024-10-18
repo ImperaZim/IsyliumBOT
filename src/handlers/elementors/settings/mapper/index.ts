@@ -81,7 +81,7 @@ export function register(): void {
             disabled: false,
             placeholder: "Escolha o canal de logs",
             minValue: 1,
-            maxValue: 25,
+            maxValue: 1,
             channelTypes: [ChannelType.GuildText]
           }
         }
