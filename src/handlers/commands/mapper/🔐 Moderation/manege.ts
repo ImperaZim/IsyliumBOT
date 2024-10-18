@@ -2,9 +2,8 @@ import { CommandProps } from "@types";
 import { client, mysql } from "@main";
 import { ExtendedCommand } from "@extensions";
 import { CreatedGuild, PageManager, CollectorsManager } from "@handlers";
-import {
-    getEmbed,
-} from "DiscordElementor";
+import { getEmbed } from "DiscordElementor";
+import { ApplicationCommandType } from 'discord.js';
 
 const settings = "settings";
 
