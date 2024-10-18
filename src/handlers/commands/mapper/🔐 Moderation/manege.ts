@@ -140,7 +140,7 @@ async function loadPage(id: string, properties: Props) {
       components: new ActionRowBuilder().addComponents(components)
     });
   } else if (properties.message) {
-    properties.message.update({
+    properties.message.edit({
       embeds: embeds,
       components: new ActionRowBuilder().addComponents(components)
     });
