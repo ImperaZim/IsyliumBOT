@@ -165,17 +165,10 @@ export function register(): void {
     title: "Criar servidor",
     components: {
       inputs: {
-        server_name: {
+        embed_creator: {
           label: "Nome do Servidor",
           maxLength: 180,
-          placeholder: "SkyBlock",
-          required: true,
-          style: TextInputStyle.Paragraph
-        },
-        server_available: {
-          label: "Servidor Disponivel?",
-          maxLength: 180,
-          placeholder: "true or false",
+          placeholder: 'Skyblock',
           required: true,
           style: TextInputStyle.Paragraph
         }
