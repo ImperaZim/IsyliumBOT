@@ -5,7 +5,7 @@ import { LoadPagesinterface } from "@types";
 export class PageManager {
     private static settings = "settings";
 
-    static async loadPage(id: string, properties: LoadPageinterface) {
+    public static async loadPage(id: string, properties: LoadPageinterface) {
         let embeds = [];
         let components = [];
         const { user } = properties.interaction;
