@@ -81,7 +81,7 @@ export default new ExtendedCommand({
           const { customId } = button;
 
           switch (customId) {
-            case "discord_log_channel":
+            case "discord_embed_creator":
               const result = await mysql.select('discord_link', 'embeds_json', [{ guildid: guild.id }]);
 
               if (result !== null) {
