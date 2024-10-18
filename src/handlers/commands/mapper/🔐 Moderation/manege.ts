@@ -160,13 +160,9 @@ export default new ExtendedCommand({
               await modal.reply({ content: "Modal recebido com sucesso!", ephemeral: true });
               break;
             case "discord_servers_modal":
-              console.log("discord_servers_modal passed");
-              /**
-               * 
               var server_names = modal.fields.getTextInputValue("server_name");
               var server_available = modal.fields.getTextInputValue("server_available");
               console.log([server_names, server_available]);
-              */
               break;
             default:
               break;
