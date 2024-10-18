@@ -16,7 +16,7 @@ import {
     StringSelectMenuBuilder
 } from "discord.js";
 
-class CollectorsManager {
+export class CollectorsManager {
     static registerCollectors(interaction: CommandProps, message: any) {
         this.registerGlobalCollector(interaction, message);
         this.registerButtonCollector(interaction, message);
