@@ -133,21 +133,18 @@ async function loadPage(id: string, properties: Props) {
       break;
   }
 
-  components = [
-    new ActionRowBuilder().addComponents(components)
-  ];
-  components = (components || []).map((ar) => ar.toJSON());
+  components = new ActionRowBuilder().addComponents(components);
 
   // update interaction
   if (properties.collectorResponse) {
     properties.collectorResponse.update({
       embeds: embeds,
-      components: components
+      components: components.toJSON()
     });
   } else if (properties.message) {
     properties.message.edit({
       embeds: embeds,
-      components: components
+      components: components.toJSON()
     });
   }
 }
