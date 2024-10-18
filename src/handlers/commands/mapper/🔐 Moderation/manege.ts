@@ -108,7 +108,7 @@ class CollectorsManager {
                 select.update({ content: `A função ${selected} não está habilitada` });
                 break;
               case "settings:discordlink":
-                loadPage("open:discord_link_settings", {
+                PageManager.loadPage("open:discord_link_settings", {
                   interaction,
                   collectorResponse: select
                 });
@@ -137,7 +137,7 @@ class CollectorsManager {
         switch (select.customId) {
           case "discord_logs_select":
             console.log(selected);
-            loadPage("open:discord_link_settings", {
+            PageManager.loadPage("open:discord_link_settings", {
               interaction,
               collectorResponse: select
             });
