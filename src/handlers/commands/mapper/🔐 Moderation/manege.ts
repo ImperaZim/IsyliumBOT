@@ -129,7 +129,7 @@ export default new ExtendedCommand({
 
       new ModalCollector({
         response: interaction,
-        timeout: Number.MAX_SAFE_INTEGER,
+        timeout: 2147483647,
         filter: (i) => i.user.id === interaction.user.id,
         callback: async (modal) => {
           if (modal.customId === "discord_embed_creator") {
