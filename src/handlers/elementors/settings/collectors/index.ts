@@ -45,7 +45,7 @@ export class CollectorsManager {
                                 });
                                 break;
                             case "settings:discordlink":
-                                new PageManager().loadPage(
+                                PageManager.loadPage(
                                     "open:discord_link_settings",
                                     {
                                         interaction,
@@ -77,7 +77,7 @@ export class CollectorsManager {
                 switch (select.customId) {
                     case "discord_logs_select":
                         console.log(selected);
-                        new PageManager().loadPage(
+                        PageManager.loadPage(
                             "open:discord_link_settings",
                             {
                                 interaction,
@@ -126,7 +126,7 @@ export class CollectorsManager {
                         }
                         return;
                     case "discord_log_channel":
-                        new PageManager().loadPage("open:discord_logs_select", {
+                        PageManager.loadPage("open:discord_logs_select", {
                             interaction,
                             collectorResponse: button
                         });
