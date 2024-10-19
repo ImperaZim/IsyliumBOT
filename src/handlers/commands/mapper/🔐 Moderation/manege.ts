@@ -32,7 +32,7 @@ export default new ExtendedCommand({
                 message
             });
 
-         //   new CollectorsManager().registerCollectors(interaction, message);
+            new CollectorsManager().registerCollectors(interaction, message);
         }
     }
 });
