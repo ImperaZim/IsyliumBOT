@@ -106,37 +106,35 @@ export class CollectorsManager {
                 const { customId, guild } = button;
 
                 switch (customId) {
-                    case "discord_embed_creator":const embed = await mysql.select(
-    "discord_link",
-    "embeds_json",
-    [{ guildid: guild.id }]
-);
+                    case "discord_embed_creator":
+                        const embed = await mysql.select(
+                            "discord_link",
+                            "embeds_json",
+                            [{ guildid: guild.id }]
+                        );
 
-let embedJson;
+                        let embedJson;
 
-// Verificar se o valor do banco de dados está presente e válido
-if (embed && embed[0] && embed[0].embed_json) {
-    try {
-        // Tentar fazer o parse do JSON diretamente do valor armazenado no banco
-        embedJson = JSON.parse(embed[0].embed_json);
-    } catch (error) {
-        console.error("Erro ao fazer o parse do JSON:", error);
-        // Caso falhe, usa um JSON padrão
-        embedJson = { title: "teste" };
-    }
-} else {
-    // Se não houver valor, usar um JSON padrão
-    embedJson = { title: "teste" };
-}
+                        if (embed && embed[0] && embed[0].embed_json) {
+                            try {
+                                embedJson = JSON.parse(embed[0].embed_json);
+                            } catch (error) {
+                                console.error(
+                                    "Erro ao fazer o parse do JSON:",
+                                    error
+                                );
+                                embedJson = { title: "teste" };
+                            }
+                        } else {
+                            embedJson = { title: "teste" };
+                        }
 
-// Enviar o modal com o JSON formatado
-button.showModal(
-    getModal("discord_embed_creator", {
-        value: JSON.stringify(embedJson, null, 2) // Formata o JSON para exibição
-    })
-);
+                        button.showModal(
+                            getModal("discord_embed_creator", {
+                                value: JSON.stringify(embedJson, null, 2) 
+                            })
+                        );
 
-                        
                         return;
                     case "discord_log_channel":
                         PageManager.loadPage("open:discord_logs_select", {
