@@ -140,7 +140,7 @@ export class CollectorsManager {
                         if (server !== null) {
                             const serverjson =
                                 server[0].servers ||
-                                `{\n "rankup": "true"//online\n\n"factions": "false"//offline\n}`;
+                                `{\n "rankup": true\n\n"factions": false\n}`;
                             button.showModal(
                                 getModal("discord_servers_modal", {
                                     value: serverjson
