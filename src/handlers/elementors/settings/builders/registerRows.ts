@@ -121,27 +121,6 @@ export function registerRows(): void {
             label: "Criar Servidor",
             emoji: "<:servers:1295609099819421747>"
           }
-        },
-        discord_embed_edit: {
-          type: ButtonStyle.Primary,
-          data: {
-            label: "Editar Embed",
-            emoji: "<a:lapis:1295608106965012541>"
-          }
-        },
-        discord_embed_send: {
-          type: ButtonStyle.Success,
-          data: {
-            label: "Enviar Mensagem",
-            emoji: "<:send:1296616875727388704>"
-          }
-        },
-        discord_embed_review: {
-          type: ButtonStyle.Primary,
-          data: {
-            label: "Revisar Mensagem",
-            emoji: "<:send:1296616875727388704>"
-          }
         }
       }
 
