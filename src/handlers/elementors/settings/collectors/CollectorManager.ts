@@ -31,7 +31,7 @@ export class CollectorsManager {
     new GlobalCollector({
       response: message,
       componentType: ComponentType.StringSelect,
-      timeout: null,
+      timeout: 2147483647,
       callback: async (select: SelectInteractionTypes) => {
         const { values } = select;
         const selected = values[0];
@@ -102,7 +102,7 @@ export class CollectorsManager {
     new GlobalCollector({
       response: message,
       componentType: ComponentType.Button,
-      timeout: null,
+      timeout: 2147483647,
       callback: async (button: ButtonInteraction) => {
         const { customId } = button;
 
