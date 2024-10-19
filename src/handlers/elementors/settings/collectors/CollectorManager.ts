@@ -175,17 +175,18 @@ export class CollectorsManager {
             timeout: 1200000,
             filter: i => i.user.id === interaction.user.id,
             callback: async modal => {
-                const { guild } = modal;
+                const { guild, fields } = modal;
                 switch (modal.customId) {
                     case "discord_embed_creator":
-                        const text =
-                            modal.fields.getTextInputValue("embed_creator");
-                            
-                      const embedjson = Buffer.from(text).toString('base64');
+                        const text = fields.getTextInputValue("embed_creator");
 
-                        mysql.update("discord_link", { embeds_json: embedjson }, [
-                            { guildid: guild.id }
-                        ]);
+                        const embedjson = Buffer.from(text).toString("base64");
+
+                        mysql.update(
+                            "discord_link",
+                            { embeds_json: embedjson },
+                            [{ guildid: guild.id }]
+                        );
                         modal.reply({
                             content: "Painel Enviado com sucesso",
                             ephemeral: true
