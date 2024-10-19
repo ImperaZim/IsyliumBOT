@@ -180,7 +180,7 @@ export class CollectorsManager {
                     case "discord_embed_creator":
                         const text = fields.getTextInputValue("embed_creator");
                         const embedjson = Buffer.from(text).toString("base64");
-
+console.log(embedjson)
                         mysql.update(
                             "discord_link",
                             { embeds_json: embedjson },
