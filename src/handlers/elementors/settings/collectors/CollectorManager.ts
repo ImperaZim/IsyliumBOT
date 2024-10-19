@@ -119,11 +119,12 @@ export class CollectorsManager {
                         if (embed && embed[0] && embed[0].embeds_json) {
                             try {
                                 embedJson = JSON.parse(embed[0].embeds_json);
-                            } catch (error) {new Logger("null", {
+                            } catch (error) {
+                                new Logger("null", {
                                     title: colors.red("[ISYLIUM MODULES]"),
                                     content: `Erro ao ler o json ${error}`
                                 });
-                                
+
                                 embedJson = { title: "teste" };
                             }
                         } else {
