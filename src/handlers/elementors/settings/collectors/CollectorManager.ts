@@ -116,9 +116,9 @@ export class CollectorsManager {
 
                         let embedJson;
 
-                        if (embed && embed[0] && embed[0].embed_json) {
+                        if (embed && embed[0] && embed[0].embeds_json) {
                             try {
-                                embedJson = JSON.parse(embed[0].embed_json);
+                                embedJson = JSON.parse(embed[0].embeds_json);
                             } catch (error) {
                                 console.error(
                                     "Erro ao fazer o parse do JSON:",
