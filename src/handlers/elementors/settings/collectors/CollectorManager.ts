@@ -168,6 +168,10 @@ export class CollectorsManager {
             const server_available =
               modal.fields.getTextInputValue("server_available");
             console.log([server_names, server_available]);
+            await modal.reply({
+              content: "Modal recebido com sucesso!",
+              ephemeral: true
+            });
             break;
           default:
             break;
