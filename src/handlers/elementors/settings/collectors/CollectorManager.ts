@@ -107,15 +107,15 @@ export class CollectorsManager {
 
                 switch (customId) {
                     case "discord_embed_creator":
-                        const result = await mysql.select(
+                        const embed = await mysql.select(
                             "discord_link",
                             "embeds_json",
                             [{ guildid: interaction.guild.id }]
                         );
 
-                        if (result !== null) {
+                        if (embed !== null) {
                             const embedJson =
-                                result[0].embed_json ||
+                                embed[0].embed_json ||
                                 `{\n "title": "teste"\n}`;
                             button.showModal(
                                 getModal("discord_embed_creator", {
@@ -131,7 +131,15 @@ export class CollectorsManager {
                         });
                         return;
                     case "discord_server_manager":
-                        button.showModal(getModal("discord_servers_modal"));
+                      const server = await mysql.select(
+                            "discord_link",
+                            "servers",
+                            [{ guildid: interaction.guild.id }]
+                        );
+
+                        if (server !== null) {
+                            button.showModal(getModal("discord_servers_modal"));
+                        }
                         return;
                     default:
                         break;
