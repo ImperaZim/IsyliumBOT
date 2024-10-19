@@ -168,20 +168,16 @@ export class CollectorsManager {
                     case "discord_embed_creator":
                         const text =
                             modal.fields.getTextInputValue("embed_creator");
-                        console.log(text);
-                        await modal.reply({
-                            content: "Modal recebido com sucesso!",
-                            ephemeral: true
-                        });
+                        mysql.update("discord_link", { embeds_json: text }, [
+                            { guildid: guild.id }
+                        ]);
                         break;
                     case "discord_servers_modal":
                         const server_names =
                             modal.fields.getTextInputValue("server_name");
-                        console.log(server_names);
-                        await modal.reply({
-                            content: "Modal recebido com sucesso!",
-                            ephemeral: true
-                        });
+                        mysql.update("discord_link", { servrs: server_names }, [
+                            { guildid: guild.id }
+                        ]);
                         break;
                     default:
                         break;
