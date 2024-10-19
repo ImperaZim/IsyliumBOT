@@ -112,7 +112,6 @@ export class CollectorsManager {
                             "embeds_json",
                             [{ guildid: guild.id }]
                         );
-                        console.log("Valor retornado do banco:", embed);
 
                         let embedJson;
 
@@ -150,22 +149,34 @@ export class CollectorsManager {
                             [{ guildid: guild.id }]
                         );
 
-                        if (server !== null) {
-                            const serverjson =
-                                server[0].servers ||
-                                `{\n "rankup": true\n\n"factions": false\n}`;
-                            button.showModal(
-                                getModal("discord_servers_modal", {
-                                    value: serverjson
-                                })
-                            );
+                        let serverJson;
+
+                        if (server && server[0] && server[0].servers) {
+                            try {
+                                serverJson = JSON.parse(server[0].servers);
+                            } catch (error) {
+                                console.error(
+                                    "Erro ao fazer o parse do JSON:",
+                                    error
+                                );
+                                serverJson = { 
+                                  skyblock: false,
+                                  rankup: true
+                                  };
+                            }
+                        } else {
+                            serverJson = { 
+                                  skyblock: false,
+                                  rankup: true
+                                  };
                         }
-                        const serverjson = server[0].servers;
+
                         button.showModal(
-                            getModal("discord_servers_modal", {
-                                value: serverjson
+                            getModal("discord_embed_creator", {
+                                value: JSON.stringify(serverJson, null, 2)
                             })
                         );
+                        
 
                         return;
                     default:
