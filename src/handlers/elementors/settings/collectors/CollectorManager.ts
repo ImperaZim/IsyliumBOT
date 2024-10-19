@@ -180,10 +180,10 @@ export class CollectorsManager {
                     case "discord_servers_modal":
                         const server =
                             modal.fields.getTextInputValue("server_name");
-                            mysql.update("discord_link", { servers: server}, [
+                        mysql.update("discord_link", { servers: server }, [
                             { guildid: guild.id }
                         ]);
-                        
+
                         modal.reply({
                             content: "Servidor Atualizado",
                             ephemeral: true
