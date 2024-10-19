@@ -31,7 +31,7 @@ export class CollectorsManager {
     new GlobalCollector({
       response: message,
       componentType: ComponentType.StringSelect,
-      timeout: 2147483647,
+      timeout: 1200000,
       callback: async (select: SelectInteractionTypes) => {
         const { values } = select;
         const selected = values[0];
@@ -102,7 +102,7 @@ export class CollectorsManager {
     new GlobalCollector({
       response: message,
       componentType: ComponentType.Button,
-      timeout: 2147483647,
+      timeout: 1200000,
       callback: async (button: ButtonInteraction) => {
         const { customId } = button;
 
@@ -149,7 +149,7 @@ export class CollectorsManager {
   public static registerModalCollector(interaction: CommandProps) {
     new ModalCollector({
       response: interaction,
-      timeout: 2147483647,
+      timeout: 1200000,
       filter: i => i.user.id === interaction.user.id,
       callback: async modal => {
         switch (modal.customId) {
