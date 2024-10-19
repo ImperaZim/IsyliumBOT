@@ -103,14 +103,14 @@ export class CollectorsManager {
             componentType: ComponentType.Button,
             timeout: 1200000,
             callback: async (button: ButtonInteraction) => {
-                const { customId } = button;
+                const { customId, guild } = button;
 
                 switch (customId) {
                     case "discord_embed_creator":
                         const embed = await mysql.select(
                             "discord_link",
                             "embeds_json",
-                            [{ guildid: interaction.guild.id }]
+                            [{ guildid: guild.id }]
                         );
 
                         if (embed !== null) {
@@ -134,7 +134,7 @@ export class CollectorsManager {
                       const server = await mysql.select(
                             "discord_link",
                             "servers",
-                            [{ guildid: interaction.guild.id }]
+                            [{ guildid: guild.id }]
                         );
 
                         if (server !== null) {
