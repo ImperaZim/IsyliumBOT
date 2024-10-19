@@ -173,9 +173,9 @@ export class CollectorsManager {
                             { guildid: guild.id }
                         ]);
                         modal.reply({
-                          content: 'Painel Enviado com sucesso',
-                          ephemeral: true
-                        })
+                            content: "Painel Enviado com sucesso",
+                            ephemeral: true
+                        });
                         break;
                     case "discord_servers_modal":
                         const server_names =
@@ -186,9 +186,9 @@ export class CollectorsManager {
                             [{ guildid: guild.id }]
                         );
                         modal.reply({
-                          content: 'Servidor Atualizado',
-                          ephemeral: true
-                        })
+                            content: "Servidor Atualizado",
+                            ephemeral: true
+                        });
                         break;
                     default:
                         break;
