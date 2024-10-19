@@ -178,13 +178,12 @@ export class CollectorsManager {
                         });
                         break;
                     case "discord_servers_modal":
-                        const server_names =
+                        const server =
                             modal.fields.getTextInputValue("server_name");
-                        mysql.update(
-                            "discord_link",
-                            { servers: server_names },
-                            [{ guildid: guild.id }]
-                        );
+                            mysql.update("discord_link", { servers: server}, [
+                            { guildid: guild.id }
+                        ]);
+                        
                         modal.reply({
                             content: "Servidor Atualizado",
                             ephemeral: true
