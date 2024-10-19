@@ -177,9 +177,7 @@ export class CollectorsManager {
                     case "discord_servers_modal":
                         const server_names =
                             modal.fields.getTextInputValue("server_name");
-                        const server_available =
-                            modal.fields.getTextInputValue("server_available");
-                        console.log([server_names, server_available]);
+                        console.log(server_names);
                         await modal.reply({
                             content: "Modal recebido com sucesso!",
                             ephemeral: true
