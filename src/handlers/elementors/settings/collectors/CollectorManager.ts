@@ -112,6 +112,7 @@ export class CollectorsManager {
                             "embeds_json",
                             [{ guildid: guild.id }]
                         );
+                        console.log("Valor retornado do banco:", embed);
 
                         let embedJson;
 
