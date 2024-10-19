@@ -148,8 +148,6 @@ export class CollectorsManager {
                     default:
                         break;
                 }
-
-                button.update({ content: `Você clicou: ${customId}` });
             },
             filter: async (button: ButtonInteraction) => {
                 return button.user.id === interaction.user.id;
