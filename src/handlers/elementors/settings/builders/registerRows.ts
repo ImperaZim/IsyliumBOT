@@ -41,15 +41,6 @@ export function registerRows(): void {
                     name: "Isylium Bot",
                     iconURL: profile.icon
                 }
-            },
-            discord_servers_setup: {
-                color: color.primary,
-                description:
-                    "> Olá, {user}! Use a opção abaixo para gerenciar sua lista de servidores.",
-                author: {
-                    name: "Isylium Bot",
-                    iconURL: profile.icon
-                }
             }
         },
         components: {
@@ -109,27 +100,6 @@ export function registerRows(): void {
                         emoji: "<:servers:1295609099819421747>"
                     }
                 },
-                discord_server_delete: {
-                    type: ButtonStyle.Danger,
-                    data: {
-                        label: "Excluir Servidor",
-                        emoji: "<:servers:1295609099819421747>"
-                    }
-                },
-                discord_server_create: {
-                    type: ButtonStyle.Success,
-                    data: {
-                        label: "Criar Servidor",
-                        emoji: "<:servers:1295609099819421747>"
-                    }
-                },
-                discord_server_edit: {
-                    type: ButtonStyle.Success,
-                    data: {
-                        label: "Editar Servidor",
-                        emoji: "<:servers:1295609099819421747>"
-                    }
-                }
             }
         }
     });
