@@ -131,7 +131,7 @@ export class CollectorsManager {
                         });
                         return;
                     case "discord_server_manager":
-                      const server = await mysql.select(
+                        const server = await mysql.select(
                             "discord_link",
                             "servers",
                             [{ guildid: guild.id }]
@@ -140,6 +140,10 @@ export class CollectorsManager {
                         if (server !== null) {
                             button.showModal(getModal("discord_servers_modal"));
                         }
+                        PageManager.loadPage("open:discord_server_manager", {
+                            interaction,
+                            collectorResponse: button
+                        });
                         return;
                     default:
                         break;
