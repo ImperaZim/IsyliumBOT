@@ -172,21 +172,23 @@ export class CollectorsManager {
                         mysql.update("discord_link", { embeds_json: text }, [
                             { guildid: guild.id }
                         ]);
-                        PageManager.loadPage("open:discord_link_settings", {
-                            interaction,
-                            collectorResponse: modal
-                        });
+                        modal.reply({
+                          content: 'Painel Enviado com sucesso',
+                          ephemeral: true
+                        })
                         break;
                     case "discord_servers_modal":
                         const server_names =
                             modal.fields.getTextInputValue("server_name");
-                        mysql.update("discord_link", { servers: server_names }, [
-                            { guildid: guild.id }
-                        ]);
-                        PageManager.loadPage("open:discord_link_settings", {
-                            interaction,
-                            collectorResponse: modal
-                        });
+                        mysql.update(
+                            "discord_link",
+                            { servers: server_names },
+                            [{ guildid: guild.id }]
+                        );
+                        modal.reply({
+                          content: 'Servidor Atualizado',
+                          ephemeral: true
+                        })
                         break;
                     default:
                         break;
