@@ -1,7 +1,7 @@
 import { client } from "@main";
 import { color } from "@config";
+import { TextInputStyle } from "discord.js";
 import { registerModal } from "DiscordElementor";
-import { ChannelType, TextInputStyle } from "discord.js";
 
 export function registerModals(): void {
   registerModal("discord_embed_creator", {
