@@ -77,10 +77,8 @@ export class CollectorsManager {
                 switch (select.customId) {
                     case "discord_logs_select":
                         console.log(selected);
-                        ``;
-                        mysql.select("discord_link", "embeds_json", [
-                            { guildid: guild.id }
-                        ]);
+                        
+                        
 
                         PageManager.loadPage("open:discord_link_settings", {
                             interaction,
