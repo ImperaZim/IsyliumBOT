@@ -47,7 +47,6 @@ export class PageManager {
           getButton(this.settings, "discord_server_manager")
         );
         break;
-
       default:
         break;
     }
