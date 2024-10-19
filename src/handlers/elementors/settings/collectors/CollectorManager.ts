@@ -179,20 +179,17 @@ export class CollectorsManager {
                 switch (modal.customId) {
                     case "discord_embed_creator":
                         const text = fields.getTextInputValue("embed_creator");
-                        
-                        mysql.update(
-                            "discord_link",
-                            { embeds_json: text },
-                            [{ guildid: guild.id }]
-                        );
+
+                        mysql.update("discord_link", { embeds_json: text }, [
+                            { guildid: guild.id }
+                        ]);
                         modal.reply({
                             content: "Painel Enviado com sucesso",
                             ephemeral: true
                         });
                         break;
                     case "discord_servers_modal":
-                        const server =
-                            modal.fields.getTextInputValue("server_name");
+                        const server = fields.getTextInputValue("server_name");
                         mysql.update("discord_link", { servers: server }, [
                             { guildid: guild.id }
                         ]);
