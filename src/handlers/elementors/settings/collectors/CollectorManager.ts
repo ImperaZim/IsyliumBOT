@@ -165,7 +165,7 @@ export class CollectorsManager {
                     case "discord_embed_creator":
                         const text =
                             modal.fields.getTextInputValue("embed_creator");
-                        console.log("Feito => " + text);
+                        console.log(text);
                         await modal.reply({
                             content: "Modal recebido com sucesso!",
                             ephemeral: true
