@@ -138,12 +138,15 @@ export class CollectorsManager {
                         );
 
                         if (server !== null) {
-                            button.showModal(getModal("discord_servers_modal"));
+                            const serverjson =
+                                embed[0].servers ||
+                                `{\n "server_name": "true ou false"\n}`;
+                            button.showModal(
+                                getModal("discord_servers_modal", {
+                                    value: serverjson
+                                })
+                            );
                         }
-                        PageManager.loadPage("open:discord_server_manager", {
-                            interaction,
-                            collectorResponse: button
-                        });
                         return;
                     default:
                         break;
