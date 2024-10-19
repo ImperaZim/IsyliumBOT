@@ -35,7 +35,7 @@ import {
 import { mysql } from "@main";
 import { discord } from "@config";
 import { Logger, colors } from "Console";
-import { register } from "@handlers";
+import { registerSettingsBuilders } from "@handlers";
 
 // Função auxiliar para filtrar arquivos .ts
 export const filter = (file: string) => file.endsWith(".ts");
@@ -88,7 +88,9 @@ export class ExtendedClient extends Client {
     this.registerTables();
     this.registerEvents();
     this.registerModules();
-    register();
+    
+    registerSettingsBuilders();
+    
     this.on("ready", () => {
       if (this.user) {
         this.user.setActivity("????", {
