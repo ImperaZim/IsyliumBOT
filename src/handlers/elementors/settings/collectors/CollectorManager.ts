@@ -71,12 +71,15 @@ export class CollectorsManager {
       componentType: ComponentType.ChannelSelect,
       timeout: null,
       callback: async (select: SelectInteractionTypes) => {
-        const { values } = select;
+        const { values, guild } = select;
         const selected = values[0];
 
         switch (select.customId) {
           case "discord_logs_select":
             console.log(selected);
+            ``
+mysql.select('discord_link', 'embeds_json', [{ guildid: guild.id}]);
+
             PageManager.loadPage(
               "open:discord_link_settings",
               {
