@@ -121,6 +121,13 @@ export function registerRows(): void {
             label: "Criar Servidor",
             emoji: "<:servers:1295609099819421747>"
           }
+        },
+        discord_server_edit: {
+          type: ButtonStyle.Success,
+          data: {
+            label: "Editar Servidor",
+            emoji: "<:servers:1295609099819421747>"
+          }
         }
       }
 
