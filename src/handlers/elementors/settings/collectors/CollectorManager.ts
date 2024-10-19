@@ -77,9 +77,11 @@ export class CollectorsManager {
                 switch (select.customId) {
                     case "discord_logs_select":
                         console.log(selected);
-                        
-                        
-
+mysql.update(
+          "discord_link",
+          { logs: selected },
+          [{ guildid: this.guild.id }]
+        );
                         PageManager.loadPage("open:discord_link_settings", {
                             interaction,
                             collectorResponse: select
