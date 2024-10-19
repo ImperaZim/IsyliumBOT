@@ -22,7 +22,7 @@ export class PageManager {
 
       case "open:discord_logs_select":
         embeds.push(
-          getEmbed(this.settings, "discord_servers_setup", {
+          getEmbed(this.settings, "discord_logs_setup", {
             user: user.globalName || "error 404"
           })
         );
