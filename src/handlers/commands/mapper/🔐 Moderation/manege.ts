@@ -27,7 +27,7 @@ export default new ExtendedCommand({
                 fetchReply: true
             });
 
-            new PageManager().loadPage("open:settings_main_menu", {
+            PageManager.loadPage("open:settings_main_menu", {
                 interaction,
                 message
             });
