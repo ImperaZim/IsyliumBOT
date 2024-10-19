@@ -198,7 +198,7 @@ export class CollectorsManager {
                         ]);
 
                         modal.reply({
-                            content: "Servidores atualizados com sucesso",
+                            content: "Servidores criados ou atualizados com sucesso",
                             ephemeral: true
                         });
                         break;
