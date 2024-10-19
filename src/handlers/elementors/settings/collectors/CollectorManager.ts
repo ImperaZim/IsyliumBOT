@@ -108,27 +108,18 @@ export class CollectorsManager {
                 switch (customId) {
                     case "discord_embed_creator":
                         const embed = await mysql.select(
-                            "discord_link",
-                            "embeds_json",
-                            [{ guildid: guild.id }]
-                        );
+    "discord_link",
+    "embeds_json",
+    [{ guildid: guild.id }]
+);
 
-                        if (embed !== null) {
-                            const embedJson =
-                                embed[0].embed_json ||
-                                `{\n "title": "teste"\n}`;
-                            button.showModal(
-                                getModal("discord_embed_creator", {
-                                    value: embedJson
-                                })
-                            );
-                        }
-                        const embedJson = embed[0].embed_json;
-                        button.showModal(
-                            getModal("discord_embed_creator", {
-                                value: embedJson
-                            })
-                        );
+const embedJson = (embed && embed[0] && embed[0].embed_json) || `{\n "title": "teste"\n}`;
+
+button.showModal(
+    getModal("discord_embed_creator", {
+        value: embedJson
+    })
+);
                         return;
                     case "discord_log_channel":
                         PageManager.loadPage("open:discord_logs_select", {
@@ -198,7 +189,8 @@ export class CollectorsManager {
                         ]);
 
                         modal.reply({
-                            content: "Servidores criados ou atualizados com sucesso",
+                            content:
+                                "Servidores criados ou atualizados com sucesso",
                             ephemeral: true
                         });
                         break;
