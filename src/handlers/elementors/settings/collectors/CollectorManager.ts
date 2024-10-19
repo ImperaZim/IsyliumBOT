@@ -131,7 +131,7 @@ export class CollectorsManager {
 
                         button.showModal(
                             getModal("discord_embed_creator", {
-                                value: JSON.stringify(embedJson, null, 2) 
+                                value: JSON.stringify(embedJson, null, 2)
                             })
                         );
 
