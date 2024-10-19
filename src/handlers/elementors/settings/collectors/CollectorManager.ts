@@ -1,6 +1,7 @@
 import { CommandProps } from "@types";
 import { client, mysql } from "@main";
 import { PageManager } from "@handlers";
+import { Logger, colors } from "Console";
 import {
     getModal,
     getEmbed,
@@ -154,11 +155,11 @@ export class CollectorsManager {
                         if (server && server[0] && server[0].servers) {
                             try {
                                 serverJson = JSON.parse(server[0].servers);
-                            } catch (error) {new Logger("null", {
-        title: colors.red("[ISYLIUM MODULES]"),
-        content: `❌ An error occurred while setting Slash Commands (/): \n${error}`,
-      });
-                                
+                            } catch (error) {
+                                new Logger("null", {
+                                    title: colors.red("[ISYLIUM MODULES]"),
+                                    content: `Erro ao ler o json ${error}`                                });
+
                                 serverJson = {
                                     skyblock: false,
                                     rankup: true
