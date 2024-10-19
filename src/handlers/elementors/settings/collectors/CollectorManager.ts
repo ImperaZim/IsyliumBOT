@@ -76,7 +76,6 @@ export class CollectorsManager {
 
                 switch (select.customId) {
                     case "discord_logs_select":
-                        console.log(selected);
                         mysql.update("discord_link", { logs: selected }, [
                             { guildid: guild.id }
                         ]);
