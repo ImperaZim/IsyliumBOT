@@ -11,7 +11,7 @@ export function registerModals(): void {
         embed_creator: {
           label: "Embed Json",
           maxLength: 180,
-          placeholder: '{value}',
+          value: '{value}',
           required: true,
           style: TextInputStyle.Paragraph
         }
@@ -32,7 +32,7 @@ export function registerModals(): void {
         server_available: {
           label: "Servidor Disponivel?",
           maxLength: 180,
-          placeholder: 'true or false',
+          placeholder: 'true ou false',
           required: true,
           style: TextInputStyle.Paragraph
         }
