@@ -154,29 +154,28 @@ export class CollectorsManager {
                         if (server && server[0] && server[0].servers) {
                             try {
                                 serverJson = JSON.parse(server[0].servers);
-                            } catch (error) {
-                                console.error(
-                                    "Erro ao fazer o parse do JSON:",
-                                    error
-                                );
-                                serverJson = { 
-                                  skyblock: false,
-                                  rankup: true
-                                  };
+                            } catch (error) {new Logger("null", {
+        title: colors.red("[ISYLIUM MODULES]"),
+        content: `❌ An error occurred while setting Slash Commands (/): \n${error}`,
+      });
+                                
+                                serverJson = {
+                                    skyblock: false,
+                                    rankup: true
+                                };
                             }
                         } else {
-                            serverJson = { 
-                                  skyblock: false,
-                                  rankup: true
-                                  };
+                            serverJson = {
+                                skyblock: false,
+                                rankup: true
+                            };
                         }
 
                         button.showModal(
-                            getModal("discord_embed_creator", {
+                            getModal("discord_servers_modal", {
                                 value: JSON.stringify(serverJson, null, 2)
                             })
                         );
-                        
 
                         return;
                     default:
