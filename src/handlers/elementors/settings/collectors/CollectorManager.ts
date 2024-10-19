@@ -179,7 +179,6 @@ export class CollectorsManager {
                 switch (modal.customId) {
                     case "discord_embed_creator":
                         const text = fields.getTextInputValue("embed_creator");
-
                         const embedjson = Buffer.from(text).toString("base64");
 
                         mysql.update(
