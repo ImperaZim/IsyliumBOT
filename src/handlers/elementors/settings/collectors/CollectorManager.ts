@@ -164,6 +164,7 @@ export class CollectorsManager {
             timeout: 1200000,
             filter: i => i.user.id === interaction.user.id,
             callback: async modal => {
+              const { guild } = modal;
                 switch (modal.customId) {
                     case "discord_embed_creator":
                         const text =
