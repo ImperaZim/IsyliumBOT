@@ -123,13 +123,12 @@ export class CollectorsManager {
                                 })
                             );
                         }
-                        const embedJson =
-                                embed[0].embed_json;
-                            button.showModal(
-                                getModal("discord_embed_creator", {
-                                    value: embedJson
-                                })
-                            );
+                        const embedJson = embed[0].embed_json;
+                        button.showModal(
+                            getModal("discord_embed_creator", {
+                                value: embedJson
+                            })
+                        );
                         return;
                     case "discord_log_channel":
                         PageManager.loadPage("open:discord_logs_select", {
@@ -154,14 +153,13 @@ export class CollectorsManager {
                                 })
                             );
                         }
-                          const serverjson =
-                                server[0].servers;
-                                button.showModal(
-                                getModal("discord_servers_modal", {
-                                    value: serverjson
-                                })
-                            );
-                            
+                        const serverjson = server[0].servers;
+                        button.showModal(
+                            getModal("discord_servers_modal", {
+                                value: serverjson
+                            })
+                        );
+
                         return;
                     default:
                         break;
@@ -200,7 +198,7 @@ export class CollectorsManager {
                         ]);
 
                         modal.reply({
-                            content: "Servidor Atualizado",
+                            content: "Servidores atualizados com sucesso",
                             ephemeral: true
                         });
                         break;
