@@ -180,7 +180,10 @@ export class CollectorsManager {
                     case "discord_embed_creator":
                         const text =
                             modal.fields.getTextInputValue("embed_creator");
-                        mysql.update("discord_link", { embeds_json: text }, [
+                            
+                      const embedjson = Buffer.from(text).toString('base64');
+
+                        mysql.update("discord_link", { embeds_json: embedjson }, [
                             { guildid: guild.id }
                         ]);
                         modal.reply({
