@@ -23,7 +23,7 @@ export function registerModals(): void {
         components: {
             inputs: {
                 server_name: {
-                    label: "Criar Servidor",
+                    label: "Server Json",
                     maxLength: 180,
                     value: "{value}",
                     required: true,
