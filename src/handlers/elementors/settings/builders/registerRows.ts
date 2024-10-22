@@ -11,31 +11,25 @@ export function registerRows(): void {
                 color: color.primary,
                 description:
                     "> Estou carregando as configurações, por favor espere um pouco!",
-                    image: settings
+                image: settings
             },
             settings_main_menu: {
                 color: color.primary,
                 description:
                     "> Olá, {user}! Bem-vindo ao menu de configurações do Isylium Bot. Aqui você pode personalizar os sistemas do bot conforme suas necessidades.",
-                    image: settings
+                image: settings
             },
             discord_link_settings: {
                 color: color.primary,
                 description:
                     "> Olá, {user}! Use os botões abaixo para configurar o sistema de integração com o Discord. Consulte este [website](https://zira.bot/embedbuilder/) para criar JSONs de embeds, se necessário.",
-                author: {
-                    name: "Isylium Bot",
-                    iconURL: profile.icon
-                }
+                image: settings
             },
             discord_logs_setup: {
                 color: color.primary,
                 description:
                     "> Olá, {user}! Escolha o canal de logs do seu servidor no seletor abaixo.",
-                author: {
-                    name: "Isylium Bot",
-                    iconURL: profile.icon
-                }
+                image: settings
             }
         },
         components: {
