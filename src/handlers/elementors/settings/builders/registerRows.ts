@@ -23,13 +23,13 @@ export function registerRows(): void {
                 color: color.primary,
                 description:
                     "> Olá, {user}! Use os botões abaixo para configurar o sistema de integração com o Discord. Consulte este [website](https://zira.bot/embedbuilder/) para criar JSONs de embeds, se necessário.",
-                image: settings
+                image: url
             },
             discord_logs_setup: {
                 color: color.primary,
                 description:
                     "> Olá, {user}! Escolha o canal de logs do seu servidor no seletor abaixo.",
-                image: settings
+                image: url
             }
         },
         components: {
