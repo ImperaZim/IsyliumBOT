@@ -11,19 +11,11 @@ export function registerRows(): void {
                 color: color.primary,
                 description:
                     "> Estou carregando as configurações, por favor espere um pouco!",
-                author: {
-                    name: "Isylium Bot",
-                    iconURL: profile.icon
-                }
             },
             settings_main_menu: {
                 color: color.primary,
                 description:
                     "> Olá, {user}! Bem-vindo ao menu de configurações do Isylium Bot. Aqui você pode personalizar os sistemas do bot conforme suas necessidades.",
-                author: {
-                    name: "Isylium Bot",
-                    iconURL: profile.icon
-                }
             },
             discord_link_settings: {
                 color: color.primary,
@@ -100,7 +92,7 @@ export function registerRows(): void {
                         label: "Gerenciar Servidor",
                         emoji: "<:servers:1295609099819421747>"
                     }
-                },
+                }
             }
         }
     });
