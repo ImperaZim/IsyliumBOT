@@ -2,7 +2,7 @@ import { client } from "@main";
 import { color, assets } from "@config";
 import { registerRow } from "DiscordElementor";
 import { ChannelType, ButtonStyle } from "discord.js";
-const { ticket,dcl, settings, shop } = assets;
+const { ticket, dcl, settings, shop } = assets;
 
 export function registerRows(): void {
     registerRow("settings", {
