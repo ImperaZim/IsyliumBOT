@@ -205,6 +205,10 @@ export class CollectorsManager {
                         mysql.update("discord_link", { embeds_json: text }, [
                             { guildid: guild.id }
                         ]);
+                        PageManager.loadPage("open:discord_logs_select", {
+                            interaction,
+                            collectorResponse: button
+                        });
                         modal.reply({
                             content: "Painel Enviado com sucesso",
                             ephemeral: true
