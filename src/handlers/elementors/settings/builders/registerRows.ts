@@ -30,6 +30,12 @@ export function registerRows(): void {
                 description:
                     "> Olá, {user}! Escolha o canal de logs do seu servidor no seletor abaixo.",
                 thumbnail: dcl
+            },
+            ticket_logs_setup: {
+                color: color.primary,
+                description:
+                    "> Olá, {user}! Escolha o canal de logs do seu servidor no seletor abaixo.",
+                thumbnail: ticket
             }
         },
         components: {
@@ -57,6 +63,16 @@ export function registerRows(): void {
                     }
                 },
                 discord_logs_select: {
+                    type: "channel",
+                    data: {
+                        disabled: false,
+                        placeholder: "Escolha o canal de logs",
+                        minValue: 1,
+                        maxValue: 1,
+                        channelTypes: [ChannelType.GuildText]
+                    }
+                },
+                ticket_logs_select: {
                     type: "channel",
                     data: {
                         disabled: false,
@@ -103,13 +119,13 @@ export function registerRows(): void {
                         emoji: "<:channel:1295608647484706858>"
                     }
                 },
-               ticket_role_perm: {
+                ticket_role_perm: {
                     type: ButtonStyle.Secondary,
                     data: {
                         label: "Gerenciar Permissões",
                         emoji: "<:role:1298447123511246851>"
                     }
-                },
+                }
             }
         }
     });
