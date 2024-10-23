@@ -24,6 +24,6 @@ export const profile: Config = {
 export const assets: Config = {
   ticket: "https://cdn.discordapp.com/attachments/1298374782810587219/1298374815127699477/4961736.png?ex=67195546&is=671803c6&hm=45b45964b3a4708ccf342017f6d793d153f909b9ec9dcc53972fd2dfa890f644&",
   url: "https://cdn.discordapp.com/attachments/1298374782810587219/1298376388252012605/link.png?ex=671956bd&is=6718053d&hm=f88c913bf3ba1c00ce6a9e6f44ae323fad44410bd3040b0a957143b81f18c6dd&",
-  settings: "https://cdn.discordapp.com/attachments/1298374782810587219/1298376387568336978/settings.png?ex=671956bd&is=6718053d&hm=ddb4f93e6a73672f17c4f458e7cc287e8799dfb07c0bffbfcb70cd20574f76c2&",
+  settings: "https://cdn.discordapp.com/attachments/1298374782810587219/1298427279679950848/settings_1.png?ex=67198623&is=671834a3&hm=f19fb551a61ffb3838afac720bd2c5f0d2d4d48bb1777407426832eaeda337a9&",
   cart: "https://cdn.discordapp.com/attachments/1298374782810587219/1298375629636501545/carrinho-de-compras.png?ex=67195608&is=67180488&hm=ab813ff91d3b68f16cbc81685e1b10b7851a6517a153e7209da2e0c7f475f551&"
 };
