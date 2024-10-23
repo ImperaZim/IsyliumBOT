@@ -72,6 +72,16 @@ export function registerRows(): void {
                         channelTypes: [ChannelType.GuildText]
                     }
                 },
+                discord_embed_select: {
+                    type: "channel",
+                    data: {
+                        disabled: false,
+                        placeholder: "Escolha o canal de logs",
+                        minValue: 1,
+                        maxValue: 1,
+                        channelTypes: [ChannelType.GuildText]
+                    }
+                },
                 ticket_logs_select: {
                     type: "channel",
                     data: {
