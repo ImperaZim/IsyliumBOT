@@ -2,7 +2,7 @@ import { client } from "@main";
 import { color, assets } from "@config";
 import { registerRow } from "DiscordElementor";
 import { ChannelType, ButtonStyle } from "discord.js";
-const { ticket, url, settings, cart } = assets;
+const { ticket,dcl, settings, shop } = assets;
 
 export function registerRows(): void {
     registerRow("settings", {
@@ -23,13 +23,13 @@ export function registerRows(): void {
                 color: color.primary,
                 description:
                     "> Olá, {user}! Use os botões abaixo para configurar o sistema de integração com o Discord. Consulte este [website](https://zira.bot/embedbuilder/) para criar JSONs de embeds, se necessário.",
-                thumbnail: url
+                thumbnail: dcl
             },
             discord_logs_setup: {
                 color: color.primary,
                 description:
                     "> Olá, {user}! Escolha o canal de logs do seu servidor no seletor abaixo.",
-                thumbnail: url
+                thumbnail: dcl
             }
         },
         components: {
