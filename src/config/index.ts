@@ -27,6 +27,7 @@ export const assets: Config = {
     dcl: "https://cdn.discordapp.com/attachments/1298374782810587219/1298433420313100329/connection.png?ex=67198bdb&is=67183a5b&hm=42516ebe32cba0d23d58fbd4aa5e6e6168a55649c53452dfeddf5bf87006cc82&",
     settings:
         "https://cdn.discordapp.com/attachments/1298374782810587219/1298427279679950848/settings_1.png?ex=67198623&is=671834a3&hm=f19fb551a61ffb3838afac720bd2c5f0d2d4d48bb1777407426832eaeda337a9&",
-    shop:
-        "https://cdn.discordapp.com/attachments/1298374782810587219/1298435428596191242/shopping.png?ex=67198db9&is=67183c39&hm=6fea5116102999f06a6c8999d94ef30507e378aabb6b7da3c7aa2ed6a5e21208&"
+    shop: "https://cdn.discordapp.com/attachments/1298374782810587219/1298435428596191242/shopping.png?ex=67198db9&is=67183c39&hm=6fea5116102999f06a6c8999d94ef30507e378aabb6b7da3c7aa2ed6a5e21208&",
+    yt: "https://cdn.discordapp.com/attachments/1298374782810587219/1298436212280786954/creative.png?ex=67198e74&is=67183cf4&hm=3bdc0fbb20b8a53ef3599c5bb67985046375e45cd28523d1deb29c70d96baef9&",
+    ptero: "https://cdn.discordapp.com/attachments/1298374782810587219/1298436387862872135/pterodactyl.png?ex=67198e9e&is=67183d1e&hm=426f9db133a673d8290dfec9af5c5a094b08141b99038e226ee3d989a381be3a&",
 };
