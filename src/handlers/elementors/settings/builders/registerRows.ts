@@ -69,21 +69,21 @@ export function registerRows(): void {
             },
             buttons: {
                 discord_embed_creator: {
-                    type: ButtonStyle.Primary,
+                    type: ButtonStyle.Secondary,
                     data: {
                         label: "Criador de Embed",
                         emoji: "<a:lapis:1295608106965012541>"
                     }
                 },
                 discord_log_channel: {
-                    type: ButtonStyle.Primary,
+                    type: ButtonStyle.Secondary,
                     data: {
                         label: "Canal de Logs",
                         emoji: "<:channel:1295608647484706858>"
                     }
                 },
                 discord_server_manager: {
-                    type: ButtonStyle.Primary,
+                    type: ButtonStyle.Secondary,
                     data: {
                         label: "Gerenciar Servidor",
                         emoji: "<:servers:1295609099819421747>"
