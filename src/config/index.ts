@@ -23,7 +23,7 @@ export const profile: Config = {
 };
 
 export const assets: Config = {
-    ticket: "https://cdn.discordapp.com/attachments/1298374782810587219/1298435826111221831/ticket.png?ex=67198e18&is=67183c98&hm=9a024a4009144923c321cf37691de495348a62b6db70fb7a67d68083c3f474de&",,
+    ticket: "https://cdn.discordapp.com/attachments/1298374782810587219/1298435826111221831/ticket.png?ex=67198e18&is=67183c98&hm=9a024a4009144923c321cf37691de495348a62b6db70fb7a67d68083c3f474de&",
     dcl: "https://cdn.discordapp.com/attachments/1298374782810587219/1298433420313100329/connection.png?ex=67198bdb&is=67183a5b&hm=42516ebe32cba0d23d58fbd4aa5e6e6168a55649c53452dfeddf5bf87006cc82&",
     settings:
         "https://cdn.discordapp.com/attachments/1298374782810587219/1298427279679950848/settings_1.png?ex=67198623&is=671834a3&hm=f19fb551a61ffb3838afac720bd2c5f0d2d4d48bb1777407426832eaeda337a9&",
