@@ -88,7 +88,28 @@ export function registerRows(): void {
                         label: "Gerenciar Servidor",
                         emoji: "<:servers:1295609099819421747>"
                     }
-                }
+                },
+                ticket_embed_creator: {
+                    type: ButtonStyle.Secondary,
+                    data: {
+                        label: "Criador de Embed",
+                        emoji: "<a:lapis:1295608106965012541>"
+                    }
+                },
+                tickey_log_channel: {
+                    type: ButtonStyle.Secondary,
+                    data: {
+                        label: "Canal de Logs",
+                        emoji: "<:channel:1295608647484706858>"
+                    }
+                },
+               ticket_role_perm: {
+                    type: ButtonStyle.Secondary,
+                    data: {
+                        label: "Gerenciar Permissões",
+                        emoji: "<:role:1298447123511246851>"
+                    }
+                },
             }
         }
     });
