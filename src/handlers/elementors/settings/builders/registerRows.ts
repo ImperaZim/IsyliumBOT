@@ -98,21 +98,21 @@ export function registerRows(): void {
                     type: ButtonStyle.Secondary,
                     data: {
                         label: "Criador de Embed",
-                        emoji: "<a:lapis:1295608106965012541>"
+                        //emoji: "<a:lapis:1295608106965012541>"
                     }
                 },
                 discord_log_channel: {
                     type: ButtonStyle.Secondary,
                     data: {
                         label: "Canal de Logs",
-                        emoji: "<:channel:1295608647484706858>"
+                      //  emoji: "<:channel:1295608647484706858>"
                     }
                 },
                 discord_server_manager: {
                     type: ButtonStyle.Secondary,
                     data: {
                         label: "Gerenciar Servidor",
-                        emoji: "<:servers:1295609099819421747>"
+                        //emoji: "<:servers:1295609099819421747>"
                     }
                 },
                 ticket_embed_creator: {
