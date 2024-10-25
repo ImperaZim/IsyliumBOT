@@ -218,7 +218,7 @@ export class CollectorsManager {
                         );
 
                         if (message) {
-                            PageManager.loadPage("open:discord_link_settings", {
+                            PageManager.loadPage("open:discord_logs_select", {
                                 interaction,
                                 collectorResponse: modal
                             });
