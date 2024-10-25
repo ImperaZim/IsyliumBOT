@@ -49,7 +49,7 @@ export function registerRows(): void {
                             {
                                 label: "Sistema de Tickets",
                                 description: "Configurar o sistema de tickets",
-                                emoji: "<:ticket:1295558483927629835>",
+                             //   emoji: "<:ticket:1295558483927629835>",
                                 value: "settings:ticket"
                             },
                             {
