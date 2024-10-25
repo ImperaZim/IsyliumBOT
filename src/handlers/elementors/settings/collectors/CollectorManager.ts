@@ -218,7 +218,7 @@ export class CollectorsManager {
                         );
 
                         if (message) {
-                            PageManager.loadPage("open:discord_logs_select", {
+                            PageManager.loadPage("open:discord_embed_send", {
                                 interaction,
                                 collectorResponse: modal
                             });
