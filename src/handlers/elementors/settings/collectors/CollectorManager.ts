@@ -205,27 +205,34 @@ export class CollectorsManager {
                         mysql.update("discord_link", { embeds_json: text }, [
                             { guildid: guild.id }
                         ]);
-                        
-                        const lastMessage = await interaction.channel?.messages.fetch({ limit: 10 });
-const message = lastMessage?.find(msg => msg.author.id === client.user?.id && msg.embeds.length > 0);
 
-if (message) {
-  // A última mensagem com embed do bot foi encontrada e está pronta para ser editada.
-  const updatedEmbed = EmbedBuilder.from(message.embeds[0]).setDescription(newDescription);
-  await message.edit({ embeds: [updatedEmbed] });
-  await interaction.reply({ content: 'Embed atualizado com sucesso!', ephemeral: true });
-} else {
-  await interaction.reply({ content: 'Não foi possível encontrar um embed do bot para editar.', ephemeral: true });
-}
+                        const lastMessage =
+                            await modal.channel?.messages.fetch({
+                                limit: 1
+                            });
+                        const message = lastMessage?.find(
+                            msg =>
+                                msg.author.id === client.user?.id &&
+                                msg.embeds.length > 0
+                        );
 
-                        PageManager.loadPage("open:discord_logs_select", {
+                        if (message) {
+                            PageManager.loadPage("open:discord_link_settings", {
                             interaction,
-                            collectorResponse: button
+                            collectorResponse: modal
                         });
-                        modal.reply({
-                            content: "Painel Enviado com sucesso",
-                            ephemeral: true
-                        });
+                            
+                            await interaction.reply({
+                                content: "Embed atualizado com sucesso!",
+                                ephemeral: true
+                            });
+                        } else {
+                            await interaction.reply({
+                                content:
+                                    "Não foi possível encontrar um embed do bot para editar.",
+                                ephemeral: true
+                            });
+                        }
                         break;
                     case "discord_servers_modal":
                         const server = fields.getTextInputValue("server_name");
