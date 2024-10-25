@@ -222,11 +222,6 @@ export class CollectorsManager {
                                 interaction,
                                 collectorResponse: modal
                             });
-
-                            await interaction.reply({
-                                content: "Embed atualizado com sucesso!",
-                                ephemeral: true
-                            });
                         } else {
                             await interaction.reply({
                                 content:
