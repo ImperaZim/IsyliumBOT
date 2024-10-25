@@ -31,6 +31,12 @@ export function registerRows(): void {
                     "> Olá, {user}! Escolha o canal de logs do seu servidor no seletor abaixo.",
                 thumbnail: dcl
             },
+            discord_send_setup: {
+                color: color.primary,
+                description:
+                    "> Olá, {user}! Escolha o canal para enviar seu painel no seletor abaixo.",
+                thumbnail: dcl
+            },
             ticket_logs_setup: {
                 color: color.primary,
                 description:
@@ -49,7 +55,7 @@ export function registerRows(): void {
                             {
                                 label: "Sistema de Tickets",
                                 description: "Configurar o sistema de tickets",
-                             //   emoji: "<:ticket:1295558483927629835>",
+                                //   emoji: "<:ticket:1295558483927629835>",
                                 value: "settings:ticket"
                             },
                             {
@@ -97,21 +103,21 @@ export function registerRows(): void {
                 discord_embed_creator: {
                     type: ButtonStyle.Secondary,
                     data: {
-                        label: "Criador de Embed",
+                        label: "Criador de Embed"
                         //emoji: "<a:lapis:1295608106965012541>"
                     }
                 },
                 discord_log_channel: {
                     type: ButtonStyle.Secondary,
                     data: {
-                        label: "Canal de Logs",
-                      //  emoji: "<:channel:1295608647484706858>"
+                        label: "Canal de Logs"
+                        //  emoji: "<:channel:1295608647484706858>"
                     }
                 },
                 discord_server_manager: {
                     type: ButtonStyle.Secondary,
                     data: {
-                        label: "Gerenciar Servidor",
+                        label: "Gerenciar Servidor"
                         //emoji: "<:servers:1295609099819421747>"
                     }
                 },
