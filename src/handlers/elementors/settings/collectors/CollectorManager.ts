@@ -85,6 +85,14 @@ export class CollectorsManager {
                             collectorResponse: select
                         });
                         break;
+                        case "discord_embed_select":
+                          mysql.update("discord_link", { logs: selected }, [
+                            { guildid: guild.id }
+                        ]);
+                        PageManager.loadPage("open:discord_link_settings", {
+                            interaction,
+                            collectorResponse: select
+                        });
                     default:
                         break;
                 }
