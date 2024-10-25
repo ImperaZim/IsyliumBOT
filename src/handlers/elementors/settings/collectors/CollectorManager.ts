@@ -206,10 +206,11 @@ export class CollectorsManager {
                             { guildid: guild.id }
                         ]);
 
-                        const lastMessage =
-                            await modal.channel?.messages.fetch({
+                        const lastMessage = await modal.channel?.messages.fetch(
+                            {
                                 limit: 1
-                            });
+                            }
+                        );
                         const message = lastMessage?.find(
                             msg =>
                                 msg.author.id === client.user?.id &&
@@ -218,10 +219,10 @@ export class CollectorsManager {
 
                         if (message) {
                             PageManager.loadPage("open:discord_link_settings", {
-                            interaction,
-                            collectorResponse: modal
-                        });
-                            
+                                interaction,
+                                collectorResponse: modal
+                            });
+
                             await interaction.reply({
                                 content: "Embed atualizado com sucesso!",
                                 ephemeral: true
