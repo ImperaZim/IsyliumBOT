@@ -30,21 +30,15 @@ export class PageManager {
                     getSelect(this.settings, "discord_logs_select")
                 );
                 break;
-                case "open:discord_server_manager":
+                case "open:discord_embed_send":
                   embeds.push(
-                    getEmbed(this.settings, "discord_servers_setup", {
+                    getEmbed(this.settings, "discord_send_setup", {
                         user: user.globalName || "error 404"
                     })
-                );components.push(
-                    getButton(this.settings, "discord_server_delete")
                 );
                 components.push(
-                    getButton(this.settings, "discord_server_edit")
+                    getSelect(this.settings, "discord_embed_select")
                 );
-                components.push(
-                    getButton(this.settings, "discord_server_create")
-                );
-                
                 break;
 
             case "open:discord_link_settings":
