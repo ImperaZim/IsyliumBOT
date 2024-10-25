@@ -86,9 +86,11 @@ export class CollectorsManager {
                         });
                         break;
                     case "discord_embed_select":
-                        mysql.update("discord_link", { send_channel: selected }, [
-                            { guildid: guild.id }
-                        ]);
+                        mysql.update(
+                            "discord_link",
+                            { send_channel: selected },
+                            [{ guildid: guild.id }]
+                        );
                         PageManager.loadPage("open:discord_link_settings", {
                             interaction,
                             collectorResponse: select
