@@ -222,12 +222,6 @@ export class CollectorsManager {
                                 interaction,
                                 collectorResponse: modal
                             });
-                        } else {
-                            await interaction.reply({
-                                content:
-                                    "Não foi possível encontrar um embed do bot para editar.",
-                                ephemeral: true
-                            });
                         }
                         break;
                     case "discord_servers_modal":
