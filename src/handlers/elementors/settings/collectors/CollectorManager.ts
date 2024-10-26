@@ -118,6 +118,17 @@ export class CollectorsManager {
 
                 switch (customId) {
                     case "discord_embed_creator":
+                      const server_link = await mysql.select(
+                            "discord_link",
+                            "servers",
+                            [{ guildid: guild.id }]
+                        );
+                      if(server_link === null){
+                        return button.reply({
+                          content: 'Por favor, criar um servidor primeiro antes de usar Embed Creator',
+                          ephemeral: true
+                        })
+                      }
                         const embed = await mysql.select(
                             "discord_link",
                             "embeds_json",
@@ -146,7 +157,6 @@ export class CollectorsManager {
                                 value: JSON.stringify(embedJson, null, 2)
                             })
                         );
-
                         return;
                     case "discord_log_channel":
                         PageManager.loadPage("open:discord_logs_select", {
