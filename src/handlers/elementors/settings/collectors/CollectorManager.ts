@@ -257,10 +257,11 @@ export class CollectorsManager {
                         mysql.update("discord_link", { servers: server }, [
                             { guildid: guild.id }
                         ]);
-modal.reply({
-  content: 'Servidor criado ou atualizado com sucesso',
-  ephemeral: true
-})
+                        modal.reply({
+                            content:
+                                "Servidor criado ou atualizado com sucesso",
+                            ephemeral: true
+                        });
                         break;
                     default:
                         break;
