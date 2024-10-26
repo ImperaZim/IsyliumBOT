@@ -227,14 +227,7 @@ export class CollectorsManager {
             filter: i => i.user.id === interaction.user.id,
             callback: async modal => {
                 const { guild, fields } = modal;
-                const lastMessage = await modal.channel?.messages.fetch({
-                    limit: 1
-                });
-                const message = lastMessage?.find(
-                    msg =>
-                        msg.author.id === client.user?.id &&
-                        msg.embeds.length > 0
-                );
+                
 
                 switch (modal.customId) {
                     case "discord_embed_creator":
@@ -243,13 +236,20 @@ export class CollectorsManager {
                         mysql.update("discord_link", { embeds_json: text }, [
                             { guildid: guild.id }
                         ]);
-                        console.log("yes");
+                        const lastMessage = await modal.channel?.messages.fetch({
+                    limit: 1
+                });
+                const message = lastMessage?.find(
+                    msg =>
+                        msg.author.id === client.user?.id &&
+                        msg.embeds.length > 0
+                );
                         if (message) {
                             PageManager.loadPage("open:discord_embed_send", {
                                 interaction,
                                 collectorResponse: modal
                             });
-                            console.log("yes02");
+                            
                         }
                         break;
                     case "discord_servers_modal":
@@ -258,12 +258,7 @@ export class CollectorsManager {
                             { guildid: guild.id }
                         ]);
 
-                        if (message) {
-                            PageManager.loadPage("open:discord_link_settings", {
-                                interaction,
-                                collectorResponse: modal
-                            });
-                        }
+                        
 
                         break;
                     default:
