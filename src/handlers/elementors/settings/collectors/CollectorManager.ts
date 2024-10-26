@@ -227,15 +227,7 @@ export class CollectorsManager {
             filter: i => i.user.id === interaction.user.id,
             callback: async modal => {
                 const { guild, fields } = modal;
-                switch (modal.customId) {
-                    case "discord_embed_creator":
-                        const text = fields.getTextInputValue("embed_creator");
-
-                        mysql.update("discord_link", { embeds_json: text }, [
-                            { guildid: guild.id }
-                        ]);
-
-                        const lastMessage = await modal.channel?.messages.fetch(
+                const lastMessage = await modal.channel?.messages.fetch(
                             {
                                 limit: 1
                             }
@@ -246,6 +238,15 @@ export class CollectorsManager {
                                 msg.embeds.length > 0
                         );
 
+                switch (modal.customId) {
+                    case "discord_embed_creator":
+                        const text = fields.getTextInputValue("embed_creator");
+
+                        mysql.update("discord_link", { embeds_json: text }, [
+                            { guildid: guild.id }
+                        ]);
+
+                        
                         if (message) {
                             PageManager.loadPage("open:discord_embed_send", {
                                 interaction,
@@ -258,16 +259,6 @@ export class CollectorsManager {
                         mysql.update("discord_link", { servers: server }, [
                             { guildid: guild.id }
                         ]);
-const lastMessage02 = await modal.channel?.messages.fetch(
-                            {
-                                limit: 1
-                            }
-                        );
-                        const message02 = lastMessage?.find(
-                            msg =>
-                                msg.author.id === client.user?.id &&
-                                msg.embeds.length > 0
-                        );
 
                         if (message) {
                             PageManager.loadPage("open:discord_embed_send", {
@@ -275,7 +266,7 @@ const lastMessage02 = await modal.channel?.messages.fetch(
                                 collectorResponse: modal
                             });
                         }
-                        
+
                         break;
                     default:
                         break;
