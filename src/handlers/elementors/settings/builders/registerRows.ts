@@ -3,45 +3,44 @@ import { color, assets } from "@config";
 import { registerRow } from "DiscordElementor";
 import { ChannelType, ButtonStyle } from "discord.js";
 const { ticket, dcl, settings, shop } = assets;
-
 export function registerRows(): void {
     registerRow("settings", {
         embeds: {
             loading_settings: {
                 color: color.primary,
                 description:
-                    "> Estou carregando as configurações, por favor espere um pouco!",
-                thumbnail: settings
+                    "> ⏳ Estou carregando as configurações... Por favor, aguarde enquanto tudo é ajustado para você!",
+                thumbnail: "https://cdn.iconfinder.com/data/icons/general-icons-rounded/110/Settings-512.png"
             },
             settings_main_menu: {
                 color: color.primary,
                 description:
-                    "> Olá, {user}! Bem-vindo ao menu de configurações do Isylium Bot. Aqui você pode personalizar os sistemas do bot conforme suas necessidades.",
-                thumbnail: settings
+                    "> ⚙️ Olá, {user}! Bem-vindo ao menu de configurações do **Isylium Bot**! Aqui, você pode personalizar todas as funcionalidades do bot para o seu servidor.",
+                thumbnail: "https://cdn.iconfinder.com/data/icons/general-icons-rounded/110/Settings-512.png"
             },
             discord_link_settings: {
                 color: color.primary,
                 description:
-                    "> Olá, {user}! Use os botões abaixo para configurar o sistema de integração com o Discord. Consulte este [website](https://zira.bot/embedbuilder/) para criar JSONs de embeds, se necessário.",
-                thumbnail: dcl
+                    "> 🔗 Olá, {user}! Configure a integração do bot com o Discord usando os botões abaixo. Consulte este [site](https://zira.bot/embedbuilder/) para criar JSONs de embeds, se precisar.",
+                thumbnail: "https://img.icons8.com/ios-filled/500/discord-integration.png"
             },
             discord_logs_setup: {
                 color: color.primary,
                 description:
-                    "> Olá, {user}! Escolha o canal de logs do seu servidor no seletor abaixo.",
-                thumbnail: dcl
+                    "> 📝 Selecione o canal para os **logs do Discord** para manter um histórico organizado das atividades no seu servidor.",
+                thumbnail: "https://cdn-icons-png.flaticon.com/512/3659/3659921.png" 
             },
             discord_send_setup: {
                 color: color.primary,
                 description:
-                    "> Olá, {user}! Escolha o canal para enviar seu painel no seletor abaixo.",
-                thumbnail: dcl
+                    "> 📢 Escolha o canal onde deseja enviar o painel do bot para o seu servidor.",
+                thumbnail: "https://img.icons8.com/ios-filled/500/discord-integration.png"
             },
             ticket_logs_setup: {
                 color: color.primary,
                 description:
-                    "> Olá, {user}! Escolha o canal de logs do seu servidor no seletor abaixo.",
-                thumbnail: ticket
+                    "> 🎫 Escolha o canal para os **logs de tickets** do servidor para acompanhar as solicitações.",
+                thumbnail: "https://cdn-icons-png.flaticon.com/512/3050/3050293.png"
             }
         },
         components: {
@@ -55,14 +54,13 @@ export function registerRows(): void {
                             {
                                 label: "Sistema de Tickets",
                                 description: "Configurar o sistema de tickets",
-                                //   emoji: "<:ticket:1295558483927629835>",
+                                emoji: "🎫",
                                 value: "settings:ticket"
                             },
                             {
                                 label: "Sistema de Conexão ao Discord",
-                                description:
-                                    "Configurar a integração do Discord",
-                                emoji: "<:discord:1295557503555207302>",
+                                description: "Configurar a integração do Discord",
+                                emoji: "🔗",
                                 value: "settings:discordlink"
                             }
                         ]
@@ -103,46 +101,48 @@ export function registerRows(): void {
                 discord_embed_creator: {
                     type: ButtonStyle.Secondary,
                     data: {
-                        label: "Criador de Embed"
-                        //emoji: "<a:lapis:1295608106965012541>"
+                        label: "Criador de Embed",
+                        emoji: "✏️",
                     }
                 },
                 discord_log_channel: {
                     type: ButtonStyle.Secondary,
                     data: {
-                        label: "Canal de Logs"
-                        //  emoji: "<:channel:1295608647484706858>"
+                        label: "Canal de Logs",
+                        emoji: "📋",
                     }
                 },
                 discord_server_manager: {
                     type: ButtonStyle.Secondary,
                     data: {
-                        label: "Gerenciar Servidor"
-                        //emoji: "<:servers:1295609099819421747>"
+                        label: "Gerenciar Servidor",
+                        emoji: "🛠️",
                     }
                 },
                 ticket_embed_creator: {
                     type: ButtonStyle.Secondary,
                     data: {
                         label: "Criador de Embed",
-                        emoji: "<a:lapis:1295608106965012541>"
+                        emoji: "✏️",
                     }
                 },
                 tickey_log_channel: {
                     type: ButtonStyle.Secondary,
                     data: {
                         label: "Canal de Logs",
-                        emoji: "<:channel:1295608647484706858>"
+                        emoji: "📋",
                     }
                 },
                 ticket_role_perm: {
                     type: ButtonStyle.Secondary,
                     data: {
                         label: "Gerenciar Permissões",
-                        emoji: "<:role:1298447123511246851>"
+                        emoji: "🔒",
                     }
                 }
             }
         }
     });
 }
+
+
