@@ -243,7 +243,7 @@ export class CollectorsManager {
                         mysql.update("discord_link", { embeds_json: text }, [
                             { guildid: guild.id }
                         ]);
-
+console.log("yes")
                         if (message) {
                             PageManager.loadPage("open:discord_embed_send", {
                                 interaction,
