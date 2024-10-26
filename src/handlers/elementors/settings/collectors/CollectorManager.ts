@@ -123,7 +123,7 @@ export class CollectorsManager {
                             "servers",
                             [{ guildid: guild.id }]
                         );
-                        
+
                         if (!server_link || server_link.trim() === "") {
                             await button.reply({
                                 content:
