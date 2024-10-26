@@ -118,11 +118,11 @@ export class CollectorsManager {
 
                 switch (customId) {
                     case "discord_embed_creator":
-                      const serverLink = await mysql.select(
-    "discord_link",
-    "servers",
-    [{ guildid: guild.id }]
-);
+                        const serverLink = await mysql.select(
+                            "discord_link",
+                            "servers",
+                            [{ guildid: guild.id }]
+                        );
 
                         if (
                             !serverLink ||
@@ -258,12 +258,24 @@ export class CollectorsManager {
                         mysql.update("discord_link", { servers: server }, [
                             { guildid: guild.id }
                         ]);
+const lastMessage02 = await modal.channel?.messages.fetch(
+                            {
+                                limit: 1
+                            }
+                        );
+                        const message02 = lastMessage?.find(
+                            msg =>
+                                msg.author.id === client.user?.id &&
+                                msg.embeds.length > 0
+                        );
 
-                        modal.reply({
-                            content:
-                                "Servidores criados ou atualizados com sucesso",
-                            ephemeral: true
-                        });
+                        if (message) {
+                            PageManager.loadPage("open:discord_embed_send", {
+                                interaction,
+                                collectorResponse: modal
+                            });
+                        }
+                        
                         break;
                     default:
                         break;
