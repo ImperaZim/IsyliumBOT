@@ -243,12 +243,13 @@ export class CollectorsManager {
                         mysql.update("discord_link", { embeds_json: text }, [
                             { guildid: guild.id }
                         ]);
-console.log("yes")
+                        console.log("yes");
                         if (message) {
                             PageManager.loadPage("open:discord_embed_send", {
                                 interaction,
                                 collectorResponse: modal
                             });
+                            console.log("yes02");
                         }
                         break;
                     case "discord_servers_modal":
