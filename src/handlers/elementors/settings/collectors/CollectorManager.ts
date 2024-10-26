@@ -124,11 +124,12 @@ export class CollectorsManager {
                             [{ guildid: guild.id }]
                         );
                         if (!server_link) {
-                            return button.reply({
+                           button.reply({
                                 content:
                                     "Por favor, criar um servidor primeiro antes de usar o Embed Creator",
                                 ephemeral: true
                             });
+                            return;
                         }
                         const embed = await mysql.select(
                             "discord_link",
