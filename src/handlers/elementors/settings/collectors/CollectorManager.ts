@@ -117,18 +117,26 @@ export class CollectorsManager {
                 const { customId, guild } = button;
 
                 switch (customId) {
-                    case "discord_embed_creator":if (
-    !serverLink ||
-    serverLink[0].servers === null ||
-    (typeof serverLink === "string" && serverLink.trim() === "")
-) {
-    await button.reply({
-        content: "Por favor, crie um servidor primeiro antes de usar o Embed Creator",
-        ephemeral: true
-    });
-    return;
-}
-                        
+                    case "discord_embed_creator":
+                      const serverLink = await mysql.select(
+    "discord_link",
+    "servers",
+    [{ guildid: guild.id }]
+);
+
+                        if (
+                            !serverLink ||
+                            serverLink[0].servers === null ||
+                            (typeof serverLink === "string" &&
+                                serverLink.trim() === "")
+                        ) {
+                            await button.reply({
+                                content:
+                                    "Por favor, crie um servidor primeiro antes de usar o Embed Creator",
+                                ephemeral: true
+                            });
+                            return;
+                        }
 
                         const embed = await mysql.select(
                             "discord_link",
