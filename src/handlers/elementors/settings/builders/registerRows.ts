@@ -3,7 +3,6 @@ import { color, assets } from "@config";
 import { registerRow } from "DiscordElementor";
 import { ChannelType, ButtonStyle } from "discord.js";
 
-
 export function registerRows(): void {
     registerRow("settings", {
         embeds: {
