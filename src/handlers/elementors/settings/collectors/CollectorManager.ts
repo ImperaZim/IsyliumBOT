@@ -123,8 +123,8 @@ export class CollectorsManager {
                             "servers",
                             [{ guildid: guild.id }]
                         );
-                        console.log(server_link)
-                        if (!server_link || server_link.length === 0) {
+                        console.log(server_link);
+                        if (!server_link && server_link[0] && server_link[0].length === 0) {
                             await button.reply({
                                 content:
                                     "Por favor, crie um servidor primeiro antes de usar o Embed Creator",
