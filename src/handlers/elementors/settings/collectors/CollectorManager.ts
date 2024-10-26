@@ -123,7 +123,7 @@ export class CollectorsManager {
                             "servers",
                             [{ guildid: guild.id }]
                         );
-                        if (server_link === null) {
+                        if (!server_link) {
                             return button.reply({
                                 content:
                                     "Por favor, criar um servidor primeiro antes de usar o Embed Creator",
