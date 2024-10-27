@@ -251,14 +251,14 @@ export class CollectorsManager {
                 collectorResponse: modal
               });
             }*/
+            PageManager.loadPage("open:discord_link_settings", {
+              interaction,
+              collectorResponse: modal
+            });
             modal.reply({
               content:
                 "pora",
               ephemeral: true
-            });
-            PageManager.loadPage("open:discord_link_settings", {
-              interaction,
-              collectorResponse: modal
             });
             break;
           case "discord_servers_modal":
@@ -266,14 +266,14 @@ export class CollectorsManager {
             mysql.update("discord_link", { servers: server }, [
               { guildid: guild.id }
             ]);
+            PageManager.loadPage("open:discord_link_settings", {
+              interaction,
+              collectorResponse: modal
+            });
             modal.reply({
               content:
                 "Servidor criado ou atualizado com sucesso",
               ephemeral: true
-            });
-            PageManager.loadPage("open:discord_link_settings", {
-              interaction,
-              collectorResponse: modal
             });
             break;
           default:
