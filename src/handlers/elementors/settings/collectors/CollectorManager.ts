@@ -251,11 +251,6 @@ export class CollectorsManager {
                 collectorResponse: modal
               });
             }
-            modal.reply({
-              content:
-                "Embed criado ou atualizado com sucesso",
-              ephemeral: true
-            });
             break;
           case "discord_servers_modal":
             const server = fields.getTextInputValue("server_name");
