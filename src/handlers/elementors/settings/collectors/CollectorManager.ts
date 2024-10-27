@@ -118,7 +118,7 @@ export class CollectorsManager {
 
                 switch (customId) {
                     case "discord_embed_creator":
-                        const serverLink = await mysql.select(
+                     /*   const serverLink = await mysql.select(
                             "discord_link",
                             "servers",
                             [{ guildid: guild.id }]
@@ -136,7 +136,7 @@ export class CollectorsManager {
                                 ephemeral: true
                             });
                             return;
-                        }
+                        }*/
 
                         const embed = await mysql.select(
                             "discord_link",
@@ -235,7 +235,7 @@ export class CollectorsManager {
                         mysql.update("discord_link", { embeds_json: text }, [
                             { guildid: guild.id }
                         ]);
-                          const lastMessage = await modal.channel?.messages.fetch(
+                        const lastMessage = await modal.channel?.messages.fetch(
                             {
                                 limit: 1
                             }
