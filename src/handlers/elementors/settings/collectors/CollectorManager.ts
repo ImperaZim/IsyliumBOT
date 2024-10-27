@@ -235,7 +235,7 @@ export class CollectorsManager {
                         mysql.update("discord_link", { embeds_json: text }, [
                             { guildid: guild.id }
                         ]);
-                      /*  const lastMessage = await modal.channel?.messages.fetch(
+                        /*  const lastMessage = await modal.channel?.messages.fetch(
                             {
                                 limit: 1
                             }
@@ -251,6 +251,12 @@ export class CollectorsManager {
                                 collectorResponse: modal
                             });
                         }*/
+                        
+                        modal.reply({
+                            content:
+                                "b.o ea msg",
+                            ephemeral: true
+                        });
                         break;
                     case "discord_servers_modal":
                         const server = fields.getTextInputValue("server_name");
