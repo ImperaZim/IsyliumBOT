@@ -29,7 +29,7 @@ export default new ExtendedCommand({
     await interaction.reply({
       ephemeral: true,
       fetchReply: true,
-      content: 'comando em produção! nickname: ' + decodeData.nickname
+      content: 'comando em produção! nickname: ' + decodeData.name
     });
   }
 });
