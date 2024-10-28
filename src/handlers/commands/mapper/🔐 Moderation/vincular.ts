@@ -20,49 +20,47 @@ export default new ExtendedCommand({
   async run({ interaction, options }: CommandProps) {
     if (!interaction.inCachedGuild()) return;
 
-    const { user, guild } = interaction;
-
+    const { user } = interaction;
     const token = options.getString("token");
 
-    const tokenByPlayer = await HarvestDatabaseConnection.getUserByToken(user.username);
-    const playerByToken = await HarvestDatabaseConnection.getTokenByUser(token);
+    try {
+      const [tokenByPlayer, playerByToken, data] = await Promise.all([
+        HarvestDatabaseConnection.getUserByToken(user.username),
+        HarvestDatabaseConnection.getTokenByUser(token),
+        HarvestConnection.getPlayerByToken(token),
+      ]);
 
-    const data = await HarvestConnection.getPlayerByToken(token);
-    const metadata = JSON.parse(atob(data.metadata));
+      const metadata = JSON.parse(atob(data.metadata));
 
-    if (tokenByPlayer !== null) {
+      if (tokenByPlayer) {
+        return interaction.reply({
+          ephemeral: true,
+          content: `Você já está conectado no servidor "harvest" como ${metadata.name}.`,
+        });
+      }
+
+      if (playerByToken) {
+        return interaction.reply({
+          ephemeral: true,
+          content: `O token "${token}" já está vinculado a outra conta do Discord!`,
+        });
+      }
+
+      await Promise.all([
+        HarvestConnection.define(metadata.name, 'discord_username', user.username),
+        HarvestConnection.define(metadata.name, 'discord_link_status', true),
+        HarvestDatabaseConnection.setPlayerData(user.username, token),
+      ]);
+
+      await interaction.reply({
+        content: `A conta "${metadata.name}" foi vinculada com o Discord "${user.username}".`,
+      });
+    } catch (error) {
+      console.error("Erro ao vincular conta:", error);
       await interaction.reply({
         ephemeral: true,
-        fetchReply: true,
-        content: `Você já esta conectado no servidor \"harvest\", sua conta vinculada está no nome de ${metadata.name}`
+        content: "Ocorreu um erro ao tentar vincular sua conta. Tente novamente mais tarde.",
       });
-      return;
     }
-
-    if (playerByToken !== null) {
-      await interaction.reply({
-        ephemeral: true,
-        fetchReply: true,
-        content: `O token harvest ${token} já está vinculado á uma conta do discord!`
-      });
-      return;
-    }
-
-    await HarvestConnection.define(
-      metadata.name,
-      'discord_username',
-      user.username
-    );
-    await HarvestConnection.define(
-      metadata.name,
-      'discord_link_status',
-      true
-    );
-    await HarvestDatabaseConnection.setPlayerData(user.username, token);
-
-    await interaction.reply({
-      content: `O \"discord_username\" de ${metadata.name} foi definido como ${user.username}.`
-    });
-
-  }
+  },
 });

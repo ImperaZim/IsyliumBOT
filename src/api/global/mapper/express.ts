@@ -11,8 +11,6 @@ export function startExpress() {
   // Middleware para interpretar JSON no corpo da requisição
   app.use(express.json());
 
-  const directoryPath = '/var/lib/pterodactyl/volumes/67471a7a-a910-4148-8ee5-e67d9fdb8a3d/plugin_data/ProjectHarvest/players';
-
   app.get('/', function (req, res) {
     res.send('Isylium Response');
   });
@@ -25,7 +23,6 @@ export function startExpress() {
     }
 
     res.status(200).json({ message: 'Notificação recebida com sucesso', data: json });
-
 
     var config = {
       method: 'get',
@@ -43,17 +40,9 @@ export function startExpress() {
         const types = response.data.additional_info.payer.last_name;
         var [nickname, username] = user.split(", ");
         var [type, value] = types.split(", ");
-        console.log(username)
-        console.log(nickname)
+        
         if (status === 'approved') {
-          console.log(status)
-          console.log(username)
-          console.log(nickname)
-          /**
-           * Desativei pq to refazendo o /harvest/ 
-           * ASS. Impera
-           * HarvestConnection.sendPlayerGift(nickname, type, value);
-           **/
+          HarvestConnection.sendGift(nickname, type, value);
         }
       })
       .catch(function (error) {
