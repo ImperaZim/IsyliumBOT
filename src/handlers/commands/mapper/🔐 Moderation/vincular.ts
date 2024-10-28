@@ -5,7 +5,7 @@ import { HarvestConnection } from "@api/harvest";
 import { ApplicationCommandType, ApplicationCommandOptionType } from "discord.js";
 
 export default new ExtendedCommand({
-  name: "connect",
+  name: "vincular",
   description: "Link your account to any server.",
   defaultMemberPermissions: "Administrator",
   options: [
@@ -22,12 +22,20 @@ export default new ExtendedCommand({
 
     const { user, guild } = interaction;
     const token = options.getString("token");
-    
+
     const data = await HarvestConnection.getPlayerByToken(token);
-    const decodeData = JSON.parse(atob(data.metadata));
+    const metadata = JSON.parse(atob(data.metadata));
+
+    await HarvestConnection.define(
+      metadata.name,
+      'discord_username',
+      user.username
+    );
     
+    const newdata = await HarvestConnection.getPlayerByToken(token);
+
     await interaction.reply({
-      content: 'comando em produção! nickname: ' + decodeData.name
+      content: `O \"discord_username\" de ${metadata.name} foi definido como ${user.username}.\nNovo Metadata:\n${atob(newdata.metadata)}`
     });
   }
 });

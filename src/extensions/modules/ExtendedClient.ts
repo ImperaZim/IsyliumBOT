@@ -106,7 +106,8 @@ export class ExtendedClient extends Client {
   private async registerTables(): Promise<void> {
     mysql.createTable("harvest_players", [
       { name: "username", type: "TEXT" },
-      { name: "nickname", type: "TEXT" }
+      { name: "nickname", type: "TEXT" },
+      { name: "token", type: "TEXT" },
     ]);
      mysql.createTable('ticket_discord', [
       { name: 'guildid', type: 'VARCHAR(255) NOT NULL PRIMARY KEY' },
