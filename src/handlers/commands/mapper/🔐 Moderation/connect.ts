@@ -24,8 +24,8 @@ export default new ExtendedCommand({
     const token = options.getString("token");
     
     const data = await HarvestConnection.getPlayerByToken(token);
-    
-    console.log(data);
+    const decodeData = atob(data.metadata ?? "");
+    console.log(decodeData.nickname);
     
     await interaction.reply({
       ephemeral: true,
