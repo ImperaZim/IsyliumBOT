@@ -22,12 +22,28 @@ export default new ExtendedCommand({
 
     const { user, guild } = interaction;
     const playerToken = await HarvestDatabaseConnection.getUserToken(user.username);
+    
+    console.log(playerToken);
+    return;
 
-    if (playerToken === null) {
+    if (!playerToken === null) {
       const token = options.getString("token");
 
       const data = await HarvestConnection.getPlayerByToken(token);
       const metadata = JSON.parse(atob(data.metadata));
+      
+      await HarvestConnection.define(
+        metadata.name,
+        'discord_username',
+        user.username
+      );
+      await HarvestConnection.define(
+        metadata.name,
+        'discord_link_status',
+        true
+      );
+      
+      await HarvestDatabaseConnection.setPlayerData(user.username, token);
 
       await interaction.reply({
         content: `O \"discord_username\" de ${metadata.name} foi definido como ${user.username}.`
