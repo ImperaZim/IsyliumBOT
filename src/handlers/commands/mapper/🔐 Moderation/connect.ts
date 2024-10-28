@@ -1,6 +1,7 @@
 import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
+import { HarvestConnection } from "@api/harvest";
 import { ApplicationCommandType, ApplicationCommandOptionType } from "discord.js";
 
 export default new ExtendedCommand({
@@ -21,7 +22,11 @@ export default new ExtendedCommand({
 
     const { user, guild } = interaction;
     const token = options.getString("token");
-
+    
+    const data = await HarvestConnection.getPlayerByToken(token);
+    
+    console.log(data);
+    
     await interaction.reply({
       ephemeral: true,
       fetchReply: true,

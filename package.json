@@ -38,6 +38,7 @@
     "tsc": "^2.0.4",
     "mercadopago": "2.0.15",
     "jspteroapi": "1.11.3",
+    "dotenv": "16.4.5",
     "express": "4.21.1"
   }
 }
