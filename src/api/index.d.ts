@@ -1,3 +1,3 @@
-declare module 'api' {
+declare module '@api' {
   export * from 'src/api/index.ts';
 }
