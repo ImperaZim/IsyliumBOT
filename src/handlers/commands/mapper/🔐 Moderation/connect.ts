@@ -20,7 +20,7 @@ export default new ExtendedCommand({
     if (!interaction.inCachedGuild()) return;
 
     const { user, guild } = interaction;
-    const token = options.getUser("token");
+    const token = options.getString("token");
 
     await interaction.reply({
       ephemeral: true,
