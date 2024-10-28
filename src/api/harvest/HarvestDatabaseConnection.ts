@@ -15,7 +15,7 @@ export class HarvestDatabaseConnection {
       "token",
       [{ username: username }]
     );
-    return data.token ?? null;
+    return data[0];
   }
 
 }
