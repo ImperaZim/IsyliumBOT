@@ -21,11 +21,14 @@ export default new ExtendedCommand({
     if (!interaction.inCachedGuild()) return;
 
     const { user, guild } = interaction;
-    
+
     const token = options.getString("token");
 
     const tokenByPlayer = await HarvestDatabaseConnection.getUserByToken(user.username);
     const playerByToken = await HarvestDatabaseConnection.getTokenByUser(token);
+
+    const data = await HarvestConnection.getPlayerByToken(token);
+    const metadata = JSON.parse(atob(data.metadata));
 
     if (tokenByPlayer !== null) {
       await interaction.reply({
@@ -44,9 +47,6 @@ export default new ExtendedCommand({
       });
       return;
     }
-
-    const data = await HarvestConnection.getPlayerByToken(token);
-    const metadata = JSON.parse(atob(data.metadata));
 
     await HarvestConnection.define(
       metadata.name,
