@@ -1,7 +1,7 @@
 import { client } from "@main";
 import { CommandProps } from "@types";
 import { ExtendedCommand } from "@extensions";
-import { HarvestConnection } from "@api/harvest";
+import { HarvestConnection, HarvestDatabaseConnection } from "@api/harvest";
 import { ApplicationCommandType, ApplicationCommandOptionType } from "discord.js";
 
 export default new ExtendedCommand({
@@ -21,21 +21,38 @@ export default new ExtendedCommand({
     if (!interaction.inCachedGuild()) return;
 
     const { user, guild } = interaction;
-    const token = options.getString("token");
+    const playerToken = await HarvestDatabaseConnection.getUserToken(user.username);
 
-    const data = await HarvestConnection.getPlayerByToken(token);
-    const metadata = JSON.parse(atob(data.metadata));
+    if (playerToken === null) {
+      const token = options.getString("token");
 
-    await HarvestConnection.define(
-      metadata.name,
-      'discord_username',
-      user.username
-    );
-    
-    const newdata = await HarvestConnection.getPlayerByToken(token);
+      const data = await HarvestConnection.getPlayerByToken(token);
+      const metadata = JSON.parse(atob(data.metadata));
 
-    await interaction.reply({
-      content: `O \"discord_username\" de ${metadata.name} foi definido como ${user.username}.\nNovo Metadata:\n${atob(newdata.metadata)}`
-    });
+      await HarvestConnection.define(
+        metadata.name,
+        'discord_username',
+        user.username
+      );
+      await HarvestConnection.define(
+        metadata.name,
+        'discord_link_status',
+        true
+      );
+      
+      await HarvestDatabaseConnection.setPlayerData(user.username, token);
+
+      await interaction.reply({
+        content: `O \"discord_username\" de ${metadata.name} foi definido como ${user.username}.`
+      });
+    } else {
+      const data = await HarvestConnection.getPlayerByToken(playerToken);
+      const metadata = JSON.parse(atob(data.metadata));
+      await interaction.reply({
+        ephemeral: true,
+        fetchReply: true,
+        content: `Você já esta conectado no servidor \"harvest\", sua conta vinculada está no nome de ${metadata.name}`
+      });
+    }
   }
 });
