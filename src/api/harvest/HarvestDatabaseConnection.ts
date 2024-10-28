@@ -15,8 +15,11 @@ export class HarvestDatabaseConnection {
       "token",
       [{ username: username }]
     );
-    const playerData = data[0];
-    return playerData ? (playerData.token ?? null) : null;
+    if (data.length >= 1) {
+      const playerData = data[0];
+      return playerData.token ?? null;
+    }
+    return null;
   }
 
   public static async getTokenByUser(token: string): Promise<any> {
@@ -25,8 +28,11 @@ export class HarvestDatabaseConnection {
       "username",
       [{ token: token }]
     );
-    const playerData = data[0];
-    return playerData ? (playerData.username ?? null) : null;
+    if (data.length >= 1) {
+      const playerData = data[0];
+      return playerData.username ?? null;
+    }
+    return null;
   }
 
 }
