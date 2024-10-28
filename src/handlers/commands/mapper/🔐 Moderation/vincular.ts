@@ -29,19 +29,6 @@ export default new ExtendedCommand({
       const data = await HarvestConnection.getPlayerByToken(token);
       const metadata = JSON.parse(atob(data.metadata));
 
-      await HarvestConnection.define(
-        metadata.name,
-        'discord_username',
-        user.username
-      );
-      await HarvestConnection.define(
-        metadata.name,
-        'discord_link_status',
-        true
-      );
-      
-      await HarvestDatabaseConnection.setPlayerData(user.username, token);
-
       await interaction.reply({
         content: `O \"discord_username\" de ${metadata.name} foi definido como ${user.username}.`
       });
