@@ -27,8 +27,6 @@ export default new ExtendedCommand({
     const decodeData = JSON.parse(atob(data.metadata));
     
     await interaction.reply({
-      ephemeral: true,
-      fetchReply: true,
       content: 'comando em produção! nickname: ' + decodeData.name
     });
   }
