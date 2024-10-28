@@ -15,7 +15,7 @@ export class HarvestDatabaseConnection {
       "token",
       [{ username: username }]
     );
-    if (data.length >= 1) {
+    if (data && data.length >= 1) {
       const playerData = data[0];
       return playerData.token ?? null;
     }
@@ -28,7 +28,7 @@ export class HarvestDatabaseConnection {
       "username",
       [{ token: token }]
     );
-    if (data.length >= 1) {
+    if (data && data.length >= 1) {
       const playerData = data[0];
       return playerData.username ?? null;
     }
