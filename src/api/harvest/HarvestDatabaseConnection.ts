@@ -10,7 +10,7 @@ export class HarvestDatabaseConnection {
   }
 
   public static async getUserToken(username: string): Promise<any> {
-    await mysql.select(
+    return await mysql.select(
       "harvest_players",
       "token",
       [{ username: username }]
