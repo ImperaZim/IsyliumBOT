@@ -25,12 +25,11 @@ export default new ExtendedCommand({
     
     const data = await HarvestConnection.getPlayerByToken(token);
     const decodeData = atob(data.metadata ?? "");
-    console.log(decodeData.nickname);
     
     await interaction.reply({
       ephemeral: true,
       fetchReply: true,
-      content: 'comando em produção! TOKEN=' + token
+      content: 'comando em produção! nickname: ' + decodeData.nickname
     });
   }
 });
