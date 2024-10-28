@@ -9,13 +9,24 @@ export class HarvestDatabaseConnection {
     });
   }
 
-  public static async getUserToken(username: string): Promise<any> {
+  public static async getUserByToken(username: string): Promise<any> {
     const data = await mysql.select(
       "harvest_players",
       "token",
       [{ username: username }]
     );
-    return data[0];
+    const playerData = data[0];
+    return playerData ? (playerData.token ?? null) : null;
+  }
+
+  public static async getTokenByUser(token: string): Promise<any> {
+    const data = await mysql.select(
+      "harvest_players",
+      "username",
+      [{ token: token }]
+    );
+    const playerData = data[0];
+    return playerData ? (playerData.username ?? null) : null;
   }
 
 }

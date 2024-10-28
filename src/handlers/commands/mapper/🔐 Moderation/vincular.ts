@@ -21,41 +21,48 @@ export default new ExtendedCommand({
     if (!interaction.inCachedGuild()) return;
 
     const { user, guild } = interaction;
-    const playerToken = await HarvestDatabaseConnection.getUserToken(user.username);
     
-    console.log(playerToken);
-    return;
+    const token = options.getString("token");
 
-    if (playerToken === null) {
-      const token = options.getString("token");
+    const tokenByPlayer = await HarvestDatabaseConnection.getUserByToken(user.username);
+    const playerByToken = await HarvestDatabaseConnection.getTokenByUser(token);
 
-      const data = await HarvestConnection.getPlayerByToken(token);
-      const metadata = JSON.parse(atob(data.metadata));
-      
-      await HarvestConnection.define(
-        metadata.name,
-        'discord_username',
-        user.username
-      );
-      await HarvestConnection.define(
-        metadata.name,
-        'discord_link_status',
-        true
-      );
-      
-      await HarvestDatabaseConnection.setPlayerData(user.username, token);
-
-      await interaction.reply({
-        content: `O \"discord_username\" de ${metadata.name} foi definido como ${user.username}.`
-      });
-    } else {
-      const data = await HarvestConnection.getPlayerByToken(playerToken);
-      const metadata = JSON.parse(atob(data.metadata));
+    if (tokenByPlayer !== null) {
       await interaction.reply({
         ephemeral: true,
         fetchReply: true,
         content: `Você já esta conectado no servidor \"harvest\", sua conta vinculada está no nome de ${metadata.name}`
       });
+      return;
     }
+
+    if (playerByToken !== null) {
+      await interaction.reply({
+        ephemeral: true,
+        fetchReply: true,
+        content: `O token harvest ${token} já está vinculado á uma conta do discord!`
+      });
+      return;
+    }
+
+    const data = await HarvestConnection.getPlayerByToken(token);
+    const metadata = JSON.parse(atob(data.metadata));
+
+    await HarvestConnection.define(
+      metadata.name,
+      'discord_username',
+      user.username
+    );
+    await HarvestConnection.define(
+      metadata.name,
+      'discord_link_status',
+      true
+    );
+    await HarvestDatabaseConnection.setPlayerData(user.username, token);
+
+    await interaction.reply({
+      content: `O \"discord_username\" de ${metadata.name} foi definido como ${user.username}.`
+    });
+
   }
 });
