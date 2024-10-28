@@ -22,6 +22,8 @@ export default new ExtendedCommand({
 
     const { user, guild } = interaction;
     const playerToken = await HarvestDatabaseConnection.getUserToken(user.username);
+    
+    console.log(playerToken);
 
     if (playerToken === undefined) {
       const token = options.getString("token");
