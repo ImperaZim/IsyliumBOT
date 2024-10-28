@@ -49,7 +49,11 @@ export function startExpress() {
           console.log(status)
           console.log(username)
           console.log(nickname)
-          HarvestConnection.sendPlayerGift(nickname, type, value)
+          /**
+           * Desativei pq to refazendo o /harvest/ 
+           * ASS. Impera
+           * HarvestConnection.sendPlayerGift(nickname, type, value);
+           **/
         }
       })
       .catch(function (error) {
