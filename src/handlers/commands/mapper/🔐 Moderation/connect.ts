@@ -11,11 +11,12 @@ export default new ExtendedCommand({
   async run({ interaction }: CommandProps) {
     if (!interaction.inCachedGuild()) return;
 
-    const { user, guild, reply } = interaction;
-    
-    await reply({
-      content: 'comando em produção!',
-      ephemeral: true
+    const { user, guild } = interaction;
+
+    await interaction.reply({
+      ephemeral: true,
+      fetchReply: true,
+      content: 'comando em produção!'
     });
   }
 });
