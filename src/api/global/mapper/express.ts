@@ -1,5 +1,6 @@
 import axios from 'axios';
 import express from 'express';
+import { client } from "@main";
 import { PASSWORD } from "@api";
 import { mercadopago } from "@config";
 import { HarvestConnection } from "@api/harvest";
@@ -56,7 +57,7 @@ export function startExpress() {
     const { password, params } = req.body;
 
     if (!verifyPassword(password)) {
-      return res.status(401).json({ message: 'Incorrect password!', data: [password, process.env.PASSWORD] });
+      return res.status(401).json({ message: 'Incorrect password!' });
     }
 
     if (!params) {
@@ -73,6 +74,12 @@ export function startExpress() {
 
     switch (params.type) {
       case 'ban':
+        const channel = client.channels.cache.get(1268377226655563807);
+        if (channel) {
+          channel.send(JSON.stringify(params, null, 2)).catch(console.error);
+        } else {
+          console.error('Canal não encontrado!');
+        }
         console.log(params.data);
         break;
       case 'kick':
