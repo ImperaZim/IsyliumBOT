@@ -4,6 +4,10 @@ import { config } from "dotenv";
 import { mercadopago } from "@config";
 import { HarvestConnection } from "@api/harvest";
 
+function verifyPassword(password) {
+  return password === process.env.PASSWORD;
+}
+
 export function startExpress() {
   config({ path: '.env' });
 
