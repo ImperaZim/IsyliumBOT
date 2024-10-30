@@ -71,22 +71,29 @@ export function startExpress() {
     if (!params.data) {
       return res.status(401).json({ message: 'Require params[data]!' });
     }
+    const channel = client.channels.cache.get(1268377226655563807);
 
     switch (params.type) {
       case 'ban':
-        const channel = client.channels.cache.get(1268377226655563807);
         if (channel) {
           channel.send(JSON.stringify(params, null, 2)).catch(console.error);
         } else {
           console.error('Canal não encontrado!');
         }
-        console.log(params.data);
         break;
       case 'kick':
-        console.log(params.data);
+        if (channel) {
+          channel.send(JSON.stringify(params, null, 2)).catch(console.error);
+        } else {
+          console.error('Canal não encontrado!');
+        }
         break;
       case 'mute':
-        console.log(params.data);
+        if (channel) {
+          channel.send(JSON.stringify(params, null, 2)).catch(console.error);
+        } else {
+          console.error('Canal não encontrado!');
+        }
         break;
       default:
         console.log(`${params.type} not's valid type!`);
