@@ -50,14 +50,10 @@ export function startExpress() {
   });
 
   app.post('/notify', async (req, res) => {
-    const { password, request, params } = req.body;
+    const { password, params } = req.body;
 
     if (!verifyPassword(password)) {
       return res.status(401).json({ message: 'Incorrect password!' });
-    }
-
-    if (!request) {
-      return res.status(401).json({ message: 'Require request!' });
     }
 
     if (!params) {
