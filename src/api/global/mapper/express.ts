@@ -1,6 +1,6 @@
-import { axios } from 'axios';
+import axios from 'axios';
+import express from 'express';
 import { config } from "dotenv";
-import { express } from 'express';
 import { mercadopago } from "@config";
 import { HarvestConnection } from "@api/harvest";
 
