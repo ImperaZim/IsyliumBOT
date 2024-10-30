@@ -71,6 +71,11 @@ export function startExpress() {
     if (!params.data) {
       return res.status(401).json({ message: 'Require params[data]!' });
     }
+    console.log(client);
+    console.log(client.channels);
+    console.log(client.channels.cache);
+    console.log(client.channels.cache.get(1268377226655563807));
+    
     const channel = await client.channels.cache.get(1268377226655563807);
 
     switch (params.type) {
