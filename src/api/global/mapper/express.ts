@@ -4,12 +4,14 @@ import { config } from "dotenv";
 import { mercadopago } from "@config";
 import { HarvestConnection } from "@api/harvest";
 
+config({ path: '.env' });
+
 function verifyPassword(password) {
+  config({ path: '.env' });
   return password === process.env.PASSWORD;
 }
 
 export function startExpress() {
-  config({ path: '.env' });
 
   const app = express();
   app.use(express.json());
@@ -57,7 +59,7 @@ export function startExpress() {
     const { password, params } = req.body;
 
     if (!verifyPassword(password)) {
-      return res.status(401).json({ message: 'Incorrect password!' });
+      return res.status(401).json({ message: 'Incorrect password!', data: [password, process.env.PASSWORD] });
     }
 
     if (!params) {
