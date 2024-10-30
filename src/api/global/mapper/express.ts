@@ -1,14 +1,11 @@
 import axios from 'axios';
 import express from 'express';
-import { config } from "dotenv";
+import { PASSWORD } from "@api";
 import { mercadopago } from "@config";
 import { HarvestConnection } from "@api/harvest";
 
-config({ path: '.env' });
-
 function verifyPassword(password) {
-  config({ path: '.env' });
-  return password === process.env.PASSWORD;
+  return password === PASSWORD;
 }
 
 export function startExpress() {
