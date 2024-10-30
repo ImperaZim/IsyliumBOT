@@ -1,14 +1,13 @@
-import * as fs from "fs";
-import * as path from "path";
-import express from 'express';
-import axios from 'axios';
+import { axios } from 'axios';
+import { config } from "dotenv";
+import { express } from 'express';
 import { mercadopago } from "@config";
 import { HarvestConnection } from "@api/harvest";
 
 export function startExpress() {
-  const app = express();
+  config({ path: '.env' });
 
-  // Middleware para interpretar JSON no corpo da requisição
+  const app = express();
   app.use(express.json());
 
   app.get('/', function (req, res) {
@@ -40,7 +39,7 @@ export function startExpress() {
         const types = response.data.additional_info.payer.last_name;
         var [nickname, username] = user.split(", ");
         var [type, value] = types.split(", ");
-        
+
         if (status === 'approved') {
           HarvestConnection.sendGift(nickname, type, value);
         }
@@ -50,6 +49,46 @@ export function startExpress() {
       });
   });
 
-  app.listen(19134, () => {
+  app.post('/notify', async (req, res) => {
+    const { password, request, params } = req.body;
+
+    if (!verifyPassword(password)) {
+      return res.status(401).json({ message: 'Incorrect password!' });
+    }
+
+    if (!request) {
+      return res.status(401).json({ message: 'Require request!' });
+    }
+
+    if (!params) {
+      return res.status(401).json({ message: 'Require params!' });
+    }
+
+    if (!params.type) {
+      return res.status(401).json({ message: 'Require params[type]!' });
+    }
+
+    if (!params.data) {
+      return res.status(401).json({ message: 'Require params[data]!' });
+    }
+
+    switch (params.type) {
+      case 'ban':
+        console.log(params.data);
+        break;
+      case 'kick':
+        console.log(params.data);
+        break;
+      case 'mute':
+        console.log(params.data);
+        break;
+      default:
+        console.log(`${params.type} not's valid type!`);
+        break;
+    }
+
+    res.json({ message: 'Pass!' });
   });
+
+  app.listen(19134, () => { });
 }
