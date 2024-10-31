@@ -86,15 +86,15 @@ export class PageManager {
           }
         }
 
-        serverJson.forEach((serverName, serverStatus) => {
+        Object.entries(serverJson).forEach(([serverName, serverStatus]) => {
           components.push(
             getButton(this.settings, "server_status_view", {
               type: (serverStatus ? ButtonStyle.Primary : ButtonStyle.Danger),
               label: serverName
             })
           );
-          getButton(this.settings, "server_status_view_back")
         });
+        getButton(this.settings, "server_status_view_back")
         break;
       default:
         break;
