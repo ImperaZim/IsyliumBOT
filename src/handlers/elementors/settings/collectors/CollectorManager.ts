@@ -174,6 +174,12 @@ export class CollectorsManager {
             });
             return;
           case "server_status_view":
+            PageManager.loadPage("open:edit_servers", {
+              interaction,
+              collectorResponse: button
+            });
+
+            return;
           case "discord_server_manager":
             PageManager.loadPage("open:edit_servers", {
               interaction,

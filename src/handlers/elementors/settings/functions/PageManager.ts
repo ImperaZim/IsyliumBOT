@@ -86,7 +86,7 @@ export class PageManager {
           }
         }
 
-        serverJson.array.forEach((serverName, serverStatus) => {
+        serverJson.forEach((serverName, serverStatus) => {
           components.push(
             getButton(this.settings, "server_status_view", {
               type: (serverStatus ? ButtonStyle.Primary : ButtonStyle.Danger),
