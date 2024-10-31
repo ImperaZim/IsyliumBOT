@@ -173,41 +173,19 @@ export class CollectorsManager {
               collectorResponse: button
             });
             return;
+          case "server_status_view":
           case "discord_server_manager":
-            const server = await mysql.select(
-              "discord_link",
-              "servers",
-              [{ guildid: guild.id }]
-            );
+            PageManager.loadPage("open:edit_servers", {
+              interaction,
+              collectorResponse: button
+            });
 
-            let serverJson;
-
-            if (server && server[0] && server[0].servers) {
-              try {
-                serverJson = JSON.parse(server[0].servers);
-              } catch (error) {
-                new Logger("null", {
-                  title: colors.red("[ISYLIUM MODULES]"),
-                  content: `Erro ao ler o json ${error}`
-                });
-
-                serverJson = {
-                  skyblock: false,
-                  rankup: true
-                };
-              }
-            } else {
-              serverJson = {
-                skyblock: false,
-                rankup: true
-              };
-            }
-
-            button.showModal(
-              getModal("discord_servers_modal", {
-                value: JSON.stringify(serverJson, null, 2)
-              })
-            );
+            return;
+          case "server_status_view_back":
+            PageManager.loadPage("open:discord_link_settings", {
+              interaction,
+              collectorResponse: button
+            });
 
             return;
           default:
