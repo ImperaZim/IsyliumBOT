@@ -93,7 +93,9 @@ export class PageManager {
             }).setStyle(serverStatus ? ButtonStyle.Primary : ButtonStyle.Danger)
           );
         });
-        getButton(this.settings, "server_status_view_back")
+        components.push(
+          getButton(this.settings, "server_status_view_back")
+        );
         break;
       default:
         break;
