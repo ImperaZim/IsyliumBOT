@@ -114,7 +114,7 @@ export function registerRows(): void {
       },
       buttons: {
         server_status_view: {
-          type: "{type}",
+          type: ButtonStyle.Secondary,
           data: {
             label: "{label}"
           }
