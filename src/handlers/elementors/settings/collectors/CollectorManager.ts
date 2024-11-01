@@ -122,7 +122,7 @@ export class CollectorsManager {
             interaction,
             collectorResponse: button
           });
-          console.log(`Briis vá em CollectorManager.ts a partir da linha 119 e faça o seu codigo para atualizar o status fo servidor ${newCustomId}!`);
+        
         } else {
           switch (customId) {
             case "discord_embed_creator":
