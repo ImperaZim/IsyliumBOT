@@ -90,7 +90,7 @@ export class PageManager {
           components.push(
             getButton(this.settings, "server_status_view", {
               label: serverName
-            }).setStyle(serverStatus ? ButtonStyle.Primary : ButtonStyle.Danger)
+            }).setStyle(serverStatus ? ButtonStyle.Primary : ButtonStyle.Danger).setCustomId(`server_status_view_${serverName}`)
           );
         });
         components.push(

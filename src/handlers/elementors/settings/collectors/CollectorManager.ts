@@ -116,86 +116,87 @@ export class CollectorsManager {
       callback: async (button: ButtonInteraction) => {
         const { customId, guild } = button;
 
-        switch (customId) {
-          case "discord_embed_creator":
-            /*   const serverLink = await mysql.select(
-                   "discord_link",
-                   "servers",
-                   [{ guildid: guild.id }]
-               );
+        if (customId.startsWith("server_status_view_")) {
+          const newCustomId = customId.slice("server_status_view_".length);
+          PageManager.loadPage("open:edit_servers", {
+            interaction,
+            collectorResponse: button
+          });
+          console.log(`Briis vá em CollectorManager.ts a partir da linha 119 e faça o seu codigo para atualizar o status fo servidor ${newCustomId}!`);
+        } else {
+          switch (customId) {
+            case "discord_embed_creator":
+              /*   const serverLink = await mysql.select(
+                     "discord_link",
+                     "servers",
+                     [{ guildid: guild.id }]
+                 );
+  
+                 if (
+                     !serverLink ||
+                     serverLink[0].servers === null ||
+                     (typeof serverLink === "string" &&
+                         serverLink.trim() === "")
+                 ) {
+                     await button.reply({
+                         content:
+                             "Por favor, crie um servidor primeiro antes de usar o Embed Creator",
+                         ephemeral: true
+                     });
+                     return;
+                 }*/
 
-               if (
-                   !serverLink ||
-                   serverLink[0].servers === null ||
-                   (typeof serverLink === "string" &&
-                       serverLink.trim() === "")
-               ) {
-                   await button.reply({
-                       content:
-                           "Por favor, crie um servidor primeiro antes de usar o Embed Creator",
-                       ephemeral: true
-                   });
-                   return;
-               }*/
+              const embed = await mysql.select(
+                "discord_link",
+                "embeds_json",
+                [{ guildid: guild.id }]
+              );
 
-            const embed = await mysql.select(
-              "discord_link",
-              "embeds_json",
-              [{ guildid: guild.id }]
-            );
+              let embedJson;
 
-            let embedJson;
+              if (embed && embed[0] && embed[0].embeds_json) {
+                try {
+                  embedJson = JSON.parse(embed[0].embeds_json);
+                } catch (error) {
+                  new Logger("null", {
+                    title: colors.red("[ISYLIUM MODULES]"),
+                    content: `Erro ao ler o json ${error}`
+                  });
 
-            if (embed && embed[0] && embed[0].embeds_json) {
-              try {
-                embedJson = JSON.parse(embed[0].embeds_json);
-              } catch (error) {
-                new Logger("null", {
-                  title: colors.red("[ISYLIUM MODULES]"),
-                  content: `Erro ao ler o json ${error}`
-                });
-
+                  embedJson = { title: "teste" };
+                }
+              } else {
                 embedJson = { title: "teste" };
               }
-            } else {
-              embedJson = { title: "teste" };
-            }
 
-            button.showModal(
-              getModal("discord_embed_creator", {
-                value: JSON.stringify(embedJson, null, 2)
-              })
-            );
-            return;
-          case "discord_log_channel":
-            PageManager.loadPage("open:discord_logs_select", {
-              interaction,
-              collectorResponse: button
-            });
-            return;
-          case "server_status_view":
-            PageManager.loadPage("open:edit_servers", {
-              interaction,
-              collectorResponse: button
-            });
+              button.showModal(
+                getModal("discord_embed_creator", {
+                  value: JSON.stringify(embedJson, null, 2)
+                })
+              );
+              return;
+            case "discord_log_channel":
+              PageManager.loadPage("open:discord_logs_select", {
+                interaction,
+                collectorResponse: button
+              });
+            case "discord_server_manager":
+              PageManager.loadPage("open:edit_servers", {
+                interaction,
+                collectorResponse: button
+              });
 
-            return;
-          case "discord_server_manager":
-            PageManager.loadPage("open:edit_servers", {
-              interaction,
-              collectorResponse: button
-            });
+              return;
+            case "server_status_view_back":
+              PageManager.loadPage("open:discord_link_settings", {
+                interaction,
+                collectorResponse: button
+              });
 
-            return;
-          case "server_status_view_back":
-            PageManager.loadPage("open:discord_link_settings", {
-              interaction,
-              collectorResponse: button
-            });
-
-            return;
-          default:
-            break;
+              return;
+            default:
+              break;
+          }
         }
       },
       filter: async (button: ButtonInteraction) => {
