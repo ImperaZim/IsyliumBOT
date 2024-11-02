@@ -2,6 +2,7 @@ import { CommandProps } from "@types";
 import { client, mysql } from "@main";
 import { PageManager } from "@handlers";
 import { Logger, colors } from "Console";
+import { HarvestConnection } from "@api/harvest";
 import {
   getModal,
   getEmbed,
@@ -122,7 +123,7 @@ export class CollectorsManager {
             interaction,
             collectorResponse: button
           });
-        
+
         } else {
           switch (customId) {
             case "discord_embed_creator":
@@ -247,6 +248,15 @@ export class CollectorsManager {
                 "Servidor criado ou atualizado com sucesso",
               ephemeral: true,
               fetchReply: true
+            });
+            break;
+          case "discord_send_gift":
+            const name = fields.getTextInputValue("player_nickname");
+            const data = fields.getTextInputValue("gift_data");
+            const parseData = JSON.parse(data);
+            modal.reply({
+              content: 'Resultado! ' + JSON.stringify(HarvestConnection.sendGift(name, (parseData.type ?? 'coins'), (parseData.value ?? 1)), null, 2),
+              ephemeral: true
             });
             break;
           default:
