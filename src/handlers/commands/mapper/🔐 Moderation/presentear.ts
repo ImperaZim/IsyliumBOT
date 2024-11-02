@@ -6,15 +6,12 @@ import { CollectorsManager } from "@handlers";
 import { ApplicationCommandType } from "discord.js";
 
 export default new ExtendedCommand({
-  name: "vincular",
-  description: "Link your account to any server.",
+  name: "presentear",
+  description: "Send a gift to a player.",
   defaultMemberPermissions: "Administrator",
   type: ApplicationCommandType.ChatInput,
   async run({ interaction, options }: CommandProps) {
     if (!interaction.inCachedGuild()) return;
-
-    const { user } = interaction;
-
     try {
       const modal = await interaction.showModal(
         getModal("discord_send_gift")
