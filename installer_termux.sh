@@ -1,74 +1,74 @@
 #!/bin/bash
-# IsyliumBOT Installer - Termux Version
-# With confirmation prompts for all deletions
+# Instalador IsyliumBOT para Termux - Versão Corrigida
 
-echo -e "\e[1;33m[imperazim]:\e[0m Iniciando instalação no Termux..."
-echo
-echo -e "\e[1;33m[imperazim]:\e[0m Verificando dependências..."
-pkg install git nodejs -y
+# Cores
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # Sem cor
 
-# Clone main repository
-echo -e "\e[1;33m[imperazim]:\e[0m Baixando IsyliumBOT..."
-git clone https://github.com/ImperaZim/IsyliumBOT.git --quiet
+# Função para tratar erros
+handle_error() {
+    echo -e "${RED}Erro crítico durante a instalação!${NC}"
+    echo -e "${YELLOW}Motivo: $1${NC}"
+    exit 1
+}
 
-# Move files
-cp -r IsyliumBOT/* ./
+# Configurar repositório Termux primeiro
+echo -e "${YELLOW}[imperazim]:${NC} Configurando repositórios..."
+termux-change-repo <<< "1\ny\n" || handle_error "Falha ao configurar repositórios"
 
-# Clean previous versions
-echo
-read -p "[imperazim] Deseja remover instalações anteriores? [S/n]: " confirm_clean
-if [[ $confirm_clean =~ ^[Ss]$ ]] || [[ -z $confirm_clean ]]; then
-    echo -e "\e[1;33m[imperazim]:\e[0m Limpando instalações anteriores..."
-    rm -rf @imperazim
-else
-    echo -e "\e[1;33m[imperazim]:\e[0m Pulando limpeza de versões anteriores..."
+# Atualizar pacotes
+echo -e "${YELLOW}[imperazim]:${NC} Atualizando pacotes..."
+pkg update -y && pkg upgrade -y || handle_error "Falha na atualização"
+
+# Instalar dependências
+echo -e "${YELLOW}[imperazim]:${NC} Instalando dependências essenciais..."
+pkg install -y git nodejs openssl || handle_error "Falha na instalação de dependências"
+
+# Verificar versão do Node.js
+NODE_VERSION=$(node --version 2>/dev/null)
+if [[ -z "$NODE_VERSION" || "$NODE_VERSION" < "v16.0.0" ]]; then
+    echo -e "${YELLOW}[imperazim]:${NC} Instalando Node.js via nvm..."
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm install 18.14.2 || handle_error "Falha ao instalar Node.js"
 fi
 
-# Install submodules
-echo
-echo -e "\e[1;33m[imperazim]:\e[0m Instalando sub-módulos..."
-git clone -b main https://github.com/ImperaZim/EasyNTSUtils.git --quiet
+# Clone do repositório principal
+echo -e "${YELLOW}[imperazim]:${NC} Baixando IsyliumBOT..."
+rm -rf IsyliumBOT # Limpeza prévia
+git clone https://github.com/ImperaZim/IsyliumBOT.git --depth 1 || handle_error "Falha no clone"
+
+# Mover arquivos
+cp -r IsyliumBOT/* ./
+
+# Limpar instalações anteriores (com confirmação)
+read -p "[imperazim] Deseja remover instalações anteriores? [S/n]: " confirm_clean
+if [[ "$confirm_clean" =~ ^[Ss]$ || -z "$confirm_clean" ]]; then
+    echo -e "${YELLOW}[imperazim]:${NC} Limpando instalações anteriores..."
+    rm -rf @imperazim node_modules package-lock.json
+fi
+
+# Instalar submódulos
+echo -e "${YELLOW}[imperazim]:${NC} Instalando componentes..."
 mkdir -p @imperazim
+git clone -b main https://github.com/ImperaZim/EasyNTSUtils.git --depth 1 || handle_error "Falha nos submódulos"
 cp -r EasyNTSUtils/@imperazim/* @imperazim/
 cp EasyNTSUtils/tsconfig.json ./
 
-# Cleanup temp files
-echo
-read -p "[imperazim] Remover arquivos temporários de instalação? [S/n]: " confirm_temp
-if [[ $confirm_temp =~ ^[Ss]$ ]] || [[ -z $confirm_temp ]]; then
-    echo -e "\e[1;33m[imperazim]:\e[0m Removendo arquivos temporários..."
-    rm -rf EasyNTSUtils
-    rm -rf IsyliumBOT
-else
-    echo -e "\e[1;33m[imperazim]:\e[0m Mantendo arquivos temporários..."
-fi
+# Instalar pacotes
+echo -e "${YELLOW}[imperazim]:${NC} Instalando dependências..."
+npm install --global yarn || handle_error "Falha no Yarn"
+yarn install --silent || handle_error "Falha nas dependências"
 
-# Install packages
-echo
-echo -e "\e[1;33m[imperazim]:\e[0m Instalando dependências..."
-npm install colorette fs --silent
-npm install --silent
-npm run installModules
+# Finalização
+echo -e "${GREEN}[imperazim]: Instalação concluída com sucesso!${NC}"
+echo -e "${YELLOW}Próximos passos:${NC}"
+echo "1. Configure o arquivo .env"
+echo "2. Execute: yarn start"
+echo "3. Para desenvolvimento: yarn dev"
 
-# Instructions
-echo
-echo -e "\e[1;32m[imperazim]: INSTALAÇÃO CONCLUÍDA COM SUCESSO!\e[0m"
-echo
-echo "PRÓXIMOS PASSOS:"
-echo "1. Configure seu arquivo .env com suas credenciais"
-echo "2. Para iniciar o bot, execute:"
-echo "   npm run start"
-echo "3. Para desenvolvimento, use:"
-echo "   npm run dev"
-echo
-echo -e "\e[1;33m[imperazim]:\e[0m Obrigado por usar IsyliumBOT!"
-
-# Self-delete
-echo
-read -p "[imperazim] Deseja remover o instalador automaticamente? [S/n]: " confirm_delete
-if [[ $confirm_delete =~ ^[Ss]$ ]] || [[ -z $confirm_delete ]]; then
-    echo -e "\e[1;33m[imperazim]:\e[0m Removendo instalador..."
-    rm -- "$0"
-else
-    echo -e "\e[1;33m[imperazim]:\e[0m O instalador foi mantido no sistema."
-fi
+# Limpeza
+rm -rf IsyliumBOT EasyNTSUtils
