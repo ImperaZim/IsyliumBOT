@@ -7,7 +7,7 @@ echo.
 
 :clone_main
 echo [imperazim]: Baixando IsyliumBOT...
-git clone https://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@github.com/ImperaZim/IsyliumBOT.git --quiet
+git clone https://github.com/ImperaZim/IsyliumBOT.git --quiet
 
 :move_files
 xcopy /E /Y /Q IsyliumBOT\*.* .\
