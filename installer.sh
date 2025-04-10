@@ -53,30 +53,34 @@ show_menu() {
 # Download and execute specific installer
 run_installer() {
     local installer_url="https://raw.githubusercontent.com/ImperaZim/IsyliumBOT/installers/installer_$1"
-    local temp_file="/tmp/isylium_installer_$1"
+    local temp_dir="$HOME/isylium_temp"
+    local temp_file="$temp_dir/installer_$1"
+
+    # Cria diretório temporário seguro
+    mkdir -p "$temp_dir"
     
-    echo -e "${YELLOW}Downloading $1 installer...${NC}"
-    if curl -sSL "$installer_url" -o "$temp_file"; then
+    echo -e "${YELLOW}Baixando instalador $1...${NC}"
+    
+    # Novo sistema de download com verificação
+    if curl -sSL "$installer_url" -o "$temp_file" && [ -s "$temp_file" ]; then
         chmod +x "$temp_file"
-        echo -e "${GREEN}Starting $1 installation...${NC}"
-        echo
+        echo -e "${GREEN}Iniciando instalação $1...${NC}"
         
-        if [ "$1" = "windows" ]; then
-            # For Windows, we need to handle differently if running under WSL
-            if grep -q Microsoft /proc/version; then
-                echo -e "${YELLOW}Warning: Detected WSL environment${NC}"
-                read -p "Continue with Windows installer in WSL? [y/N]: " wsl_confirm
-                if [[ ! $wsl_confirm =~ ^[Yy]$ ]]; then
-                    rm "$temp_file"
-                    exit 1
-                fi
-            fi
-            cmd.exe /c start "" "$temp_file"
+        # Execução específica para Termux
+        if [ "$1" = "termux.sh" ]; then
+            bash "$temp_file"
         else
             exec "$temp_file"
         fi
+        
+        # Limpeza pós-instalação
+        rm -rf "$temp_dir"
     else
-        echo -e "${RED}Failed to download $1 installer!${NC}"
+        echo -e "${RED}Falha no download! Verifique:${NC}"
+        echo -e "1. URL do instalador: $installer_url"
+        echo -e "2. Conexão com internet"
+        echo -e "3. Permissões de armazenamento"
+        rm -rf "$temp_dir"
         exit 1
     fi
 }
